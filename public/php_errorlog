@@ -1,0 +1,1 @@
+[18-Aug-2017 15:10:47 UTC] PHP Fatal error:  Call to a member function delete() on null in /home/ahmeds15/public_html/hurghadawonders.com/app/Http/Controllers/Admin/VarsController.php on line 78
