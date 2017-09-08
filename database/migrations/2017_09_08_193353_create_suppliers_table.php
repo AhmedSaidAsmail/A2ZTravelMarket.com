@@ -21,6 +21,14 @@ class CreateSuppliersTable extends Migration {
             $table->string('title')->nullable();
             $table->string('f_name');
             $table->string('l_name');
+            $table->string('company');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
+            $table->string('phone');
+            $table->string('fax');
+            $table->string('website');
             $table->rememberToken();
             $table->timestamps();
         });
