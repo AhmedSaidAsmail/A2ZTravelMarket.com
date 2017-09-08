@@ -29,6 +29,8 @@ class CreateSuppliersTable extends Migration {
             $table->string('phone');
             $table->string('fax');
             $table->string('website');
+            $table->string('company_type');
+            $table->string('service_offer');
             $table->rememberToken();
             $table->timestamps();
         });
