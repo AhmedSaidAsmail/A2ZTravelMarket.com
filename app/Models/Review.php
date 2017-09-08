@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MyModels\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +23,7 @@ class Review extends Model {
         'confirm'];
 
     public function item() {
-        return $this->belongsTo(\App\MyModels\Admin\Item::class);
+        return $this->belongsTo(\App\Models\Item::class);
     }
 
 }
