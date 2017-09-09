@@ -1,5 +1,11 @@
 <?php
 
+// Auth 
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/login/supplier','Auth_Supplier\LoginController@showLoginForm')->name('supplier.login');
+Route::post('/login/supplier','Auth_Supplier\LoginController@login')->name('supplier.login');
+//Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
 Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
 Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');
@@ -26,9 +32,13 @@ Route::get('/reveiws/write/{id}', ['uses' => 'ReviewController@store'])->name('r
 Route::post('/reveiws/write', ['uses' => 'ReviewController@edit'])->name('review.edit');
 Route::get('/reveiws/showall', ['uses' => 'ReviewController@showAll'])->name('review.all');
 
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-//Auth::routes('/register', 'Auth\RegisterController@showRegistrationForm');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Supllier sector 
+Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function() {
+    Route::get('', function() {
+        return view('Supplier.Welcome');
+    })->name('spplier.welcome');
+});
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {
         return view('Admin.Welcome');

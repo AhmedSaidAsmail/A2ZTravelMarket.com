@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exceptions;
 
 use Exception;
@@ -22,6 +23,7 @@ class Handler extends ExceptionHandler {
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
     ];
+
     /**
      * Report or log an exception.
      *
@@ -33,6 +35,7 @@ class Handler extends ExceptionHandler {
     public function report(Exception $exception) {
         parent::report($exception);
     }
+
     /**
      * Render an exception into an HTTP response.
      *
@@ -47,6 +50,7 @@ class Handler extends ExceptionHandler {
         }
         return parent::render($request, $exception);
     }
+
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
@@ -58,8 +62,16 @@ class Handler extends ExceptionHandler {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
-
-        return redirect()->guest('login');
+        $guards = array_get($exception->guards(), 0);
+        switch ($guards) {
+            case "web":
+                $login = "login";
+                break;
+            case "supplier":
+                $login = "supplier.login";
+                break;
+        }
+        return redirect()->guest(route($login));
     }
 
 }
