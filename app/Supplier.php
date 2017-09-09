@@ -24,5 +24,8 @@ class Supplier extends User {
         'company_type',
         'service_offer'
     ];
+    public function items(){
+        return $this->hasMany(\App\Models\Item::class);
+    }
 
 }

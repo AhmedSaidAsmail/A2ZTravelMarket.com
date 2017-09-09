@@ -25,7 +25,7 @@ class Sort extends Model {
         return $this->hasMany(\App\Models\Attraction::class);
     }
     public function items() {
-        return $this->hasMany(\App\Models\Item::class);
+        return $this->hasManyThrough(\App\Models\Item::class, \App\Models\Attraction::class);
     }
 
     public function delete() {

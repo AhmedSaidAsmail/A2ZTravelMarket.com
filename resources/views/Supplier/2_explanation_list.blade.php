@@ -1,4 +1,4 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
@@ -14,7 +14,7 @@
         <h1>Items <small>Explanation</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel</a></li>
-            <li><a href="#">Update Items :{{ App\MyModels\Admin\Item::find($itemID)->name }} </a></li>
+            <li><a href="#">Update Tour :{{ $item->name}} </a></li>
         </ol>
     </section>
 
@@ -44,26 +44,26 @@
                             <div class="col-md-12">
                                 <div class="box">
                                     <div class="box-header">
-                                        <h3 class="box-title">Inclusions Table</h3>
+                                        <h3 class="box-title">Explanation Table</h3>
                                     </div>
                                     <div class="box-body no-padding">
                                         <table class="table table-striped">
                                             <tr>
                                                 <th style="width: 10px">#</th>
-                                                <th>Inclusions Text</th>
+                                                <th>Explanation Text</th>
                                                 <th>Edit</th>
                                                 <th style="width: 40px">Delete</th>
                                             </tr>
                                             <?php $oredr = 1 ?>
-                                            @foreach($explantions as $explantion)
+                                            @if(isset($explanation))
                                             <tr>
                                                 <td>{{$oredr}}</td>
-                                                <td>{!! $explantion->txt !!}</td>
-                                                <td><a href="{{ route('Exploration.edit',[$itemID,$explantion->id]) }}" class="btn btn-xs btn-warning">Edit</a></td>
-                                                <td><a href="{{ route('Exploration.show',[$itemID,$explantion->id]) }}"><i class="fa fa-trash"></i></a></td>
+                                                <td>{!! $explanation->txt !!}</td>
+                                                <td><a href="{{ route('Exploration.edit',[$item->id,$explanation->id]) }}" class="btn btn-xs btn-warning">Edit</a></td>
+                                                <td><a href="{{ route('Exploration.show',[$item->id,$explanation->id]) }}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                             <?php $oredr++ ?>
-                                            @endforeach
+                                            @endif
                                         </table>
 
                                     </div>
@@ -71,8 +71,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a href="{{ route('Items.edit',['item'=>$itemID]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Explanation List</a>
-                                    <a href="{{ route('Exploration.create',['item'=>$itemID]) }}" class="btn btn-primary"><i class="fa fa-dashboard"></i> Add New Exploration</a>
+                                    <a href="{{ route('Items.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Explanation List</a>
+                                    <a href="{{ route('Exploration.create',['item'=>$item->id]) }}" class="btn btn-primary"><i class="fa fa-dashboard"></i> Add New Exploration</a>
 
                                 </div>
                             </div>

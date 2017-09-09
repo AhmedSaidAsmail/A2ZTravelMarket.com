@@ -14,8 +14,6 @@ class CreateItemsTable extends Migration {
     public function up() {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sort_id')->unsigned();
-            $table->foreign('sort_id')->references('id')->on('sorts')->onDelete('cascade');
             $table->integer('attraction_id')->unsigned();
             $table->foreign('attraction_id')->references('id')->on('attractions')->onDelete('cascade');
             $table->integer('supplier_id')->unsigned();

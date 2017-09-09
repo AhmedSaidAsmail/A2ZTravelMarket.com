@@ -3,8 +3,8 @@
 // Auth 
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/login/supplier','Auth_Supplier\LoginController@showLoginForm')->name('supplier.login');
-Route::post('/login/supplier','Auth_Supplier\LoginController@login')->name('supplier.login');
+Route::get('/login/supplier', 'Auth_Supplier\LoginController@showLoginForm')->name('supplier.login');
+Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('supplier.login');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
 Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
@@ -38,6 +38,10 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     Route::get('', function() {
         return view('Supplier.Welcome');
     })->name('spplier.welcome');
+    // Items
+    Route::resource('/suItems', 'Supplier\ItemsController');
+    //exploration
+    Route::resource('/Item/{itemID}/Exploration', 'Supplier\ExplorationController');
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {
@@ -65,8 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     //Route::post('addNew', ['uses' => 'Admin\PricesController@addPrice'])->name('Item.addPrice');
     Route::resource('/Item/{itemID}/Price', 'Admin\PricesController');
     Route::resource('/Item/{itemID}/Private', 'Admin\PrivatePricesController');
-    //exploration
-    Route::resource('/Item/{itemID}/Exploration', 'Admin\ExplorationController');
+
     //topics
     Route::resource('/Topics', 'Admin\TopicsController');
     Route::resource('/Topics/{TopicId}/Gallery', 'Admin\GalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);

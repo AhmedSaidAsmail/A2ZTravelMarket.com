@@ -67,7 +67,7 @@
                         <li class="treeview{{(isset($activeItems))?' active':''}}"> <a href="#"> <i class="fa fa-pie-chart"></i> <span>Items</span>
                                 <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
                             <ul class="treeview-menu">
-                                <li><a href="{{route('Items.index')}}"><i class="fa fa-circle-o"></i> Items Manager</a></li>
+                                <li><a href="{{route('suItems.index')}}"><i class="fa fa-circle-o"></i> Items Manager</a></li>
                             </ul>
                         </li>
 

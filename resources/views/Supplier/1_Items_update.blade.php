@@ -1,4 +1,4 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
@@ -15,12 +15,23 @@
         {!! (Session::has('errorDetails'))?'<p id="ErrorMsgDetails">'.Session('errorDetails').'</p>':'' !!}
     </div>
     @endif
+    @if(count($errors)>0)
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <!-- Directory&Header -->
     <section class="content-header">
-        <h1>Items <small>Items Update</small> </h1>
+        <h1>Activities <small>Tour Update</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel</a></li>
-            <li><a href="#">Update Items : {{$Item->name}}</a></li>
+            <li><a href="#">Update Tour : {{$Item->name}}</a></li>
         </ol>
     </section>
     <!-- end Directory&Header -->
@@ -32,22 +43,24 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default form-control" id="addNew"><i class="fa fa-paw"></i> Update: <a href="#">{{$Item->name}}</a></button>
+                            <button type="submit" class="btn btn-danger btn-block" id="addNew">
+                                <i class="fa fa-paw"></i> Update: {{$Item->name}}</button>
                         </div>
                     </div>
                     <div id="basicToggle">
-                        <form method="post" action="{{route('Items.update',['id'=>$Item->id])}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('suItems.update',['id'=>$Item->id])}}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" value="{{Auth::user()->id}}" name="supplier_id">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Category Name:</label>
-                                            <select class="form-control" name="sort_id">
-                                                <option value="">Select  Category</option>
-                                                @foreach (App\MyModels\Admin\Sort::all() as $category)
-                                                <option value="{{$category->id}}" {!!($category->id==$Item->sort_id)?'selected="selected"':''!!}>{{$category->name}} -- {{$category->basicsort->name}}</option>
+                                            <label>Attraction Name:</label>
+                                            <select class="form-control" name="attraction_id">
+                                                <option value="">Select an Attraction</option>
+                                                @foreach (\App\Models\Attraction::all() as $category)
+                                                <option value="{{$category->id}}" {!!($category->id==$Item->attraction_id)?'selected="selected"':''!!}>{{$category->name}} ( {{$category->sort->name}}/{{$category->sort->basicsort->name}} )</option>
                                                 @endforeach
 
                                             </select>
@@ -55,56 +68,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Name:</label>
-                                            <input class="form-control" value="{{$Item->name}}" name="name" placeholder="Main category Name" required>
+                                            <label>Tour Name:</label>
+                                            <input class="form-control" value="{{$Item->name}}" name="name"  required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Title:</label>
-                                            <input class="form-control" value="{{$Item->title}}" name="title" placeholder="Main category Title" required>
+                                            <label>Tour page title:</label>
+                                            <input class="form-control" value="{{$Item->title}}" name="title" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <select class="form-control" name="status">
-                                                <option value="1" >Show</option>
-                                                <option value="0" {!! (! $Item->status)?'selected="selected"':'' !!}>Hidden</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Home Shortcut</label>
-
-                                            <select class="form-control" name="recommended">
-                                                <option value="1">Show</option>
-                                                <option value="0" {!! (! $Item->recommended)?'selected="selected"':'' !!}>Hidden</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Hot Offer</label>
-
-                                            <select class="form-control" name="offer">
-                                                <option value="1">True</option>
-                                                <option value="0" {!! (! $Item->offer)?'selected="selected"':'' !!}>False</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group {{$errors->has('arrangement')?'has-error':''}}">
-                                            <label>Arrangment</label>
-                                            <input  value="{{$Item->arrangement}}" name="arrangement" class="form-control">
-                                            @if($errors->has('arrangement'))
-                                            <span class="help-block">The Arrangment has to be Integer</span>
-                                            @endif
-                                        </div>
-                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group {{$errors->has('img')?'has-error':''}}">
                                             <label>Image</label>
@@ -114,15 +89,13 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Keywords:</label>
                                             <input class="form-control" value="{{$Item->keywords}}" name="keywords" placeholder="-- Keywords --" >
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Description:</label>
                                             <input class="form-control" value="{{$Item->description}}" name="description" placeholder="-- Description --" >
@@ -137,7 +110,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group"> <input type="submit" class="btn btn-primary" value="Update Item"></div>
+                                <div class="form-group">
+                                    <button class="btn btn-danger"><i class="fa fa-bicycle"></i> Update {{$Item->name}}</button>
+                                </div>
                                 <div class="form-group"> </div>
                             </div>
                         </form>
@@ -145,51 +120,7 @@
                 </div>
 
                 <!-- Item Price -->
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><i class="fa fa-money"></i> <a href="#">Item Prices</a> Table</h3>
-                    </div>
-                    <div class="box-body">
-                        @if(count($Item->price)>0)
-                        <table class="table table-hover">
-                            <tr>
-                                <th>First Price Name</th>
-                                <th>First Price</th>
-                                <th>Second Price Name</th>
-                                <th>Second price</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>{{$Item->price->st_name}}</td>
-                                <td>{{$Item->price->st_price}}</td>
-                                <td>{{$Item->price->sec_name}}</td>
-                                <td>{{$Item->price->sec_price}}</td>
-                                <td>
-                                    <form method="post" action="{{ route('Price.destroy',['itemID'=>$Item->id,'id'=>$Item->price->id]) }}">
-                                        <a href="{{ route('Price.edit',['itemID'=>$Item->id,'id'=>$Item->price->id]) }}"class="btn btn-sm btn-info"><i class="fa fa-edit"></i> Edit</a>
-                                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                        @else
-                        <form method="post" action="{{route('Price.store',['itemId'=>$Item->id])}}">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <input type="hidden" name="item_id" value="{{$Item->id}}">
-                            <div class="row">
-                                <div class="col-md-3"><input class="form-control" type="text" name="st_name" placeholder="First Price Name"></div>
-                                <div class="col-md-2"><input class="form-control" type="text" name="st_price" placeholder="First Price"></div>
-                                <div class="col-md-3"><input class="form-control" type="text" name="sec_name" placeholder="Second Price Name"></div>
-                                <div class="col-md-2"><input class="form-control" type="text" name="sec_price" placeholder="Second Price"></div>
-                                <div class="col-md-2"><button class="btn btn-success">Add New Price</button></div>
 
-                            </div>
-                        </form>
-                        @endif
-                    </div>
-                </div>
                 <!-- Item Price End -->
                 <!-- Item Exploration  -->
                 <div class="box">
@@ -509,7 +440,7 @@
 <script src="{{asset('adminlte/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('adminlte/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script>
-$(function() {
+$(function () {
     $(".select2").select2();
     $(".timepicker").timepicker({
         showInputs: false,

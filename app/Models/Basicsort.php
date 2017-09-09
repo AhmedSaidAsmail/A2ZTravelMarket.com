@@ -25,9 +25,6 @@ class Basicsort extends Model {
         return $this->hasMany(\App\Models\Sort::class);
     }
 
-    public function items() {
-        return $this->hasManyThrough(\App\Models\Item::class, \App\Models\Sort::class);
-    }
 
     public function delete() {
         $this->sorts()->delete();

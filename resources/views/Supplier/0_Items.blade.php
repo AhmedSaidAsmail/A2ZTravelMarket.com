@@ -1,6 +1,6 @@
 
-<?php //echo "<pre>" . print_r(Session::all(), true)                  ?>
-@extends('Admin.Layouts.Layout_Basic')
+<?php //echo "<pre>" . print_r(Session::all(), true)                       ?>
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel')
 @section ('Extra_Css')
 <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
@@ -25,15 +25,21 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <div class="form-group">
-                            <button type="submit" class="form-control btn btn-default" id="addNew"><i class="fa fa-database"></i> Add New Items</button>
+                            <button type="submit" class="btn btn-block btn-danger" id="addNew"><i class="fa fa-bicycle fa-lg"></i> Add New Activity</button>
                         </div>
-                        @if(Session::has('addStatus'))
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> {{session('success')}} </h4>
+                        </div>
+                        @endif
+                        @if(session('failure'))
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                            {{Session('addStatus')}}
+                            <h4><i class="icon fa fa-ban"></i> {{session('failure')}} </h4>
                         </div>
-                        @elseif(count($errors)>0)
+                        @endif
+                        @if(count($errors)>0)
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <h4><i class="icon fa fa-ban"></i> Alert!</h4>
@@ -55,26 +61,21 @@
                             <h4><i class="icon fa fa-check"></i> Alert!</h4>
                             {{Session('fetchData')}}
                         </div>
-                        @elseif(Session::has('errorDetails'))
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                            {{Session('errorDetails')}}
-                        </div>
                         @endif
                     </div>
                     <div id="basicToggle">
-                        <form method="post" action="{{route('Items.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('suItems.store')}}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" value="{{Auth::user()->id}}" name="supplier_id">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Category Name:</label>
-                                            <select class="form-control" name="sort_id">
-                                                <option value="">Select Category</option>
-                                                @foreach (App\MyModels\Admin\Sort::all() as $category)
-                                                <option value="{{$category->id}}">{{$category->name}} -- Main Category: {{$category->basicsort->name}}</option>
+                                            <label>Attraction Name:</label>
+                                            <select class="form-control" name="attraction_id">
+                                                <option value="">Select an Attraction</option>
+                                                @foreach (\App\Models\Attraction::all() as $category)
+                                                <option value="{{$category->id}}">{{$category->name}} ( {{$category->sort->name}}/{{$category->sort->basicsort->name}} )</option>
                                                 @endforeach
 
                                             </select>
@@ -82,68 +83,33 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Name:</label>
-                                            <input class="form-control" name="name" placeholder="Main category Name" required>
+                                            <label>Tour Name:</label>
+                                            <input class="form-control" name="name" placeholder="Eg: Cairo by bus from sharm el sheikh" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Title:</label>
-                                            <input class="form-control" name="title" placeholder="Main category Title" required>
+                                            <label>Tour page title:</label>
+                                            <input class="form-control" name="title" placeholder="Eg: Amazing Trip To Cairo" required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <select class="form-control" name="status">
-                                                <option value="1">Show</option>
-                                                <option value="0">Hidden</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Recommended</label>
-                                            <select class="form-control" name="recommended">
-                                                <option value="1">Confirm</option>
-                                                <option value="0">Pause</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Hot Offer</label>
-                                            <select class="form-control" name="offer">
-                                                <option value="0">False</option>
-                                                <option value="1">True</option>
 
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Arrangment</label>
-                                            <input  value="0" name="arrangement"  class="form-control">
-                                        </div>
-                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Image</label>
                                             <input type="file" class="form-control" name="img">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Keywords:</label>
                                             <input class="form-control" name="keywords" placeholder="-- Keywords --" >
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Description:</label>
                                             <input class="form-control" name="description" placeholder="-- Description --" >
@@ -158,7 +124,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group"> <input type="submit" class="btn btn-primary" value="Add New Main Category"></div>
+                                <div class="form-group"> 
+                                    <button class="btn btn-danger"><i class="fa fa-bicycle"></i> Add the new Tour</button>
+                                </div>
                                 <div class="form-group"> </div>
                             </div>
                         </form>
@@ -175,8 +143,9 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Item</th>
+                                    <th>City</th>
+                                    <th>Attraction</th>
+                                    <th>Tour</th>
                                     <th>Title</th>
                                     <th>Status</th>
                                     <th>Recommended</th>
@@ -185,9 +154,10 @@
                             </thead>
                             <tbody>
 
-                                @foreach($Items as $Item)
+                                @foreach(Auth::user()->items as $Item)
                                 <tr>
-                                    <td>{{$Item->sort->name}}</td>
+                                    <td>{{$Item->attraction->sort->name}}</td>
+                                    <td>{{$Item->attraction->name}}</td>
                                     <td>{{$Item->name}}</td>
                                     <td>{{$Item->title}}</td>
                                     <td> @if($Item->status) <i class="fa fa-circle text-green"></i> @else <i class="fa fa-circle text-gray"></i> @endif </td>
@@ -196,9 +166,9 @@
                                             <button type="button" class="btn btn-default">Action</button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{route('Items.edit',['id'=>$Item->id])}}">Change</a></li>
+                                                <li><a href="{{route('suItems.edit',['id'=>$Item->id])}}">Change</a></li>
 
-                                                <form action="{{route('Items.destroy',['id'=>$Item->id])}}" method="post">
+                                                <form action="{{route('suItems.destroy',['id'=>$Item->id])}}" method="post">
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <li><a class="deleteItem list-group-item" href="#" title="{{$Item->name}}">Delete</a></li>
@@ -211,8 +181,9 @@
 
                             <tfoot>
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Item</th>
+                                    <th>City</th>
+                                    <th>Attraction</th>
+                                    <th>Tour</th>
                                     <th>Title</th>
                                     <th>Status</th>
                                     <th>Recommended</th>
@@ -232,7 +203,7 @@
 <script src="{{asset('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 <script>
-$(function() {
+$(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
         "paging": true,

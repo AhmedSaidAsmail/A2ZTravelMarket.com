@@ -21,10 +21,6 @@ class Item extends Model {
         'intro',
         'visits'];
 
-    public function sort() {
-        return $this->belongsTo(\App\Models\Sort::class);
-    }
-
     public function attraction() {
         return $this->belongsTo(\App\Models\Attraction::class);
     }
@@ -39,14 +35,14 @@ class Item extends Model {
     public function price() {
         return $this->hasMany(\App\Models\Price::class);
     }
-
+    public function exploration() {
+        return $this->hasOne(\App\Models\Exploration::class);
+    }
     public function detail() {
         return $this->hasOne(\App\Models\Detail::class);
     }
 
-    public function exploration() {
-        return $this->hasOne(\App\Models\Exploration::class);
-    }
+
 
     public function inclusion() {
         return $this->hasMany(\App\Models\Inclusion::class);
