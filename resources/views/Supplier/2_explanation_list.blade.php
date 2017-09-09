@@ -59,8 +59,15 @@
                                             <tr>
                                                 <td>{{$oredr}}</td>
                                                 <td>{!! $explanation->txt !!}</td>
-                                                <td><a href="{{ route('Exploration.edit',[$item->id,$explanation->id]) }}" class="btn btn-xs btn-warning">Edit</a></td>
-                                                <td><a href="{{ route('Exploration.show',[$item->id,$explanation->id]) }}"><i class="fa fa-trash"></i></a></td>
+                                                <td><a href="{{ route('Exploration.edit',[$item->id,$explanation->id]) }}" class="btn btn-xs btn-warning">
+                                                        Edit</a></td>
+                                                <td>
+                                                    <form action="{{ route('Exploration.show',[$item->id,$explanation->id]) }}" method="post">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <a class="deleteItem" href="#" title="{{$explanation->id}}"><i class="fa fa-trash"></i></a>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             <?php $oredr++ ?>
                                             @endif
@@ -71,8 +78,10 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a href="{{ route('Items.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Explanation List</a>
-                                    <a href="{{ route('Exploration.create',['item'=>$item->id]) }}" class="btn btn-primary"><i class="fa fa-dashboard"></i> Add New Exploration</a>
+                                    <a href="{{ route('suItems.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket">
+                                        <i class="fa fa-dashboard"></i> Return Back to {{$item->name}} Dashboard</a>
+                                    <a href="{{ route('Exploration.create',['item'=>$item->id]) }}" class="btn btn-primary">
+                                        <i class="fa fa-dashboard"></i> Add New Exploration</a>
 
                                 </div>
                             </div>
@@ -96,7 +105,7 @@
 <script src="{{asset('adminlte/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('adminlte/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script>
-$(function() {
+$(function () {
     $(".select2").select2();
     $(".timepicker").timepicker({
         showInputs: false,

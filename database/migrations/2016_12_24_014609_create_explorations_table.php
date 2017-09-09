@@ -15,10 +15,7 @@ class CreateExplorationsTable extends Migration {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->time('started_at')->nullable();
-            $table->time('ended_at')->nullable();
             $table->text('txt');
-            $table->text('img')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

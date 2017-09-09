@@ -1,21 +1,17 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
-<link rel="stylesheet" href="{{asset('adminlte/plugins/select2/select2.min.css')}}">
-<link rel="stylesheet" href="{{asset('adminlte/plugins/timepicker/bootstrap-timepicker.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/admin/TextEditor/lib/css/bootstrap.min.css')}}" />
-<link rel="stylesheet" type="text/css" href="{{asset('css/admin/TextEditor/lib/css/prettify.css')}}" />
-<link rel="stylesheet" type="text/css" href="{{asset('css/admin/TextEditor/src/bootstrap-wysihtml5.css')}}" />
+  <link rel="stylesheet" href="{{asset('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 @endsection
 @section('content')
 <div class="content-wrapper">
     <!-- Directory&Header -->
     <section class="content-header">
-        <h1>Items <small>Explanation</small> </h1>
+        <h1>{{$item->name}} <small>Explanation</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel</a></li>
-            <li><a href="#">Update Items :{{ App\MyModels\Admin\Item::find($itemID)->name }} </a></li>
+            <li><a href="#">Update {{$item->name}} </a></li>
         </ol>
     </section>
 
@@ -40,15 +36,13 @@
                         <h3 class="box-title"><a href="#"><i class="fa fa-android"></i> Add Explanation</a></h3>
                     </div>
                     <div class="box-body">
-                        <form method="post" action="{{ route('Exploration.update',['itemID'=>$itemID,'id'=>$item->id]) }}" enctype="multipart/form-data">
-                            <input type="hidden" name="_method" value="PUT">
+                        <form method="post" action="{{ route('Exploration.store',['itemID'=>$item->id]) }}" enctype="multipart/form-data">
                             <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                            <input type="hidden" value="{{ $item->id }}" name="item_id">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Text</label>
-
-
-                                    <textarea  name="txt" class="ckeditor" id="editor1">{{ $item->txt }}</textarea>
+                                    <textarea  name="txt" class="textarea form-control"></textarea>
                                 </div>
 
                             </div>
@@ -56,8 +50,9 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a href="{{ route('Exploration.index',['item'=>$itemID]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Explanation List</a>
-                                    <button class="btn btn-primary"><i class="fa fa-paw"></i> Update Exploration</button>
+                                    <a href="{{ route('suItems.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket">
+                                        <i class="fa fa-dashboard"></i> Return Back to Item Dashboard</a>
+                                    <button class="btn btn-primary"><i class="fa fa-paw"></i> Add New Exploration</button>
                                 </div>
                             </div>
 
@@ -75,5 +70,10 @@
 @endsection
 @section('Extra_Js')
 <script src="{{asset('js/admin/admin.js')}}"></script>
-<script src="{{asset('js/admin/texteditor/ckeditor.js')}}"></script>
+<script src="{{asset('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<script>
+  $(function () {
+    $(".textarea").wysihtml5();
+  });
+</script>
 @endsection
