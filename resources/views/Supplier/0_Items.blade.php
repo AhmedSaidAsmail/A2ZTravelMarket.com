@@ -146,7 +146,7 @@
                                     <th>City</th>
                                     <th>Attraction</th>
                                     <th>Tour</th>
-                                    <th>Title</th>
+                                    <th>Visitors</th>
                                     <th>Status</th>
                                     <th>Recommended</th>
                                     <th>#Action</th>
@@ -159,7 +159,7 @@
                                     <td>{{$Item->attraction->sort->name}}</td>
                                     <td>{{$Item->attraction->name}}</td>
                                     <td>{{$Item->name}}</td>
-                                    <td>{{$Item->title}}</td>
+                                    <td>{{$Item->visits}}</td>
                                     <td> @if($Item->status) <i class="fa fa-circle text-green"></i> @else <i class="fa fa-circle text-gray"></i> @endif </td>
                                     <td> @if($Item->recommended) <i class="fa fa-circle text-green"></i> @else <i class="fa fa-circle text-gray"></i> @endif </td>
                                     <td><div class="btn-group">
@@ -184,7 +184,7 @@
                                     <th>City</th>
                                     <th>Attraction</th>
                                     <th>Tour</th>
-                                    <th>Title</th>
+                                    <th>Visitors</th>
                                     <th>Status</th>
                                     <th>Recommended</th>
                                     <th>#Action</th>

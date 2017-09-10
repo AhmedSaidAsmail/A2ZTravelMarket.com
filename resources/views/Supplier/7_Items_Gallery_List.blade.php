@@ -1,4 +1,4 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
@@ -10,7 +10,7 @@
         <h1>Items <small>Gallery</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel</a></li>
-            <li><a href="#">Update Items :{{ App\MyModels\Admin\Item::find($item)->name }} </a></li>
+            <li><a href="#">Update Items :{{ $item->name }} </a></li>
         </ol>
     </section>
     <!-- end Directory&Header -->
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form method="post" action="{{route('ItemGallery.destroy',['$id'=>$item])}}">
+                        <form method="post" action="{{route('ItemGallery.destroy',['$id'=>$item->id])}}">
                             <input type="hidden" value="DELETE" name="_method">
                             <input type="hidden" value="{{csrf_token()}}" name="_token">
                             @foreach($images->chunk(6) as $chunk )
@@ -66,9 +66,10 @@
                             @endforeach
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a href="{{ route('Items.edit',['item'=>$item]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Item Dashboard</a>
+                                    <a href="{{ route('suItems.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket">
+                                        <i class="fa fa-dashboard"></i> Return Back to {{$item->name}} Dashboard</a>
                                     <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                                    <a href="{{ route('ItemGallery.create',['id'=>$item])  }}" class="btn btn-primary">Upload New Images</a>
+                                    <a href="{{ route('ItemGallery.create',['id'=>$item->id])  }}" class="btn btn-primary">Upload New Images</a>
                                 </div>
                             </div>
 

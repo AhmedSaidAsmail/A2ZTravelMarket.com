@@ -42,6 +42,14 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     Route::resource('/suItems', 'Supplier\ItemsController');
     //exploration
     Route::resource('/Item/{itemID}/Exploration', 'Supplier\ExplorationController');
+    // Informations
+    Route::resource('/Item/{itemID}/Information', 'Supplier\ItemDetailsController');
+    //gallery
+    Route::resource('/Item/{itemID}/ItemGallery', 'Supplier\ItemGalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);
+    Route::delete('/Item/{itemID}/ItemGallery', 'Supplier\ItemGalleryController@destroy')->name('ItemGallery.destroy');
+    // price section
+    Route::resource('/Item/Price_Definitions', 'Supplier\PriceDefController', ['except' => ['index', 'destroy', 'show', 'edit']]);
+    Route::resource('/Item/Price', 'Supplier\PricesController',['only'=>['store','update','destroy']]);
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {
@@ -60,14 +68,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::resource('/Items', 'Admin\ItemsController');
     // Item Details
     Route::resource('/Item/{itemID}/Detail', 'Admin\DetailsController');
-    // Informations
-    Route::resource('/Item/{itemID}/Information', 'Admin\ItemDetailsController');
-    //gallery
-    Route::resource('/Item/{itemID}/ItemGallery', 'Admin\ItemGalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);
-    Route::delete('/Item/{itemID}/ItemGallery', 'Admin\ItemGalleryController@destroy')->name('ItemGallery.destroy');
+
+
     //price
     //Route::post('addNew', ['uses' => 'Admin\PricesController@addPrice'])->name('Item.addPrice');
-    Route::resource('/Item/{itemID}/Price', 'Admin\PricesController');
+
     Route::resource('/Item/{itemID}/Private', 'Admin\PrivatePricesController');
 
     //topics

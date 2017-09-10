@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/0_Items.blade.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/3_explanation_create.blade.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/4_explanation_edit.blade.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Models/Price.php</file>
             <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/Layouts/Layout_Basic.blade.php</file>
             <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/1_Items_update.blade.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Supplier/ExplorationController.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Supplier/2_explanation_list.blade.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Models/Item.php</file>
             <file>file:/E:/Websites/A2ZTravelMarketNew.com/routes/web.php</file>
             <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Supplier/ItemsController.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Supplier/PricesController.php</file>
         </group>
     </open-files>
 </project-private>

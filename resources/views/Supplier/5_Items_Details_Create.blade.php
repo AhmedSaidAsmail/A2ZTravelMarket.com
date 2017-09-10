@@ -1,4 +1,4 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">

@@ -34,14 +34,15 @@ class ItemsController extends Controller {
 
     public function edit($id) {
         $item = Item::find($id);
+        $price_def=$item->price_definition;
         if (Auth::user()->id != $item->supplier_id) {
             return redirect()->route('suItems.index')->with('failure',' oops there\'s something wrong with the response');
         }
         if (!is_null($item)) {
-            return view('Supplier.1_Items_update', ['Item' => $item, 'activeItems' => 1]);
+            return view('Supplier.1_Items_update', ['Item' => $item,'price_def'=>$price_def, 'activeItems' => 1]);
         }
         Session::flash('fetchData', 'There is no such data');
-        return redirect()->route('Items.index');
+        return redirect()->route('suItems.index');
     }
 
     public function update($id, Request $request) {

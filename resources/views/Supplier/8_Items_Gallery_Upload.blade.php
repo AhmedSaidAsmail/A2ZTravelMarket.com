@@ -1,4 +1,4 @@
-@extends('Admin.Layouts.Layout_Basic')
+@extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel | Update')
 @section ('Extra_Css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
@@ -8,10 +8,10 @@
 <div class="content-wrapper">
     <!-- Directory&Header -->
     <section class="content-header">
-        <h1>Items <small>Gallery</small> </h1>
+        <h1>{{ $item->name }} <small>Gallery</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel</a></li>
-            <li><a href="#">Update Items :{{ App\MyModels\Admin\Item::find($item)->name }} </a></li>
+            <li><a href="#">Update Items :{{ $item->name }} </a></li>
         </ol>
     </section>
     <!-- end Directory&Header -->
@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <form method="post" action="{{route('ItemGallery.store',['item'=>$item])}}" class="dropzone" id="addImages">
+                                    <form method="post" action="{{route('ItemGallery.store',['item'=>$item->id])}}" class="dropzone" id="addImages">
                                         <input type="hidden" value="{{csrf_token()}}" name="_token">
 
                                     </form>
@@ -37,7 +37,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a href="{{ route('ItemGallery.index',[$item]) }}" class="btn btn-bitbucket"><i class="fa fa-dashboard"></i> Return Back to Item Dashboard</a>
+                                    <a href="{{ route('suItems.edit',['item'=>$item->id]) }}" class="btn btn-bitbucket">
+                                        <i class="fa fa-dashboard"></i> Return Back to {{$item->name}} Dashboard</a>
                                 </div>
                             </div>
                         </div>

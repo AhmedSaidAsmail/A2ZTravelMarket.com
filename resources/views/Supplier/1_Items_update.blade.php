@@ -4,9 +4,20 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/admin/style.css')}}">
 <link rel="stylesheet" href="{{asset('adminlte/plugins/select2/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('adminlte/plugins/timepicker/bootstrap-timepicker.min.css')}}">
+<style>
+    td.pricetable{
+        padding-top: 10px;
+    }
+</style>
 @endsection
 @section('content')
 <div class="content-wrapper">
+    @if(session('error'))
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> {{session('error')}} </h4>
+    </div>
+    @endif
     @if(Session::has('errorMsg'))
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -120,7 +131,286 @@
                 </div>
 
                 <!-- Item Price -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><a href="#"><i class="fa fa-th"></i> Tour Prices Definitions</a> </h3>
+                    </div>
+                    <div class="box-body">
+                        @if(! is_null($price_def))
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="h4">First Def:</span>
+                            </div>
+                            <div class="col-md-1">
+                                {{$price_def->st_price_name}}
+                            </div>
+                            <div class="col-md-2">
+                                <span class="h4">First Def:</span>
+                            </div>
+                            <div class="col-md-1">
+                                {{$price_def->sec_price_name}}
+                            </div>
+                            <div class="col-md-2">
+                                <span class="h4">First Def:</span>
+                            </div>
+                            <div class="col-md-1">
+                                {{$price_def->third_price_name}}
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-warning btn-block"><i class="fa fa-pencil-square"></i> Edit</button>
+                            </div>
+                        </div>
+                        @else
+                        <div>
+                            <form method="post" action="{{route('Price_Definitions.store')}}">
+                                <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                                <input type="hidden" value="{{$Item->id}}" name="item_id">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>First Definition:</label>
+                                            <input type="text" name="st_price_name" class="form-control" placeholder="Eg : Adult" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Second Definition:</label>
+                                            <input type="text" name="sec_price_name" class="form-control" placeholder="Eg : Child" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Third Definition:</label>
+                                            <input type="text" name="third_price_name" class="form-control" placeholder="Eg : Inf">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <button class="btn btn-primary form-control"><i class="fa fa-paw"></i> Add Price Definition</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form> 
+                        </div>
+                        @endif
 
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><a href="#"><i class="fa fa-th"></i> Tour Prices</a> Table</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row" style="margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <button class="btn btn-block btn-success" id="add_new_price">
+                                    <i class="fa fa-money"></i> Add new Price
+                                </button>
+                            </div>
+                        </div>
+                        <form action="{{route('Price.store')}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" value="{{$Item->id}}" name="item_id">
+                            <div style="display:none;" id="price_form">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>First Price</label>
+                                            <input type="number" class="form-control" name="st_price"  min="0" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Second Price</label>
+                                            <input type="number" class="form-control" name="sec_price"  min="0" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Third Price</label>
+                                            <input type="number" class="form-control" value="" name="third_price" min="0" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Private</label>
+                                            <select name="private" class="form-control">
+                                                <option value="0">Not Private</option>
+                                                <option value="1">Private</option>
+                                            </select>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Language</label>
+                                            <select class="form-control" name="language">
+                                                <option value="">Select Language</option>
+                                                <option value="english">English</option>
+                                                <option value="spanish">Spanish</option>
+                                                <option value="italian">Italian</option>
+                                                <option value="russian">Russian</option>
+                                                <option value="german">German</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Capacity</label>
+                                            <input type="number" class="form-control" name="capacity" min="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Days</label>
+                                            <select class="form-control" name="week_day">
+                                                <option value="all">Every Day</option>
+                                                <option value="Saturday">Saturday</option>
+                                                <option value="Sunday">Sunday</option>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Friday">Friday</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="bootstrap-timepicker">
+                                            <div class="form-group">
+                                                <label>Starting time:</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="starting_time" class="form-control timepicker" required>
+                                                    <div class="input-group-addon"> <i class="fa fa-clock-o"></i> </div>
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+                                            <!-- /.form group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>*</label>
+                                            <button class="btn btn-success btn-block"><i class="fa fa-pencil"></i> Add Price</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="table-responsive">
+                            <table class="table-striped" style="min-width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>First Price</th>
+                                        <th>Second Price</th>
+                                        <th>Third Price</th>
+                                        <th>Private</th>
+                                        <th>Language</th>
+                                        <th>Capacity</th>
+                                        <th>Days</th>
+                                        <th>Starting@</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty ($Item->price))
+                                    @foreach($Item->price as $price)
+                                    <tr>
+                                <form method="post" action="{{route('Price.update',['id'=>$price->id])}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="PUT">
+
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->st_price}}" name="st_price"  min="0" required>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->sec_price}}" name="sec_price"  min="0" required>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->third_price}}" name="third_price"  min="0" >
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">  
+                                        <div class="form-group">
+                                            <select name="private" class="form-control">
+                                                <option value="0">Not Private</option>
+                                                <option value="1" {!! $price->private?'selected="selected"':null!!}>Private</option>
+                                            </select>                                              
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">   
+                                        <div class="form-group">
+                                            <select class="form-control" name="language">
+                                                <option value="">Select Language</option>
+                                                <option value="english" {!! $price->language=="english"?'selected="selected"':null!!}>English</option>
+                                                <option value="spanish" {!! $price->language=="spanish"?'selected="selected"':null!!}>Spanish</option>
+                                                <option value="italian" {!! $price->language=="italian"?'selected="selected"':null!!}>Italian</option>
+                                                <option value="russian" {!! $price->language=="russian"?'selected="selected"':null!!}>Russian</option>
+                                                <option value="german" {!! $price->language=="german"?'selected="selected"':null!!}>German</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" min="0" value="{{$price->capacity}}" name="capacity">
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <select class="form-control" name="week_day">
+                                                <option value="all" {!! $price->week_day=="all"?'selected="selected"':null!!}>Every Day</option>
+                                                <option value="Saturday" {!! $price->week_day=="Saturday"?'selected="selected"':null!!}>Saturday</option>
+                                                <option value="Sunday" {!! $price->week_day=="Sunday"?'selected="selected"':null!!}>Sunday</option>
+                                                <option value="Monday" {!! $price->week_day=="Monday"?'selected="selected"':null!!}>Monday</option>
+                                                <option value="Tuesday" {!! $price->week_day=="Tuesday"?'selected="selected"':null!!}>Tuesday</option>
+                                                <option value="Thursday" {!! $price->week_day=="Thursday"?'selected="selected"':null!!}>Thursday</option>
+                                                <option value="Wednesday" {!! $price->week_day=="Wednesday"?'selected="selected"':null!!}>Wednesday</option>
+                                                <option value="Friday" {!! $price->week_day=="Friday"?'selected="selected"':null!!}>Friday</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="bootstrap-timepicker">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="text" name="starting_time" class="form-control timepicker" value="{{$price->starting_time}}" required="">
+                                                    <div class="input-group-addon"> <i class="fa fa-clock-o"></i> </div>
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+                                            <!-- /.form group -->
+                                        </div>
+                                    </td>
+                                    <td class="text-right pricetable" style="min-width: 150px;">
+                                        <div class="form-group">
+                                            <a class="btn btn-danger btn-sm" id="delet_price"><i class="fa fa-trash"></i></a>
+                                            <button class="btn btn-warning btn-sm">Edit</button>
+                                        </div>
+                                    </td>
+
+                                </form>
+                                <form action="{{route('Price.destroy',['id'=>$price->id])}}" method="post" id="price_destory">
+                                    {{csrf_field()}}
+                                    <input type="hidden" value="DELETE" name="_method">
+                                </form>
+                                </tr>
+                                @endforeach
+                                @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 <!-- Item Price End -->
                 <!-- Item Exploration  -->
                 <div class="box">
@@ -154,9 +444,7 @@
                                         <option value="">Select Details to Add</option>
                                         <option value="inclusion">Inclusions</option>
                                         <option value="exclusion">Exclusions</option>
-                                        <option value="additional">Additional Information </option>
-                                        <option value="dresse">Dresses</option>
-                                        <option value="note">Notes</option>
+                                        <option value="additional">Know before you go</option>
                                     </select>
                                 </div>
                             </div>
@@ -184,8 +472,18 @@
                                     <tr>
                                         <td>{{$oredr}}</td>
                                         <td>{{$inclusion->txt}}</td>
-                                        <td><a href="{{route('Information.edit',['item'=>$Item->id,'Information'=>$inclusion->id,'modelName'=>'inclusion'])}}" class="btn btn-xs btn-warning">Edit</a></td>
-                                        <td><a href="{{route('Information.show',['item'=>$Item->id,'Information'=>$inclusion->id,'modelName'=>'inclusion'])}}"><i class="fa fa-trash"></i></a></td>
+                                        <td>
+                                            <a href="{{route('Information.edit',['item'=>$Item->id,'Information'=>$inclusion->id,'modelName'=>'inclusion'])}}" class="btn btn-xs btn-warning">
+                                                Edit</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('Information.destroy',[$Item->id,$inclusion->id]) }}" method="post">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="modelName" value="inclusion">
+                                                <a class="deleteItem" href="#" title="{{$inclusion->id}}"><i class="fa fa-trash"></i></a>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php $oredr++ ?>
                                     @endforeach
@@ -196,7 +494,7 @@
                         <!-- Additional Information -->
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">Additional Information Table</h3>
+                                <h3 class="box-title">Know before you go</h3>
                             </div>
                             <div class="box-body no-padding">
                                 <table class="table table-striped">
@@ -211,8 +509,18 @@
                                     <tr>
                                         <td>{{$oredr}}</td>
                                         <td>{{$additional->txt}}</td>
-                                        <td><a href="{{route('Information.edit',['item'=>$Item->id,'rowID'=>$additional->id,'modelName'=>'additional'])}}" class="btn btn-xs btn-warning">Edit</a></td>
-                                        <td><a href="{{route('Information.show',['item'=>$Item->id,'rowID'=>$additional->id,'modelName'=>'additional'])}}"><i class="fa fa-trash"></i></a></td>
+                                        <td>
+                                            <a href="{{route('Information.edit',['item'=>$Item->id,'rowID'=>$additional->id,'modelName'=>'additional'])}}" class="btn btn-xs btn-warning">
+                                                Edit</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('Information.destroy',[$Item->id,$additional->id]) }}" method="post">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="modelName" value="additional">
+                                                <a class="deleteItem" href="#" title="{{$additional->id}}"><i class="fa fa-trash"></i></a>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php $oredr++ ?>
                                     @endforeach
@@ -220,37 +528,9 @@
                             </div>
                         </div>
                         <!-- end Additional Information-->
-                        <!-- Dresses -->
-                        <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title">Dresses Table</h3>
-                            </div>
-                            <div class="box-body no-padding">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Dresses Text</th>
-                                        <th>Edit</th>
-                                        <th style="width: 40px">Delete</th>
-                                    </tr>
-                                    <?php $oredr = 1 ?>
-                                    @foreach($Item->dresse as $dresse)
-                                    <tr>
-                                        <td>{{$oredr}}</td>
-                                        <td>{{$dresse->txt}}</td>
-                                        <td><a href="{{route('Information.edit',['item'=>$Item->id,'rowID'=>$dresse->id,'modelName'=>'dresse'])}}" class="btn btn-xs btn-warning">Edit</a></td>
-                                        <td><a href="{{route('Information.show',['item'=>$Item->id,'rowID'=>$dresse->id,'modelName'=>'dresse'])}}"><i class="fa fa-trash"></i></a></td>
-                                    </tr>
-                                    <?php $oredr++ ?>
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
-                        <!-- end Dresses-->
-
                     </div>
                     <div class="col-md-6">
-                        <!-- Inclusions -->
+                        <!-- Exclusion -->
                         <div class="box">
                             <div class="box-header">
                                 <h3 class="box-title">Exclusions Table</h3>
@@ -268,8 +548,18 @@
                                     <tr>
                                         <td>{{$oredr}}</td>
                                         <td>{{$exclusion->txt}}</td>
-                                        <td><a href="{{route('Information.edit',['item'=>$Item->id,'Information'=>$exclusion->id,'modelName'=>'exclusion'])}}" class="btn btn-xs btn-warning">Edit</a></td>
-                                        <td><a href="{{route('Information.show',['item'=>$Item->id,'Information'=>$exclusion->id,'modelName'=>'exclusion'])}}"><i class="fa fa-trash"></i></a></td>
+                                        <td>
+                                            <a href="{{route('Information.edit',['item'=>$Item->id,'Information'=>$exclusion->id,'modelName'=>'exclusion'])}}" class="btn btn-xs btn-warning">
+                                                Edit</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('Information.destroy',[$Item->id,$exclusion->id]) }}" method="post">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="modelName" value="exclusion">
+                                                <a class="deleteItem" href="#" title="{{$exclusion->id}}"><i class="fa fa-trash"></i></a>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php $oredr++ ?>
                                     @endforeach
@@ -277,33 +567,6 @@
                             </div>
                         </div>
                         <!-- end Inclusions-->
-                        <!-- Notes -->
-                        <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title">Notes Table</h3>
-                            </div>
-                            <div class="box-body no-padding">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Notes Text</th>
-                                        <th>Edit</th>
-                                        <th style="width: 40px">Delete</th>
-                                    </tr>
-                                    <?php $oredr = 1 ?>
-                                    @foreach($Item->note as $note)
-                                    <tr>
-                                        <td>{{$oredr}}</td>
-                                        <td>{{$note->txt}}</td>
-                                        <td><a href="{{route('Information.edit',['item'=>$Item->id,'rowID'=>$note->id,'modelName'=>'note'])}}" class="btn btn-xs btn-warning">Edit</a></td>
-                                        <td><a href="{{route('Information.show',['item'=>$Item->id,'rowID'=>$note->id,'modelName'=>'note'])}}"><i class="fa fa-trash"></i></a></td>
-                                    </tr>
-                                    <?php $oredr++ ?>
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
-                        <!-- end Notes-->
                         <!-- Item Gallery -->
                         <div class="box">
                             <div class="box-header with-border">
@@ -329,104 +592,6 @@
 
                 </div>
 
-
-                <!-- Items Details -->
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><a href="#"><i class="fa fa-th"></i> Item Details</a> Table</h3>
-                    </div>
-                    <div class="box-body">
-                        @if(count($Item->detail)>0)
-                        <div class="row">
-                            <div class="col-md-1"><span class="h4">Started</span></div>
-                            <div class="col-md-1">{{ $Item->detail->started_at }}</div>
-                            <div class="col-md-1"><span class="h4">Ended</span></div>
-                            <div class="col-md-1">{{ $Item->detail->ended_at }}</div>
-                            <div class="col-md-1"><span class="h4">Duration</span></div>
-                            <div class="col-md-1">{{ $Item->detail->duration }}</div>
-                            <div class="col-md-2">
-                                <span class="h4"> Availability</span>
-                            </div>
-                            <div class="col-md-2">
-                                @if(isset($Item->detail->availability))
-                                @foreach(unserialize($Item->detail->availability) as $day)
-                                <span class="label label-default">{{ $day }}</span>
-                                @endforeach
-                                @endif
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <a href="{{ route('Detail.edit',['itemID'=>$Item->id,'detail'=>$Item->detail->id]) }}" class="btn btn-info"><i class="fa fa-hand-pointer-o"></i> Update Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        @else
-                        <form method="post" action="{{route('Detail.store',['itemID'=>$Item->id])}}">
-                            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Started At:</label>
-                                            <div class="input-group">
-                                                <input type="text" name="started_at" class="form-control timepicker">
-                                                <div class="input-group-addon"> <i class="fa fa-clock-o"></i> </div>
-                                            </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Ended At:</label>
-                                            <div class="input-group">
-                                                <input type="text" name="ended_at" class="form-control timepicker">
-                                                <div class="input-group-addon"> <i class="fa fa-clock-o"></i> </div>
-                                            </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Duration</label>
-                                        <input type="number" class="form-control" value="" name="duration">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Availability</label>
-                                        <select name="availability[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Day">
-                                            <option>Saturday</option>
-                                            <option>Sunday</option>
-                                            <option>Monday</option>
-                                            <option>Tuesday</option>
-                                            <option>Thursday</option>
-                                            <option>Wednesday</option>
-                                            <option>Friday</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label></label>
-                                        <button class="btn btn-primary form-control"><i class="fa fa-paw"></i> Add Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        @endif
-                    </div>
-                </div>
-                <!-- Items Details End -->
-
-
-
-
-
             </div>
             <!-- /.col -->
         </div>
@@ -447,6 +612,22 @@ $(function () {
         showMeridian: false
     });
 });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#add_new_price").click(function () {
+            $("#price_form").show();
+        });
+        $("a#delet_price").click(function (event) {
+//        var table = $(this).closest("form").next("form#price_destory");
+//        table.submit();
+            event.preventDefault();
+            var it_form = $(this).closest("tr").find("form#price_destory");
+            it_form.submit();
+
+        });
+    });
+
 </script>
 
 @endsection

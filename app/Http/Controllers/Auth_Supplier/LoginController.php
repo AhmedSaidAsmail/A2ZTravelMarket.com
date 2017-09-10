@@ -46,7 +46,7 @@ use AuthenticatesUsers;
             'email' => 'required',
             'password' => 'required'
         ]);
-        if (Auth::guard('supplier')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('supplier')->attempt(['email' => $request->email, 'password' => $request->password,'confirm'=>1], $request->remember)) {
             return redirect()->intended(route('spplier.welcome'));
         }
         return redirect()->back()->withInput($request->only('email','remember'));
