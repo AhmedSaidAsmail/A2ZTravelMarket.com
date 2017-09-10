@@ -28,6 +28,7 @@ class CreateItemsTable extends Migration {
             $table->integer('recommended')->default(0);
             $table->text("intro")->nullable();
             $table->integer('visits')->default(0);
+            $table->boolean('deleted')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

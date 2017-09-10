@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{asset('adminlte/plugins/timepicker/bootstrap-timepicker.min.css')}}">
 <style>
     td.pricetable{
-        padding-top: 0px;
+        padding-top: 10px;
     }
 </style>
 @endsection
@@ -318,60 +318,93 @@
                                 </thead>
                                 <tbody>
                                     @if(!empty ($Item->price))
-                                    @foreach($Item->price()->where('deleted',0)->get() as $price)
+                                    @foreach($Item->price as $price)
                                     <tr>
-                                        <td class="pricetable">
-                                            {{$price->st_price}}
-                                        </td>
-                                        <td class="pricetable">
-                                            {{$price->sec_price}}
-                                        </td>
-                                        <td class="pricetable">
-                                            {{$price->third_price}}
-                                        </td>
-                                        <td class="pricetable">  
-                                            {!! $price->private?'<i class="fa fa-circle text-green"></i>':'<i class="fa fa-circle text-gray"></i> '!!}
-                                        </td>
-                                        <td class="pricetable">   
-                                            {{$price->language}}
-                                        </td>
-                                        <td class="pricetable">
-                                            {{$price->capacity}}
-                                        </td>
-                                        <td class="pricetable">
-                                            {{$price->week_day}}
-                                        </td>
-                                        <td class="pricetable">
-                                            {{$price->starting_time}}
-                                        </td>
-                                        <td class="text-right pricetable" style="min-width: 150px; padding-bottom: 5px; padding-top: 5px;">
-                                            <?php
-                                            if ($price->status) {
-                                                $value = 0;
-                                                $word = "disable";
-                                                $class = "btn-warning";
-                                            } else {
-                                                $value = 1;
-                                                $word = "enable";
-                                                $class = "btn-success";
-                                            }
-                                            ?>
-                                            <button class="btn {{$class}} btn-sm" id="do_change">{{$word}}</button>
-                                            <a class="btn btn-danger btn-sm" id="delet_price"><i class="fa fa-trash"></i></a>
-                                            <form method="post" action="{{route('Price.update',['id'=>$price->id])}}" id="change_status">
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="_method" value="PUT">
-                                                <input type="hidden" name="status" value="{{$value}}">
-                                            </form>
-                                            <form action="{{route('Price.destroy',['id'=>$price->id])}}" method="post" id="price_destory">
-                                                {{csrf_field()}}
-                                                <input type="hidden" value="DELETE" name="_method">
-                                            </form>
+                                <form method="post" action="{{route('Price.update',['id'=>$price->id])}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="PUT">
 
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    @endif
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->st_price}}" name="st_price"  min="0" required>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->sec_price}}" name="sec_price"  min="0" required>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value="{{$price->third_price}}" name="third_price"  min="0" >
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">  
+                                        <div class="form-group">
+                                            <select name="private" class="form-control">
+                                                <option value="0">Not Private</option>
+                                                <option value="1" {!! $price->private?'selected="selected"':null!!}>Private</option>
+                                            </select>                                              
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">   
+                                        <div class="form-group">
+                                            <select class="form-control" name="language">
+                                                <option value="">Select Language</option>
+                                                <option value="english" {!! $price->language=="english"?'selected="selected"':null!!}>English</option>
+                                                <option value="spanish" {!! $price->language=="spanish"?'selected="selected"':null!!}>Spanish</option>
+                                                <option value="italian" {!! $price->language=="italian"?'selected="selected"':null!!}>Italian</option>
+                                                <option value="russian" {!! $price->language=="russian"?'selected="selected"':null!!}>Russian</option>
+                                                <option value="german" {!! $price->language=="german"?'selected="selected"':null!!}>German</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" min="0" value="{{$price->capacity}}" name="capacity">
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="form-group">
+                                            <select class="form-control" name="week_day">
+                                                <option value="all" {!! $price->week_day=="all"?'selected="selected"':null!!}>Every Day</option>
+                                                <option value="Saturday" {!! $price->week_day=="Saturday"?'selected="selected"':null!!}>Saturday</option>
+                                                <option value="Sunday" {!! $price->week_day=="Sunday"?'selected="selected"':null!!}>Sunday</option>
+                                                <option value="Monday" {!! $price->week_day=="Monday"?'selected="selected"':null!!}>Monday</option>
+                                                <option value="Tuesday" {!! $price->week_day=="Tuesday"?'selected="selected"':null!!}>Tuesday</option>
+                                                <option value="Thursday" {!! $price->week_day=="Thursday"?'selected="selected"':null!!}>Thursday</option>
+                                                <option value="Wednesday" {!! $price->week_day=="Wednesday"?'selected="selected"':null!!}>Wednesday</option>
+                                                <option value="Friday" {!! $price->week_day=="Friday"?'selected="selected"':null!!}>Friday</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="pricetable">
+                                        <div class="bootstrap-timepicker">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="text" name="starting_time" class="form-control timepicker" value="{{$price->starting_time}}" required="">
+                                                    <div class="input-group-addon"> <i class="fa fa-clock-o"></i> </div>
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+                                            <!-- /.form group -->
+                                        </div>
+                                    </td>
+                                    <td class="text-right pricetable" style="min-width: 150px;">
+                                        <div class="form-group">
+                                            <a class="btn btn-danger btn-sm" id="delet_price"><i class="fa fa-trash"></i></a>
+                                            <button class="btn btn-warning btn-sm">Edit</button>
+                                        </div>
+                                    </td>
+
+                                </form>
+                                <form action="{{route('Price.destroy',['id'=>$price->id])}}" method="post" id="price_destory">
+                                    {{csrf_field()}}
+                                    <input type="hidden" value="DELETE" name="_method">
+                                </form>
+                                </tr>
+                                @endforeach
+                                @endif
 
                                 </tbody>
                             </table>
@@ -585,11 +618,9 @@ $(function () {
         $("#add_new_price").click(function () {
             $("#price_form").show();
         });
-        $("button#do_change").click(function () {
-            var it_form = $(this).closest("td").find("form#change_status");
-            it_form.submit();
-        });
         $("a#delet_price").click(function (event) {
+//        var table = $(this).closest("form").next("form#price_destory");
+//        table.submit();
             event.preventDefault();
             var it_form = $(this).closest("tr").find("form#price_destory");
             it_form.submit();

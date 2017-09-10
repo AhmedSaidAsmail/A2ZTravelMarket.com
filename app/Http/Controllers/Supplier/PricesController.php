@@ -32,25 +32,15 @@ class PricesController extends Controller {
     }
 
     public function update(Request $request, $id) {
-        $this->validate($request, [
-            'st_price' => 'required|integer',
-            'sec_price' => 'required|integer',
-            'third_price' => 'integer',
-            'week_day' => 'required',
-            'starting_time' => 'required'
-        ]);
         $data = Price::findOrFail($id);
-        $update = $request->all();
-        $new_data = array_map(function($value) {
-            return (empty($value)) ? null : $value;
-        }, $update);
-        $data->update($new_data);
+        $status = $request['status'];
+        $data->update(['status' => $status]);
         return redirect()->back();
     }
 
     public function destroy($id) {
         $data = Price::findOrFail($id);
-        $data->delete();
+        $data->update(['deleted' => 1]);
         return redirect()->back();
     }
 

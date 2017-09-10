@@ -136,7 +136,7 @@
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Categories Data With Full Features</h3>
+                        <h3 class="box-title">Activities Data With Full Features</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -147,20 +147,26 @@
                                     <th>Attraction</th>
                                     <th>Tour</th>
                                     <th>Visitors</th>
+                                    <th>Reviews</th>
+                                    <th>Rating</th>
                                     <th>Status</th>
+                                    <th>Reservations</th>
                                     <th>Recommended</th>
                                     <th>#Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach(Auth::user()->items as $Item)
+                                @foreach(Auth::user()->items()->where('deleted',0)->get() as $Item)
                                 <tr>
                                     <td>{{$Item->attraction->sort->name}}</td>
                                     <td>{{$Item->attraction->name}}</td>
                                     <td>{{$Item->name}}</td>
                                     <td>{{$Item->visits}}</td>
+                                    <td>{{$Item->reviews()->count()}}</td>
+                                    <td>{{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'overall_rating',"all")}}</td>
                                     <td> @if($Item->status) <i class="fa fa-circle text-green"></i> @else <i class="fa fa-circle text-gray"></i> @endif </td>
+                                    <td>{{$Item->tours()->count()}}</td>
                                     <td> @if($Item->recommended) <i class="fa fa-circle text-green"></i> @else <i class="fa fa-circle text-gray"></i> @endif </td>
                                     <td><div class="btn-group">
                                             <button type="button" class="btn btn-default">Action</button>
@@ -185,7 +191,10 @@
                                     <th>Attraction</th>
                                     <th>Tour</th>
                                     <th>Visitors</th>
+                                    <th>Reviews</th>
+                                     <th>Rating</th>
                                     <th>Status</th>
+                                    <th>Reservations</th>
                                     <th>Recommended</th>
                                     <th>#Action</th>
                                 </tr>

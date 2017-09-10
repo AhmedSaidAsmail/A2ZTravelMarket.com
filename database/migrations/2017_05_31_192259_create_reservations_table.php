@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,6 +14,8 @@ class CreateReservationsTable extends Migration {
     public function up() {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id')->unsigned()->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->text('name');
             $table->text('country');
             $table->text('travel_agancy')->nullabe();
@@ -26,13 +29,14 @@ class CreateReservationsTable extends Migration {
             $table->text('arrival_date');
             $table->text('departure_date');
             $table->integer('tours');
-            $table->integer('transfers');
             $table->float('total');
             $table->float('deposit');
             $table->boolean('paid')->default(0);
+            $table->boolean('confirm')->nullable()->default(null);
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *

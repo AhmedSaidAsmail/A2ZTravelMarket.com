@@ -19,7 +19,8 @@ class Item extends Model {
         'description',
         'img',
         'intro',
-        'visits'];
+        'visits',
+        'deleted'];
 
     public function attraction() {
         return $this->belongsTo(\App\Models\Attraction::class);
@@ -59,6 +60,9 @@ class Item extends Model {
 
     public function reviews() {
         return $this->hasMany(\App\Models\Review::class);
+    }
+    public function tours(){
+        return $this->hasMany(\App\Models\Tour::class);
     }
 
     public function delete() {

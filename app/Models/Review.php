@@ -8,9 +8,7 @@ class Review extends Model {
 
     protected $fillable = [
         'item_id',
-        'user_name',
-        'user_email',
-        'user_country',
+        'customer_id',
         'overall_rating',
         'service_rating',
         'organization_rating',
@@ -24,6 +22,10 @@ class Review extends Model {
 
     public function item() {
         return $this->belongsTo(\App\Models\Item::class);
+    }
+
+    public function customer() {
+        return $this->belongsTo(\App\Customer::class);
     }
 
 }

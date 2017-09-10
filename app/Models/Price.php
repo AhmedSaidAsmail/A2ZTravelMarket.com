@@ -8,6 +8,8 @@ class Price extends Model {
 
     protected $fillable = [
         'item_id',
+        'status',
+        'deleted',
         'st_price',
         'sec_price',
         'third_price',
@@ -19,6 +21,9 @@ class Price extends Model {
 
     public function item() {
         return $this->belongsTo(\App\Models\Item::class);
+    }
+    public function tours(){
+        return $this->hasMany(\App\Models\Tour::class);
     }
 
 }

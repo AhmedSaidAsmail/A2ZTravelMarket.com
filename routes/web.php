@@ -70,10 +70,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::resource('/Item/{itemID}/Detail', 'Admin\DetailsController');
 
 
-    //price
-    //Route::post('addNew', ['uses' => 'Admin\PricesController@addPrice'])->name('Item.addPrice');
-
-    Route::resource('/Item/{itemID}/Private', 'Admin\PrivatePricesController');
 
     //topics
     Route::resource('/Topics', 'Admin\TopicsController');

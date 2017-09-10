@@ -16,6 +16,8 @@ class CreatePriceTable extends Migration {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->boolean('status')->default(1);
+            $table->boolean('deleted')->default(0);
             $table->integer('st_price');
             $table->integer('sec_price');
             $table->integer('third_price')->nullable()->default(null);
