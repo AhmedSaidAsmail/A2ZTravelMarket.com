@@ -49,6 +49,86 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
+            <div class="col-md-9">
+                <div class="row reviews-summary-container">
+                    <h2>Reviews <span>({{$Item->reviews()->count()}} Reviews)</span></h2>
+                    <div class="row reviews-summary">
+                        <div class="col-md-4">
+                            <span class="reviews-summary-title">Overall rating</span>
+                            <div class="overall-rating">
+                                {{\App\Http\Controllers\ReviewController::getRateStar(\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'overall_rating',"all"))}}
+                                {{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'overall_rating',"all")}} / 5
+                            </div>
+                            <span class="reviews-summary-based">based on {{$Item->reviews()->count()}} reviews</span>
+                        </div>
+                        <div class="col-md-8 reviews-summary-all">
+                            <span class="reviews-summary-title">Review summary</span>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Service
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:{{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'service_rating',"all")/5*100}}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    {{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'service_rating',"all")}}/5
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Organization
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:{{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'organization_rating',"all")/5*100}}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    {{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'organization_rating',"all")}}/5
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Value for money
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:{{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'value_rating',"all")/5*100}}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    {{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'value_rating',"all")}}/5
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Safety
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:{{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'safety_rating',"all")/5*100}}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    {{\App\Http\Controllers\ReviewsRateCalculate::calc($Item->id,'safety_rating',"all")}}/5
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12">
                 <!-- box -->
                 <div class="box">
