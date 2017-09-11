@@ -9,16 +9,16 @@ use App\Models\Item;
 
 class ItemsController extends Controller {
 
-
     public function index() {
-        $Items = Item::where('deleted',0)->get();
-        return view('Admin.6_Items', ['Items' => $Items, 'activeItems' =>true]);
+        $Items = Item::where('deleted', 0)->get();
+        return view('Admin.6_Items', ['Items' => $Items, 'activeItems' => true]);
     }
+
     public function edit($id) {
         $item = Item::find($id);
-        $price_def=$item->price_definition;
+        $price_def = $item->price_definition;
         if (!is_null($item)) {
-            return view('Admin.7_Items_update', ['Item' => $item,'price_def'=>$price_def, 'activeItems' => 1]);
+            return view('Admin.7_Items_update', ['Item' => $item, 'price_def' => $price_def, 'activeItems' => 1]);
         }
         Session::flash('fetchData', 'There is no such data');
         return redirect()->back();
@@ -38,9 +38,15 @@ class ItemsController extends Controller {
 
     public function destroy($id) {
         $target = Item::find($id);
-        $target->update(['deleted'=>1]);
+        $target->update(['deleted' => 1]);
         Session::flash('deleteStatus', "Item No: {$id} is Deleted !!");
         return redirect(route('Items.index'));
+    }
+
+    public function itemReviews($item_id) {
+        $item = Item::find($item_id);
+        $reveiws=$item->reviews;
+        return view('Admin.8_Reviews_all',['item'=>$item,'reviews'=>$reveiws]);
     }
 
 }

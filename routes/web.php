@@ -66,23 +66,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::resource('Attraction', 'Admin\AttractionController', ['except' => ['create', 'show']]);
     //items
     Route::resource('/Items', 'Admin\ItemsController');
+   Route::get('/reviews/all/{item_id?}', 'Admin\ReviewsController@index')->name('reviews.index');
+    Route::resource('/reviews', 'Admin\ReviewsController',['only'=>['show','update','destroy']]);
     // Item Details
-    Route::resource('/Item/{itemID}/Detail', 'Admin\DetailsController');
-
-
-
+//    Route::resource('/Item/{itemID}/Detail', 'Admin\DetailsController');
     //topics
     Route::resource('/Topics', 'Admin\TopicsController');
     Route::resource('/Topics/{TopicId}/Gallery', 'Admin\GalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);
-    Route::delete('/Item/{itemID}/Gallery', 'Admin\GalleryController@destroy')->name('Gallery.destroy');
     Route::resource('/Articles', 'Admin\ArticlesController');
-    Route::resource('/leftsSide', 'Admin\LeftSideController');
     Route::resource('/vars', 'Admin\VarsController');
-    Route::resource('/Transfers', 'Admin\TransferController');
     Route::resource('/Paypal', 'Admin\PaypalController');
     Route::resource('/Reservation', 'Admin\ReservationController');
     // Reviews
-    Route::get('/Review/Show/All', ['uses' => 'ReviewController@index'])->name('review.index');
+//    Route::get('/Review/Show/All', ['uses' => 'ReviewController@index'])->name('review.index');
 });
 
 Auth::routes();

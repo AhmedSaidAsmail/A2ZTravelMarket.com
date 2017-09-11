@@ -8,10 +8,10 @@
 <div class="content-wrapper">
     <!-- Directory&Header -->
     <section class="content-header">
-        <h1> Reviews <small>All Reviews</small> </h1>
+        <h1> Reviews {{(isset($item)?$item->name:null)}}<small>All Reviews</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel </a></li>
-            <li><a href="#">All Reviews</a></li>
+            <li><a href="#">All {{(isset($item)?$item->name:null)}}Reviews</a></li>
         </ol>
     </section>
     <!-- end Directory&Header -->
@@ -23,7 +23,7 @@
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">All Reviews Data With Full Features</h3>
+                        <h3 class="box-title">All {{(isset($item)?$item->name:null)}} Reviews Data With Full Features</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -51,7 +51,13 @@
                                             <button type="button" class="btn btn-default">Action</button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
                                             <div class="dropdown-menu list-group" >
-                                                <a href="" class="list-group-item">Change</a>
+                                                <form method="post" action="{{route('reviews.update',['id'=>$review->id])}}">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                    <input type="hidden" name="_method" value="PUT">
+                                                    <a href="#" class="list-group-item" id="chnage-review">Change</a>
+                                                </form>
+
+                                                <a href="" class="list-group-item">Preview</a>
                                                 <form action="" method="post">
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                     <input type="hidden" name="_method" value="DELETE">
@@ -94,5 +100,12 @@
 $(function () {
     $("#example1").DataTable();
 });
+</script>
+<script>
+    $("a#chnage-review").click(function (event) {
+        event.preventDefault();
+        var it_form = $(this).closest("form");
+        it_form.submit();
+    });
 </script>
 @endsection

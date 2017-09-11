@@ -125,6 +125,10 @@
                             </div>
                         </div>
                     </div>
+                    <div style="margin-top:10px;">
+
+                            <a href="{{route('reviews.index',['item_id'=>$Item->id])}}" class="btn btn-default"><i class="fa fa-comment"></i> See all activity reviews</a>   
+                    </div>
                 </div>
             </div>
         </div>
