@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
 html,body{
     width: 100%;
     margin: 0px;
@@ -6,6 +8,12 @@ html,body{
     height: auto;
     overflow-x: hidden;
     color: #414141;
+}
+.container{
+    width: 92%;
+}
+.btn-info{
+    background-color: #00aeef;
 }
 ul{
     list-style: none;
@@ -27,15 +35,27 @@ ul{
     left: -9999px;
     margin: auto;
 }
+.img-panorama{
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    right: -9999px;
+    left: -9999px;
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
 .top-header{
     margin-top: 10px;
 }
 .top-header a{
-    color: #000;
     font-family: 'PT Sans Narrow', sans-serif;
-    /*    font-family: "Times New Roman", Georgia, Serif;*/
-    font-size: 18px;
-    color: #414141;;
+    font-size: 17px;
+    color: #6baeef;
+    font-weight: 500;
+}
+.top-header a i{
+    color: #2b2b2b;
 }
 .top-header a:hover{
     text-decoration: none;
@@ -221,7 +241,7 @@ span.under-slides-title{
     }
 }
 .footer-toggle{
-    background-color: #000; 
+    background-color: #000;
     color: #FFF;
     overflow: hidden;
     transition: ease all .7s;
@@ -233,7 +253,157 @@ span.under-slides-title{
     max-height: 1000px;
 }
 .footer-rights{
-    background-color: #f2f2f2; 
+    background-color: #f2f2f2;
     padding: 10px;
     font-size: 12px;
+}
+.img-top-title{
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.top-title{
+    position: absolute;
+    left: 50px;
+    top: 60px;
+    color: #FFF;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    font-size: 75px;
+    text-shadow:3px 3px 3px #5b5a5a;
+}
+.normal-header{
+    margin: 0px 0px 15px 0px;
+    font-size: 27px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    color: #595959;
+}
+.img-right-side{
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+    text-shadow:3px 3px 3px #5b5a5a;
+    box-shadow: 1px 1px 3px #5b5a5a;
+}
+.img-right-side span{
+    color: #FFF;
+    position: absolute;
+    z-index: 2;
+    font-family: 'Asap', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    bottom: 40px;
+    left: 20px;
+}
+.img-right-side p{
+    color: #FFF;
+    position: absolute;
+    z-index: 2;
+    font-family: 'Asap', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    bottom: 12px;
+    left: 20px;
+}
+.item-tour{
+    background: #FFF;
+    border: 1px solid #e6e6e6;
+    padding: 15px 0px;
+    margin-bottom: 15px;
+    display: flex;
+}
+.item-tour-img{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 150px;
+}
+.item-tour h2{
+    margin: 0px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+.item-tour-right{
+    padding-left: 0px;
+    position: relative;
+}
+.item-tour-rating{
+    margin-top: 10px;
+    color: #a2a3a3;
+}
+.item-tour-rating i{
+    color: #ffc203;
+    font-size: 18px;
+}
+.item-tour-intro{
+    display: block;
+    color: #a2a3a3;
+}
+.tour-price-from{
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    font-size: 25px;
+    line-height: 10px;
+    font-family: 'Asap', sans-serif;
+    font-weight: 600;
+    text-align: right;
+}
+.tour-price-from span{
+    display: block;
+    color: #868687;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.tour-duration{
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    color: #868687;
+}
+.tour-duration label{
+    font-size: 15px;
+}
+.see-all .btn{
+    font-size: 16px;
+}
+.attraction-city-show{
+    margin-top: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.attraction-city-img{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px;
+    
+}
+.attraction-city-img img{
+    width: 100%;
+    transition: ease all .5s;
+}
+.attraction-city-img:hover img{
+    width: 120%;
+}
+.img-panorama-text-cenetr{
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    text-align: center;
+}
+.img-panorama-text-cenetr span{
+    color: #FFF;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    font-size: 75px;
+    text-shadow:3px 3px 3px #5b5a5a;
+    display: block;
 }
