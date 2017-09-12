@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="css/datepicker/zebra_datepicker.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -38,10 +39,38 @@
                 <h1 class="all-tour-title">eiffel tower <span>43 activities found</span></h1>
                 <div class="row">
                     <div class="col-md-3">
-                        
+                        <form>
+                            <div class="left-side-form">
+                                <span class="form-header">
+                                    Enter your dates to find available activities:
+                                </span>
+                                <div class="form-group">
+                                    <div class="input-group sp-eddition">
+                                        <div class="input-group-addon">
+                                            <label>from</label>
+                                            <i class="fa fa-calendar-o fa-lg"></i>
+                                        </div>
+                                        <input name="arrival_date" type="text" class="form-control" id="tour_from">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group sp-eddition">
+                                        <div class="input-group-addon">
+                                            <label>to</label>
+                                            <i class="fa fa-calendar-o fa-lg"></i>
+                                        </div>
+                                        <input name="arrival_date" type="text" class="form-control" id="tour_to">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <button class="btn btn-info btn-block">Check Availability</button>
+                            </div> 
+                        </form>
+
                     </div>
                     <div class="col-md-9">
-                        
+
                         <div class="row item-tour">
                             <div class="col-md-4">
                                 <div class="item-tour-img">
@@ -92,7 +121,7 @@
                             <button class="btn btn-info">See all tours & things to do in Cairo Pyramids</button>
                         </div>
                     </div>
-                    
+
                 </div>
 
 
@@ -199,6 +228,34 @@
 
         <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/datepicker/zebra_datepicker.min.js"></script>
         <script type="text/javascript" src="js/min.js"></script>
+        <script>
+            $('#tour_from').Zebra_DatePicker({
+                direction: true,
+                format: 'Y-m-d',
+                default_position: 'below',
+                pair: $('#tour_to'),
+                onSelect: function () {
+                    var label = $(this).closest('.input-group').find('label');
+                    label.addClass('small');
+                    $('#tour_to').trigger('click');
+                }
+
+//                onSelect: function () {
+//                    $('#departure_date').trigger('click');
+//                }
+                //    disabled_dates: ['* * * 0,1,2,6']
+            });
+            $('#tour_to').Zebra_DatePicker({
+                direction: true,
+                format: 'Y-m-d',
+                default_position: 'below',
+                onSelect: function () {
+                    var label = $(this).closest('.input-group').find('label');
+                    label.addClass('small');
+                }
+            });
+        </script>
     </body>
 </html>

@@ -384,7 +384,7 @@ span.under-slides-title{
     overflow: hidden;
     width: 100%;
     height: 220px;
-    
+
 }
 .attraction-city-img img{
     width: 100%;
@@ -406,4 +406,58 @@ span.under-slides-title{
     font-size: 75px;
     text-shadow:3px 3px 3px #5b5a5a;
     display: block;
+}
+.all-tour-title{
+    font-size: 26px;
+    margin-bottom:30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.all-tour-title span{
+    font-size: 17px;
+}
+.left-side-form{
+    background-color: #d3d3d4;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+.left-side-form span.form-header{
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+    color: #373738;
+}
+.left-side-form .btn{
+    font-size: 17px;
+}
+.sp-eddition .input-group-addon{
+    background-color: #FFF;
+    position: relative;
+    border-color: #a6a6a7;
+
+}
+.sp-eddition .input-group-addon i{
+    color: #a6a6a7;
+}
+.sp-eddition .input-group-addon label{
+    position: absolute;
+    left: calc(100% + 10px);
+    z-index: 1000;
+    color: #a6a6a7;
+    font-weight: lighter;
+/*    transition: all ease .3s;*/
+}
+.sp-eddition .input-group-addon label.small{
+    font-size: 10px;
+    top: 5px;
+}
+.sp-eddition .form-control{
+    border-left: 0px;
+    box-shadow: none;
+    height: 40px;
+}
+#tour_from,#tour_to{
+    background-color: #FFF;
+    border-radius: 0px 5px 5px 0px;
+    border-color: #a6a6a7;
 }
