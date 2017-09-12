@@ -33,6 +33,7 @@ class CreateReservationsTable extends Migration {
             $table->float('deposit');
             $table->boolean('paid')->default(0);
             $table->boolean('confirm')->nullable()->default(null);
+            $table->boolean('admin_deleted')->deafult(0)->nullable();
             $table->timestamps();
         });
     }

@@ -23,7 +23,8 @@ class Reservation extends Model {
         'arrival_flight_time',
         'departure_flight_no',
         'departure_flight_time',
-        'confirm'];
+        'confirm',
+        'admin_deleted'];
 
     public function customer() {
         return $this->belongsTo(\App\Customer::class);

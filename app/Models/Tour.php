@@ -6,7 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tour extends Model {
 
-    protected $fillable = ['reservation_id', 'title', 'price', 'date', 'st_no', 'st_price', 'st_name', 'sec_no', 'sec_price', 'sec_name'];
+    protected $fillable = [
+        'reservation_id',
+        'item_id',
+        'price_id',
+        'title', 
+        'price', 
+        'date', 
+        'st_no', 
+        'sec_no',
+        'third_no',
+        'supplier_deleted', 
+        'confirm'];
 
     public function reservation() {
         return $this->belongsTo(App\MyModels\Admin\Reservation::class);

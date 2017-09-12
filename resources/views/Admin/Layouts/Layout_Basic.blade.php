@@ -90,9 +90,6 @@
                             </ul>
                         </li>
                         <li class="treeview"> 
-                            <a href="{{route('Transfers.index')}}"> <i class="fa fa-car"></i> <span>Transfer</span>  </a>
-                        </li>
-                        <li class="treeview"> 
                             <a href="{{route('Reservation.index')}}"> <i class="fa fa-cart-arrow-down"></i> <span>Reservation</span>  </a>
                         </li>
                         <li class="treeview">
@@ -102,7 +99,6 @@
                             <ul class="treeview-menu">
                                 <li><a href=""><i class="fa fa-circle-o"></i> Admin Profile</a></li>
                                 <li><a href="{{ route('Paypal.index') }}"><i class="fa fa-circle-o"></i>PayPal Settings</a></li>
-                                <li><a href="{{ route('leftsSide.index') }}"><i class="fa fa-circle-o"></i>Left Side Icons</a></li>
                                 <li><a href="{{ route('vars.index') }}"><i class="fa fa-circle-o"></i>Languages</a></li>
 
                             </ul>

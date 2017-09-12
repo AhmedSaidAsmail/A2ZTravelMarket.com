@@ -26,6 +26,8 @@ class CreateToursTable extends Migration {
             $table->integer('st_no');
             $table->integer('sec_no')->nullable()->defult(null);
             $table->integer('third_no')->nullable()->defult(null);
+            $table->boolean('confirm')->default(0)->nullable();
+            $table->boolean('supplier_deleted')->deafult(0)->nullable();
             $table->timestamps();
         });
     }

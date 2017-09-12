@@ -1,9 +1,6 @@
 @extends('Web.Layouts.master')
 @section('meta_tags')
-<?php $meta = App\MyModels\Admin\Topic::where('name', 'Home')->first() ?>
-<meta name="keywords" content="{{ $meta->keywords }}" />
-<meta name="description" content="{{ $meta->description }}" />
-<title>{{ $meta->title }}</title>
+
 @endsection
 @section('header-nav')
 

@@ -57,8 +57,8 @@
                                                     <a href="#" class="list-group-item" id="chnage-review">Change</a>
                                                 </form>
 
-                                                <a href="" class="list-group-item">Preview</a>
-                                                <form action="" method="post">
+                                                <a href="{{route('reviews.show',['id'=>$review->id])}}" class="list-group-item">Preview</a>
+                                                <form action="{{route('reviews.destroy',['id'=>$review->id])}}" method="post">
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <a href="#" class="deleteItem list-group-item" title="Review No:{{$review->id}}">Delete</a>

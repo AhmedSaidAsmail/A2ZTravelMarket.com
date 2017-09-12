@@ -79,3 +79,52 @@
 .reviews-summary-all .row{
     margin-top: 8px;
 }
+.review-show{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: #4d4c4c;
+    position: relative;
+}
+
+.review-show h2{
+    margin: 0px;
+    font-size: 20px;
+}
+.review-show-rate{
+    margin-bottom: 15px;
+}
+.review-show-rate i{
+    color: #337ab7;
+}
+.review-show-msg{
+    font-size: 13px;
+}
+.review-show-owner{
+    margin-top: 15px;
+    font-size: 13px;
+}
+.review-show-owner span{
+    font-weight: bold;
+}
+.review-show-date{
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    color: #b4b3b3;
+}
+.review-helpfull{
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+}
+.review-helpfull{
+    font-weight: bold;
+    font-size: 13px;
+}
+.review-helpfull a{
+    padding:2px 10px;
+    margin-left: 10px;
+}

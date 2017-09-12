@@ -1,5 +1,18 @@
 $(document).ready(function () {
+    $(".footer-show-toggle").click(function () {
+        var div = $('.footer-toggle');
+        if (div.height() > 0) {
+            div.removeClass('toggle-on');
+            div.addClass('toggle-off');
+            $(this).html('<i class="fa fa-arrow-circle-up"></i> Show more');
+        } else {
+            div.removeClass('toggle-off');
+            div.addClass('toggle-on');
+            $(this).html('<i class="fa fa-arrow-circle-down"></i> Show less');
+        }
 
+    });
+    // old
     $(window).scroll(function () {
         var nav = $("#main-nav");
         var height = $(window).scrollTop();
@@ -59,19 +72,7 @@ $(document).ready(function () {
         var selfWidth = parentDiv.width();
         $(this).attr("width", selfWidth);
     });
-    $(".footer-show-toggle").click(function () {
-        var div = $('.footer-alternate');
-        if (div.height() > 0) {
-            div.removeClass('toggle-down');
-            div.addClass('toggle-up');
-            $(this).html('<i class="fa fa-arrow-circle-up"></i> Show more');
-        } else {
-            div.removeClass('toggle-up');
-            div.addClass('toggle-down');
-            $(this).html('<i class="fa fa-arrow-circle-down"></i> Show less');
-        }
 
-    });
     //transfer form 
     $("#dist_from").change(function () {
         var form = $("#getDestFrom");

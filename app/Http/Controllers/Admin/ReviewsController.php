@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Review;
 
@@ -20,18 +19,20 @@ class ReviewsController extends Controller {
     }
 
     public function show($id) {
-        
+        $review = Review::find($id);
+        return view('Admin.9_Reviews_one', ['review' => $review]);
     }
 
     public function update($id) {
-        $review= Review::find($id);
-        $review->update(['confirm'=>1]);
+        $review = Review::find($id);
+        $review->update(['confirm' => 1]);
         return redirect()->back();
-        
     }
 
     public function destroy($id) {
-        
+        $review = Review::find($id);
+        $review->delete();
+        return redirect()->back();
     }
 
 }
