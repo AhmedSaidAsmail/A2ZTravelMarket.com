@@ -12,6 +12,49 @@ $(document).ready(function () {
         }
 
     });
+    $(".price-toggle").click(function () {
+        var parentDiv= $(this).closest('.select-travelers-hidden');
+        var it_div = parentDiv.closest('div[class^=col-md]');
+        var prev_div = it_div.prev();
+        var next_div = it_div.next();
+        var datepicker =$('#tour_date').data('Zebra_DatePicker');
+        // actions
+        parentDiv.toggleClass('select-off select-on');
+        $(this).toggleClass('fa-caret-down fa-caret-up');
+        it_div.toggleClass('col-md-4 col-md-6');
+        prev_div.toggleClass('col-md-4 col-md-3');
+        next_div.toggleClass('col-md-4 col-md-3');
+//        $('#tour_date').css('width',prev_div.width());
+        
+    });
+    $("i.fa-plus-sp").click(function () {
+        var itsInput = $(this).closest('div').find('input');
+        var itsName = itsInput.attr('name');
+        var itsValue = parseFloat(itsInput.val());
+        var itsMin = itsInput.attr('min');
+        var itsSpan = $("#" + itsName);
+        var newValue = itsValue + 1;
+        itsSpan.show();
+        itsInput.val(newValue);
+        itsSpan.find('label').html(newValue);
+    });
+    $("i.fa-minus-sp").click(function () {
+        var itsInput = $(this).closest('div').find('input');
+        var itsName = itsInput.attr('name');
+        var itsValue = parseFloat(itsInput.val());
+        var itsMin = parseFloat(itsInput.attr('min'));
+        var itsSpan = $("#" + itsName);
+        if (itsValue > itsMin ) {
+            var newValue = itsValue - 1;
+            itsSpan.show();
+            itsInput.val(newValue);
+            itsSpan.find('label').html(newValue);
+        }
+        if(newValue===0){
+            itsSpan.hide();
+        }
+
+    });
     // old
     $(window).scroll(function () {
         var nav = $("#main-nav");

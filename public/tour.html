@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A2ZTravel Market.com</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="css/datepicker/zebra_datepicker.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="row text-right">
+            <div class="container">
+                <ul class="list-inline top-header black-almost">
+                    <li><a href=""><i class="fa fa-heart"></i> Wishlist</a></li>
+                    <li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href=""><i class="fa fa-question-circle"></i> Help</a></li>
+                    <li><a href=""><i class="fa fa-user"></i> Login</a></li>
+                    <li><a href=""><i class="fa fa-user"></i> Sign up</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="row main-nav">
+            <div class="container main-nav-holder">
+                <div class="main-nav-logo"></div>
+                <ul class="list-inline">
+                    <li><a href="">ALL DEALS</a></li>
+                    <li><a href="">SEARCH & BOOK</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row insider-holder">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="main-item-title">Cairo: Giza Pyramid, Sakkara & Memphis Full-Day Private Tour</h1>
+                        <div class="item-tour-rating">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span class="review-rate">5.0 / 5</span>
+                            <span class="reviews-count">124 Reviews </span>
+                            <span class="main-item-duration"><i class="fa fa-clock-o"></i> <label>Duration:</label> 6 hours</span>
+                        </div>
+
+                        <div class="main-item-img">
+                            <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-md-8">
+                        <div class="row item-main">
+                            <div class="item-main-intro">
+                                See the classic sites of ancient Egypt. Visit the Great Pyramids, the Sphinx, the ancient capital of Memphis and the Step Pyramid of Sakkara.
+                            </div>
+                            <span class="item-main-glance">At a glance</span>
+                            <div class="row glance-item">
+                                <div class="col-md-6 glance-left-side">
+                                    <i class="fa fa-mobile fa-2x"></i> <span>Printed or mobile voucher accepted</span>
+                                </div>
+                            </div>
+                            <div class="row glance-item">
+                                <div class="col-md-6 glance-left-side">
+                                    <i class="fa fa-user fa-lg"></i> <span>Live Guide</span>
+                                </div>
+                                <div class="col-md-6 text-right glance-right-side">
+                                    Spanish, English, German, Arabic, Portuguese
+                                </div>
+                            </div>
+                            <div class="row glance-item">
+                                <div class="col-md-6 glance-left-side">
+                                    <i class="fa fa-bus fa-lg"></i> <span>Pick-up service</span>
+                                </div>
+                            </div>
+                            <div class="row glance-item">
+                                <div class="col-md-6 glance-left-side">
+                                    <i class="fa fa-credit-card fa-lg"></i> <span>Cancellation policy</span>
+                                </div>
+                                <div class="col-md-6 text-right glance-right-side">
+                                    Cancel up to 3 days in advance for a full refund
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row item-select-date">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="select-date-title">Select date and participants:</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4" id="datepicker_container">
+
+                                    <div class="form-group">
+                                        <div class="input-group sp-eddition">
+                                            <div class="input-group-addon">
+                                                <label>date</label>
+                                                <i class="fa fa-calendar-o fa-lg"></i>
+                                            </div>
+                                            <input name="arrival_date" type="text" class="form-control" id="tour_date">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="select-travelers-hidden select-off">
+                                        <i class="fa fa-caret-down price-toggle price-toggle-down"></i>
+                                        <div class="details-holder">
+                                            <i class="fa fa-user"></i> 
+                                            <span id="st_no">Adults x <label>1</label></span>
+                                            <span id="sec_no" class="alternative-sort">, Children x <label>2</label></span>
+                                            <span id="third_no" class="alternative-sort">, Infant x <label></label></span>
+                                        </div>
+                                        <div class="select-travelers-holder">
+                                            <div class="row">
+                                                <div class="col-md-9">Adult<span>(Age 13-61)</span></div>
+                                                <div class="col-md-2 select-input">
+                                                    <i class="fa fa-plus fa-plus-sp"></i>
+                                                    <i class="fa fa-minus fa-minus-sp"></i>
+                                                    <input name="st_no" type="number" value="0" min="1" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">Children<span>(Age 4-13)</span></div>
+                                                <div class="col-md-2 select-input">
+                                                    <i class="fa fa-plus fa-plus-sp"></i>
+                                                    <i class="fa fa-minus fa-minus-sp"></i>
+                                                    <input name="sec_no" type="number" value="0" min="0" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">Infant<span>(Age 4-13)</span></div>
+                                                <div class="col-md-2 select-input">
+                                                    <i class="fa fa-plus fa-plus-sp"></i>
+                                                    <i class="fa fa-minus fa-minus-sp"></i>
+                                                    <input name="third_no" type="number" value="0" min="0" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-info btn-block">Show Availability</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row item-highlights">
+                            <div class="col-md-12">
+                                <h2>Highlights</h2>
+                                <ul class="highlights">
+                                    <li>Marvel at the famous Great Pyramids of Giza with your Egyptologist guide</li>
+                                    <li>See the ancient Step Pyramid of Djoser at the Sakkara archeological site</li>
+                                    <li>Visit Egypt's former capital of Memphis, once the cultural center of the ancient world</li>
+                                </ul>
+                                <h2>Full description</h2>
+                                Great Pyramids & Sphinx (Giza Pyramid Complex ) , Saqqara Step Pyramids and Memphis open air Museum :
+                                Start your day with an 08:00 AM pick-up at your hotel and travel with your guide to the
+                                <h2>What’s included</h2>
+                                <ul>
+                                    <li><i class="fa fa-check item-included"></i> Pick-up and drop off at hotels in Cairo and Giza</li>
+                                    <li><i class="fa fa-times item-not-included"></i> Site entrance fees</li>
+                                </ul>
+                                <h2>Know before you go</h2>
+                                <ul>
+                                    <li>Please bring sunglasses and a hat or head scarf and wear a light clothes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- reviews -->
+                        <div class="row reviews-summary-container">
+                            <h2>Reviews <span>(1 Reviews)</span></h2>
+                            <div class="row reviews-summary">
+                                <div class="col-md-4">
+                                    <span class="reviews-summary-title">Overall rating</span>
+                                    <div class="overall-rating">
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
+                                        3 / 5
+                                    </div>
+                                    <span class="reviews-summary-based">based on 1 reviews</span>
+                                </div>
+                                <div class="col-md-8 reviews-summary-all">
+                                    <span class="reviews-summary-title">Review summary</span>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Service
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            3/5
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Organization
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            3/5
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Value for money
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            3/5
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Safety
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            3/5
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end reviews -->
+                        <!-- all review item show -->
+                        <div class="row item-all-reviews">
+                            <div class="row item-review-header">
+                                <div class="col-md-8">
+                                    Sort by:
+                                    <div class="review-sort-by">
+                                        Rating
+                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa fa-caret-up"></i>
+                                    </div>
+                                    <div class="review-sort-by">
+                                        Date
+                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa fa-caret-up"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-1" style="padding-right: 0px; padding-left: 0px; padding-top: 5px;">
+                                    Filter by:
+
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control">
+                                        <option value="">See all reviews</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="review-show">
+
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h2>"The pyramids are great.i enjoyed it"</h2>
+                                        <div class="review-show-rate">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+
+                                        </div>
+                                        <div class="review-show-msg">
+                                            I recommend strongly this guide for all who prefer a friendly tour with a professional explanations of the Egyptian history, as we were lucky with our excellent guide Akram. Thank you!
+                                        </div>
+                                        <div class="review-show-owner">
+                                            reviewed by <span>Ahmed – Egypt</span>
+                                        </div>
+                                    </div>
+                                    <span class="review-show-date">September 3, 2017</span>
+                                    <div class="review-helpfull">
+                                        Was this helpful? <a href="#" class="btn btn-default">yes</a>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="review-show">
+
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h2>"The pyramids are great.i enjoyed it"</h2>
+                                        <div class="review-show-rate">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+
+                                        </div>
+                                        <div class="review-show-msg">
+                                            I recommend strongly this guide for all who prefer a friendly tour with a professional explanations of the Egyptian history, as we were lucky with our excellent guide Akram. Thank you!
+                                        </div>
+                                        <div class="review-show-owner">
+                                            reviewed by <span>Ahmed – Egypt</span>
+                                        </div>
+                                    </div>
+                                    <span class="review-show-date">September 3, 2017</span>
+                                    <div class="review-helpfull">
+                                        Was this helpful? <a href="#" class="btn btn-default">yes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- all reviews item end -->
+                        <div class="row see-all-review-button">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-info">See more reviews</button>
+                            </div>
+                        </div>
+                        <h2>You might also like...</h2>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="item-addetional-holder">
+                                    <div class="item-addetional-img">
+                                        <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- footer -->
+        <!-- footer -->
+        <div class="row footer">
+            <div class="container" style="position: relative;">
+                <div class="footer-show-toggle"><i class="fa fa-arrow-circle-down"></i> Show more</div>
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="about+us">About us </a></li>
+                            <li><a href="Contact+us">Contact us </a></li>
+                            <li><a href="Low+Price+Guarantee">Low Price Guarantee </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="News+Letter">News Letter </a></li>
+                            <li><a href="FAQ">FAQ </a></li>
+                            <li><a href="Site+Map">Site Map </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="Data+Protection">Data Protection </a></li>
+                            <li><a href="Terms+%26+Conditions">Terms &amp; Conditions </a></li>
+                            <li><a href="Privacy">Privacy </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <span class="glyphicon glyphicon-envelope" style="margin-right: 10px; font-size: 20px;"></span>
+                            Newsletter: Get the best travel deals delivered to your inbox!
+                        </div>
+                        <div class="row">
+                            <form>
+                                <div class="col-md-10 col-sm-10 col-xs-10" style="padding-left: 0px; padding-right: 0px;">
+                                    <input type="text" value="" class="form-control" placeholder="Your mail">
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 5px;">
+                                    <button class="btn btn-success" style="padding: 5px;"><i class="fa fa-check" style="font-size: 20px;"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row footer-social-links">
+                            <div class="col-md-12 col-sm-8 col-xs-8">
+                                <a href="#"> <i class="fa fa-facebook"></i></a>
+                                <a href="#"> <i class="fa fa-twitter"></i></a>
+                                <a href="#"> <i class="fa fa-google-plus"></i></a>
+                                <a href="#"> <i class="fa fa-pinterest-p"></i></a>
+                                <a href="#"> <i class="fa fa-feed"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row footer-toggle toggle-off">
+            <div class="container footer-final-links">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top 10 Countries</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Rome</a></li>
+                            <li><a href="">Paris</a></li>
+                            <li><a href="">London</a></li>
+                            <li><a href="">Cairo</a></li>
+                            <li><a href="">Sharm El Sheikh</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top Destinations</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Must-See Attractions</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center footer-rights">© 2017 A2ZTravelMarket.com All Rights Reserved</div>
+
+        <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/datepicker/zebra_datepicker.min.js"></script>
+        <script type="text/javascript" src="js/min.js"></script>
+        <script>
+
+$('#tour_date').Zebra_DatePicker({
+    direction: true,
+    format: 'M d,Y',
+    default_position: 'below',
+    onSelect: function () {
+        var label = $(this).closest('.input-group').find('label');
+        label.addClass('small');
+    }
+});
+        </script>
+    </body>
+</html>
