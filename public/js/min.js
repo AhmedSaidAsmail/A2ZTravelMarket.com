@@ -55,6 +55,12 @@ $(document).ready(function () {
         }
 
     });
+    $("span#active-plane").click(function(){
+        var allDivs=$("#all-plane-prices").find('.price-plane-avaiable');
+        var Div=$(this).closest('.price-plane-avaiable');
+        allDivs.removeClass('price-active').addClass('price-not-active');
+        Div.removeClass('price-not-active').addClass('price-active');
+    });
     // old
     $(window).scroll(function () {
         var nav = $("#main-nav");
