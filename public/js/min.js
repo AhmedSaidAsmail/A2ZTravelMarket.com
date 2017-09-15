@@ -66,6 +66,49 @@ $(document).ready(function () {
             scrollTop: $("#choose-plane").offset().top
         }, 500);
     });
+    var count = $("div#item-tour").length;
+    $("div#item-tour:gt(9)").hide();
+    if (count > 10) {
+        $("#show-more").show();
+        if ((count - 10) < 10) {
+            $("#show-more").find("span").html(count - 10);
+        }
+
+    } else {
+        $("#show-more").hide();
+    }
+    $("#show-more").click(function () {
+        var datatStart = $(this).attr('data-start');
+        var showTo = parseFloat(datatStart) + 10;
+        $("div#item-tour:lt(" + showTo + ")").show();
+        $(this).attr('data-start', showTo);
+        if (count <= showTo) {
+            $(this).hide();
+        }
+        if (count < showTo + 10) {
+            $(this).find("span").html(count - showTo);
+        }
+    });
+    $("form#choose-plane").submit(function (event) {
+        event.preventDefault();
+        var date = $(this).find("input[name=date]").val();
+        var loadingDiv = $(".ftech-data-loading");
+        loadingDiv.show();
+        if (!date.length) {
+            alert('Date field is required');
+            loadingDiv.hide();
+            return false;
+        }
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'post',
+            data: $(this).serialize(),
+            success: function (response) {
+                loadingDiv.fadeOut().delay(500);
+            }
+
+        });
+    });
     // old
     $(window).scroll(function () {
         var nav = $("#main-nav");

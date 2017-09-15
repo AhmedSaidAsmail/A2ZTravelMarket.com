@@ -40,7 +40,7 @@
     <div class="col-md-9">
         @foreach($items as $item)
         <a href="{{route('tour.show',['city'=>$attraction->sort->name,'tour'=>$item->name,'id'=>$item->id])}}" class="item-tour-link">
-            <div class="row item-tour">
+            <div class="row item-tour" id="item-tour">
                 <div class="col-md-4">
                     <div class="item-tour-img">
                         <img src="{{asset('images/items/thumb/'.$item->img)}}" class="img-abs-center" alt="{{$item->name}}">
@@ -52,7 +52,7 @@
                     <div class="tour-duration">
                         <i class="fa fa-clock-o"></i> <label>{{Vars::getVar('Duration')}}:</label> {{$item->duration}} {{Vars::getVar('hours')}}
                     </div>
-                    <h2>{{$item->name}}</h2>
+                    <h2>{{$item->name}}{{$item->id}}</h2>
                     <div class="item-tour-rating">
                         {{ App\Http\Controllers\ReviewController::getRateStar(App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'overall_rating')) }}
                         {{count($item->reviews()->where('confirm',1)->get())}} {{Vars::getVar('Reviews')}}
@@ -64,9 +64,9 @@
             </div>
         </a>
         @endforeach
-                                <div class="row text-center see-all">
-                            <button class="btn btn-info">See all tours & things to do in Cairo Pyramids</button>
-                        </div>
+        <div class="row text-center see-all">
+            <button class="btn btn-info" id="show-more" data-start="10">Show <span>10</span> more activities</button>
+        </div>
     </div>
 </div>
 @endsection

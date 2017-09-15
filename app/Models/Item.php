@@ -21,7 +21,8 @@ class Item extends Model {
         'duration',
         'intro',
         'visits',
-        'deleted'];
+        'deleted',
+        'cancellation'];
 
     public function attraction() {
         return $this->belongsTo(\App\Models\Attraction::class);

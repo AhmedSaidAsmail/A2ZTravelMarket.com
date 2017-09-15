@@ -1,5 +1,5 @@
 
-<?php //echo "<pre>" . print_r(Session::all(), true)                        ?>
+<?php //echo "<pre>" . print_r(Session::all(), true)                         ?>
 @extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel')
 @section ('Extra_Css')
@@ -69,7 +69,7 @@
                             <input type="hidden" value="{{Auth::user()->id}}" name="supplier_id">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Attraction Name:</label>
                                             <select class="form-control" name="attraction_id">
@@ -81,16 +81,22 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Tour Name:</label>
                                             <input class="form-control" name="name" placeholder="Eg: Cairo by bus from sharm el sheikh" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Tour page title:</label>
                                             <input class="form-control" name="title" placeholder="Eg: Amazing Trip To Cairo" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Cancellation policy: in days</label>
+                                            <input type="number" class="form-control" name="cancellation" value="1" min="0"  required>
                                         </div>
                                     </div>
                                 </div>

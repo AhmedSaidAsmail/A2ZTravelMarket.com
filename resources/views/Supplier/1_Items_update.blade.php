@@ -65,7 +65,7 @@
                             <input type="hidden" value="{{Auth::user()->id}}" name="supplier_id">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Attraction Name:</label>
                                             <select class="form-control" name="attraction_id">
@@ -77,16 +77,22 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Tour Name:</label>
                                             <input class="form-control" value="{{$Item->name}}" name="name"  required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Tour page title:</label>
                                             <input class="form-control" value="{{$Item->title}}" name="title" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Cancellation policy: in days</label>
+                                            <input type="number" class="form-control" name="cancellation" value="{{$Item->cancellation}}" min="0"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -172,32 +178,52 @@
                                 <input type="hidden" value="{{ csrf_token() }}" name="_token">
                                 <input type="hidden" value="{{$Item->id}}" name="item_id">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>First Definition:</label>
+                                            <label>First price name:</label>
                                             <input type="text" name="st_price_name" class="form-control" placeholder="Eg : Adult" required="">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>Second Definition:</label>
+                                            <label>First definition:</label>
+                                            <input type="text" name="st_price_def" class="form-control" placeholder="Eg : Age 13-61" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Second price name:</label>
                                             <input type="text" name="sec_price_name" class="form-control" placeholder="Eg : Child" required="">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>Third Definition:</label>
+                                            <label>Second definition:</label>
+                                            <input type="text" name="sec_price_def" class="form-control" placeholder="Eg : Age 0-3" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Third price name:</label>
                                             <input type="text" name="third_price_name" class="form-control" placeholder="Eg : Inf">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Third definition:</label>
+                                            <input type="text" name="third_price_def" class="form-control" placeholder="Eg : Age <13">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label></label>
                                             <button class="btn btn-primary form-control"><i class="fa fa-paw"></i> Add Price Definition</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form> 
+                            </form>
                         </div>
                         @endif
 
@@ -245,7 +271,7 @@
                                             <select name="private" class="form-control">
                                                 <option value="0">Not Private</option>
                                                 <option value="1">Private</option>
-                                            </select>  
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -335,10 +361,10 @@
                                         <td class="pricetable">
                                             {{$price->third_price}}
                                         </td>
-                                        <td class="pricetable">  
+                                        <td class="pricetable">
                                             {!! $price->private?'<i class="fa fa-circle text-green"></i>':'<i class="fa fa-circle text-gray"></i> '!!}
                                         </td>
-                                        <td class="pricetable">   
+                                        <td class="pricetable">
                                             {{$price->language}}
                                         </td>
                                         <td class="pricetable">

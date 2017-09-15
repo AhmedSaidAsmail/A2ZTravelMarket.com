@@ -11,6 +11,7 @@ Route::get('/Attraction/{id}', ['uses' => 'Web\AttractionController@showAttracti
 Route::get('/Attraction/show/all/{id}', ['uses' => 'Web\AttractionController@showAllAttractions'])->name('attraction.show.all');
 Route::get('/Attraction/show/availability/{id}', ['uses' => 'Web\AttractionController@showAvailability'])->name('attraction.show.available');
 Route::get('/{city}/{tour}/{id}', ['uses' => 'Web\ItemsController@show'])->name('tour.show');
+Route::post('/tour/{id}',['uses' => 'Web\ItemsController@showPrices'])->name('tour.get.prices');
 //old
 Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
 Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');

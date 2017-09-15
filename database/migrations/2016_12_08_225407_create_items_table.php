@@ -30,6 +30,7 @@ class CreateItemsTable extends Migration {
             $table->text("intro")->nullable();
             $table->integer('visits')->default(0);
             $table->boolean('deleted')->default(0);
+            $table->integer('cancellation')->defailt(1);
             $table->rememberToken();
             $table->timestamps();
         });

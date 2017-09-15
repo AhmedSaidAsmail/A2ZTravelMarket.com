@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attraction;
 use App\Models\Item;
-use App\Models\Price;
 
 class AttractionController extends Controller {
 

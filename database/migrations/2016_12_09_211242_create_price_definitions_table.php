@@ -19,6 +19,9 @@ class CreatePriceDefinitionsTable extends Migration {
             $table->string('st_price_name');
             $table->string('sec_price_name');
             $table->string('third_price_name')->nullable();
+            $table->string('st_price_def')->nullable();
+            $table->string('sec_price_def')->nullable();
+            $table->string('third_price_def')->nullable();
             $table->timestamps();
         });
     }
