@@ -42,28 +42,7 @@ class HomeController extends Controller {
         ]);
     }
 
-    public function showAttractions($id) {
-        $attraction = Attraction::find($id);
-        $items = $attraction->items()->where('status', 1)->where('deleted', 0)->orderBy('arrangement')->limit(12)->get();
-        $moreAttraction = (count($attraction->items()->where('status', 1)->where('deleted', 0)->get()) > 12) ? true : false;
-        $topCityAttractions = $attraction->sort->attractions()->where('status', 1)->where('id','!=',$id)->orderBy('recommended')->limit(5)->get();
-        return view('Web.2_attraction', [
-            'attraction' => $attraction,
-            'items' => $items,
-            'moreAttraction' => $moreAttraction,
-            'topCityAttractions' => $topCityAttractions]);
-    }
-
-    public static function getLowestPrice($id) {
-        $item = Item::find($id);
-        $lowestPrice = $item->price()
-                ->where('status', 1)
-                ->where('deleted', 0)
-                ->orderBy('st_price')
-                ->first();
-        return number_format($lowestPrice['st_price'], 2, '.', '');
-    }
-
+ 
 // old
     protected function catgories() {
         return Sort::where('status', 1)->get();

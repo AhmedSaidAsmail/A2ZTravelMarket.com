@@ -17,7 +17,7 @@
     <div class="col-md-8">
         <h1 class="normal-header">{{ucfirst($attraction->name)}}: Tours & Tickets</h1>
         @foreach($items as $item)
-        <a href="" class="item-tour-link">
+        <a href="{{route('tour.show',['city'=>$attraction->sort->name,'tour'=>$item->name,'id'=>$item->id])}}" class="item-tour-link">
             <div class="row item-tour">
                 <div class="col-md-4">
                     <div class="item-tour-img">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-8 item-tour-right">
                     <div class="tour-price-from"><span>{{Vars::getVar('From')}}</span>{{Vars::getVar('€')}}
-                        {{\App\Http\Controllers\Web\HomeController::getLowestPrice($item->id)}}</div>
+                        {{\App\Http\Controllers\Web\AttractionController::getLowestPrice($item->id)}}</div>
                     <div class="tour-duration">
                         <i class="fa fa-clock-o"></i> <label>{{Vars::getVar('Duration')}}:</label> {{$item->duration}} {{Vars::getVar('hours')}}
                     </div>
@@ -45,7 +45,8 @@
         @endforeach
         @if($moreAttraction)
         <div class="row text-center see-all">
-            <button class="btn btn-info">See all tours & things to do in {{$attraction->sort->name}} {{$attraction->name}}</button>
+            <a class="btn btn-info" href="{{route('attraction.show.all',['id'=>$attraction->id])}}">
+                See all tours & things to do in {{$attraction->sort->name}} {{$attraction->name}}</a>
         </div>
         @endif
     </div>

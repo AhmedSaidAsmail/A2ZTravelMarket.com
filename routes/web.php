@@ -7,12 +7,14 @@ Route::get('/login/supplier', 'Auth_Supplier\LoginController@showLoginForm')->na
 Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('supplier.login');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
-Route::get('/Attraction/{id}', ['uses' => 'Web\HomeController@showAttractions'])->name('attraction.show');
+Route::get('/Attraction/{id}', ['uses' => 'Web\AttractionController@showAttractions'])->name('attraction.show');
+Route::get('/Attraction/show/all/{id}', ['uses' => 'Web\AttractionController@showAllAttractions'])->name('attraction.show.all');
+Route::get('/Attraction/show/availability/{id}', ['uses' => 'Web\AttractionController@showAvailability'])->name('attraction.show.available');
+Route::get('/{city}/{tour}/{id}', ['uses' => 'Web\ItemsController@show'])->name('tour.show');
 //old
 Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
 Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');
 Route::get('Category/{city?}/{id}', ['uses' => 'Web\HomeController@citiesShow'])->name('cities.show');
-Route::get('/{city}/tour/{tour}/{id}', ['uses' => 'Web\HomeController@tourShow'])->name('tour.show');
 Route::post('/add-to-cart/{id}', ['uses' => 'Web\HomeController@addToCart'])->name('add.to.cart');
 Route::get('my-cart', ['uses' => 'Web\HomeController@cartShow'])->name('cart');
 route::get('/my-cart/remove/{id}', ['uses' => 'Web\HomeController@removeFromCart'])->name('remove.from.cart');

@@ -25,5 +25,8 @@ class Attraction extends Model {
     public function items() {
         return $this->hasMany(\App\Models\Item::class);
     }
+    public function prices(){
+        return $this->hasManyThrough( \App\Models\Price::class,\App\Models\Item::class);
+    }
 
 }
