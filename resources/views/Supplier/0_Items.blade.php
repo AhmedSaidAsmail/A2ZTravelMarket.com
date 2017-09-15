@@ -1,5 +1,5 @@
 
-<?php //echo "<pre>" . print_r(Session::all(), true)                       ?>
+<?php //echo "<pre>" . print_r(Session::all(), true)                        ?>
 @extends('Supplier.Layouts.Layout_Basic')
 @section('title','Items Panel')
 @section ('Extra_Css')
@@ -97,19 +97,25 @@
 
                                 <div class="row">
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Image</label>
                                             <input type="file" class="form-control" name="img">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Duration:</label>
+                                            <input type="number" class="form-control" name="duration" placeholder="only number" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Keywords:</label>
                                             <input class="form-control" name="keywords" placeholder="-- Keywords --" >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Description:</label>
                                             <input class="form-control" name="description" placeholder="-- Description --" >
@@ -192,7 +198,7 @@
                                     <th>Tour</th>
                                     <th>Visitors</th>
                                     <th>Reviews</th>
-                                     <th>Rating</th>
+                                    <th>Rating</th>
                                     <th>Status</th>
                                     <th>Reservations</th>
                                     <th>Recommended</th>

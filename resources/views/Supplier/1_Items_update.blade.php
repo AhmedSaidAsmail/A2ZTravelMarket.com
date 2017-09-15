@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group {{$errors->has('img')?'has-error':''}}">
                                             <label>Image</label>
                                             <input type="file" class="form-control" name="img">
@@ -100,13 +100,19 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Duration:</label>
+                                            <input type="number" class="form-control" name="duration" value="{{$Item->duration}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Keywords:</label>
                                             <input class="form-control" value="{{$Item->keywords}}" name="keywords" placeholder="-- Keywords --" >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Description:</label>
                                             <input class="form-control" value="{{$Item->description}}" name="description" placeholder="-- Description --" >

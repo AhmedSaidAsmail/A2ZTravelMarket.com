@@ -18,6 +18,7 @@ class Item extends Model {
         'keywords',
         'description',
         'img',
+        'duration',
         'intro',
         'visits',
         'deleted'];

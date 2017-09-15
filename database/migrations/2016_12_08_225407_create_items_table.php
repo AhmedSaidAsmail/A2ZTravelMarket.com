@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration {
             $table->integer('arrangement')->default(0);
             $table->string('title');
             $table->string('img')->nullable();
+            $table->integer('duration');
             $table->text('keywords')->nullable();
             $table->text('description')->nullable();
             $table->integer('status')->default(0);

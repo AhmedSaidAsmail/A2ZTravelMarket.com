@@ -1,187 +1,145 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hurghada Wonders</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @yield('meta_tags')
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-        @yield('_extra_css')
-        <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-
     </head>
     <body>
-        @yield('extra-plugged-in')
+        <div class="row text-right">
+            <div class="container">
+                <ul class="list-inline top-header black-almost">
+                    <li><a href=""><i class="fa fa-heart"></i> Wishlist</a></li>
+                    <li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href=""><i class="fa fa-question-circle"></i> Help</a></li>
+                    <li><a href=""><i class="fa fa-user"></i> Login</a></li>
+                    <li><a href=""><i class="fa fa-user"></i> Sign up</a></li>
+                </ul>
+            </div>
 
+        </div>
+        <div class="row main-nav">
+            <div class="container main-nav-holder">
+                <div class="main-nav-logo"></div>
+                <ul class="list-inline">
+                    <li><a href="">ALL DEALS</a></li>
+                    <li><a href="">SEARCH & BOOK</a></li>
+                </ul>
+            </div>
+        </div>
         <!-- header -->
         @yield('header-nav')
-
         <!-- end header -->
-        <!-- content -->
-        @yield('content')
-
-        <div class="row">
+        <div class="row insider-holder">
             <div class="container">
-                <div class="home-title">
-                    <div class="row-title">{{Vars::getVar('THINGS_TO_DO_IN')}}  <span>{{Vars::getVar('HURGHADA')}}</span>
-                    </div>
-                    <div class="row-line"></div>
-                </div>
-                <div class="row end-welcome">
-                    @foreach(App\MyModels\Admin\Sort::where('recommended',1)->limit(4)->orderBy('arrangement')->get() as $city)
-                    <a href="{{route('cities.show',['city'=>urlencode($city->name),'id'=>$city->id])}}">
-                        <div class="col-md-3">
-                            <div class="end-welcome-item">
-                                <img class="img-abs-center" src="{{asset('images/sorts/thumb/'.$city->img)}}" alt="">
-                                <span class="welcome-sort-name">{{$city->name}}</span>
-                            </div>
-
-                        </div>
-                    </a>
-                    @endforeach
-                </div>
+                <!-- content -->
+                @yield('content')
+                <!-- content -->
             </div>
         </div>
-        <!-- last welcome end -->
-        <!-- footer start -->
+
+        <!-- footer -->
+        <!-- footer -->
         <div class="row footer">
-            <div class="footer-show-toggle"><i class="fa fa-arrow-circle-up"></i> {{Vars::getVar('Show_more')}}</div>
-            <div class="container">
-                <div class="row footer-row">
-                    <div class="col-md-4 footer-header-img">
-                        <img src="{{asset('images/logo_footer.png')}}" alt="">
-                    </div>
-                    <div class="col-md-4 col-md-push-4" style="padding-top: 10px;">
-                        <div class="form-group footer-search">
-                            <input type="text" class="form-control" name="search" placeholder="Search the site">
-                            <button>
-                                <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-search fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row footer-row footer-flex">
-                    <div class="col-md-6 footer-price-quarntee">
-                        <h2>{{Vars::getVar('Price_Beat_Guarantee')}}</h2>
-                        <label>{{Vars::getVar('Gurantee_label')}}</label>
-                        <p>{{Vars::getVar('Guarntee_text')}} .......
-                            <a href="{{ route('topics.show',['topicsName'=>urlencode('guarntee')]) }}">{{Vars::getVar('click_here')}}</a></p>
+            <div class="container" style="position: relative;">
+                <div class="footer-show-toggle"><i class="fa fa-arrow-circle-down"></i> Show more</div>
+                <div class="row">
 
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="about+us">About us </a></li>
+                            <li><a href="Contact+us">Contact us </a></li>
+                            <li><a href="Low+Price+Guarantee">Low Price Guarantee </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="News+Letter">News Letter </a></li>
+                            <li><a href="FAQ">FAQ </a></li>
+                            <li><a href="Site+Map">Site Map </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="Data+Protection">Data Protection </a></li>
+                            <li><a href="Terms+%26+Conditions">Terms &amp; Conditions </a></li>
+                            <li><a href="Privacy">Privacy </a></li>
+                        </ul>
                     </div>
                     <div class="col-md-3">
-                        <div class="footer-contacts">
-                            <span class="footer-title-span">{{Vars::getVar('Contact')}}</span>
-                            <span>{{Vars::getVar('mobile')}}</span>
-                            <a href="">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
+                        <div class="row">
+                            <span class="glyphicon glyphicon-envelope" style="margin-right: 10px; font-size: 20px;"></span>
+                            Newsletter: Get the best travel deals delivered to your inbox!
                         </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="footer-contacts">
-                            <span class="footer-title-span">{{Vars::getVar('Connect')}}</span>
-                            <span>{{Vars::getVar('Follow_us_on_these_sites')}}:</span>
-                            <a href="{{Vars::getVar('facebook')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="{{Vars::getVar('twitter')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="{{Vars::getVar('youtube')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="{{Vars::getVar('instagram')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="{{Vars::getVar('tripadvisor')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-tripadvisor fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="{{Vars::getVar('google')}}">
-                                <span class="fa-stack">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
+                        <div class="row">
+                            <form>
+                                <div class="col-md-10 col-sm-10 col-xs-10" style="padding-left: 0px; padding-right: 0px;">
+                                    <input type="text" value="" class="form-control" placeholder="Your mail">
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 5px;">
+                                    <button class="btn btn-success" style="padding: 5px;"><i class="fa fa-check" style="font-size: 20px;"></i></button>
+                                </div>
+                            </form>
                         </div>
-
+                        <div class="row footer-social-links">
+                            <div class="col-md-12 col-sm-8 col-xs-8">
+                                <a href="#"> <i class="fa fa-facebook"></i></a>
+                                <a href="#"> <i class="fa fa-twitter"></i></a>
+                                <a href="#"> <i class="fa fa-google-plus"></i></a>
+                                <a href="#"> <i class="fa fa-pinterest-p"></i></a>
+                                <a href="#"> <i class="fa fa-feed"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        <!-- footer end -->
-        <div class="row footer-alternate toggle-up">
-            <div class="container">
+        <div class="row footer-toggle toggle-off">
+            <div class="container footer-final-links">
                 <div class="row">
-                    <div class="col-md-6 call-support">
-                        <h2>{{Vars::getVar('UK_Tel')}}: {{Vars::getVar('Uk_tel_no')}}</h2>
-                        {{Vars::getVar('Our_Experts_are_here_to_help!')}}
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top 10 Countries</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Rome</a></li>
+                            <li><a href="">Paris</a></li>
+                            <li><a href="">London</a></li>
+                            <li><a href="">Cairo</a></li>
+                            <li><a href="">Sharm El Sheikh</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
                     </div>
-                    <div class="col-md-6 text-right">
-                        <ul class="list-inline">
-                            <li>
-                                <a href="{{route('trnafsre.all')}}">
-                                    <i class="fa fa-car fa-2x"></i>
-                                    {{Vars::getVar('Airport_transfers')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('review.all')}}">
-                                    <i class="fa fa-comments-o fa-2x"></i>
-                                    {{Vars::getVar('GuestBook')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('topics.show',['topicsName'=>urlencode('contact')]) }}">
-                                    <i class="fa fa-envelope-o fa-2x"></i>
-                                    {{Vars::getVar('Click_to_Email')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('cart')}}">
-                                    <i class="fa fa-shopping-cart fa-2x"></i>
-                                    {{Vars::getVar('View_Basket_Items')}}
-                                </a>
-                            </li>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top Destinations</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Must-See Attractions</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row text-center last-footer">
-            © 2017 hurghadawonders.com All Rights Reserved
-        </div>
+        <div class="row text-center footer-rights">© 2017 A2ZTravelMarket.com All Rights Reserved</div>
+
         <script type="text/javascript" src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{{asset('js/min.js')}}"></script>

@@ -312,6 +312,12 @@ span.under-slides-title{
     bottom: 12px;
     left: 20px;
 }
+.item-tour-link{
+    color: inherit;
+}
+.item-tour-link:hover{
+    text-decoration: none;
+}
 .item-tour{
     background: #FFF;
     border: 1px solid #e6e6e6;

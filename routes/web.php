@@ -7,6 +7,8 @@ Route::get('/login/supplier', 'Auth_Supplier\LoginController@showLoginForm')->na
 Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('supplier.login');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
+Route::get('/Attraction/{id}', ['uses' => 'Web\HomeController@showAttractions'])->name('attraction.show');
+//old
 Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
 Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');
 Route::get('Category/{city?}/{id}', ['uses' => 'Web\HomeController@citiesShow'])->name('cities.show');
