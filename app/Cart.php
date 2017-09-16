@@ -1,8 +1,7 @@
 <?php
-namespace App\MyModels;
+namespace App;
 
 use Illuminate\Http\Request;
-use App\MyModels\Admin\Transfer;
 
 class Cart {
 
@@ -16,14 +15,9 @@ class Cart {
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
-    public function add($item, $id) {
-        if (isset($this->items) && array_key_exists($id, $this->items)) {
-            // remove ex item price from total
-            $this->totalPrice -= $this->items[$id]['price'];
-        } else {
+    public function add($item) {
             $this->totalQty++;
-        }
-        $this->items[$id] = $item;
+        $this->items[] = $item;
         $this->totalPrice += $item['price'];
     }
     public function addTransfer($transferArray) {

@@ -13,14 +13,9 @@
             <span class="main-item-duration"><i class="fa fa-clock-o"></i> 
                 <label>{{Vars::getVar('Duration')}}:</label> {{$item->duration}} {{Vars::getVar('hours')}}</span>
         </div>
-        <div id="images" style="display: none">
-            @foreach($item->itemsgallrie as $image)
-            <a href="{{asset('images/gallery/'.$image->img)}}" class="show-more-photos" data-toggle="lightbox" data-gallery="{{$item->name}}"></a>
-            @endforeach
-        </div>
+
         <div class="main-item-img">
             <img src="{{asset('images/items/'.$item->img)}}" class="img-abs-center" alt="">
-            <a href="{{asset('images/items/'.$item->img)}}" class="show-more-photos" data-toggle="lightbox" data-gallery="{{$item->name}}"><i class="fa fa-camera"></i> More photos</a>
         </div>
     </div>
 </div>
@@ -61,7 +56,6 @@
                 </div>
             </div>
         </div>
-        @if(!is_null($item->price_definition))
         <div class="row item-select-date">
             <div class="row">
                 <div class="col-md-12">
@@ -140,7 +134,6 @@
             </form>
 
         </div>
-        @endif
         <!-- loading section -->
         <div class="row ftech-data-loading">
             <img src="{{asset('images/loading6_230x230-cooler.gif')}}" alt="fetech data">
@@ -375,30 +368,28 @@
 <h2 class="item-addetional-header">You might also like...</h2>
 <div class="row item-addetional">
     @foreach($recommended as $itemRec)
-    <a href="{{route('tour.show',['city'=>$itemRec->attraction->sort->name,'tour'=>$itemRec->name,'id'=>$itemRec->id])}}" class="item-tour-link">
-        <div class="col-md-3">
-            <div class="item-addetional-holder">
-                <div class="item-addetional-price">
-                    from
-                    <span>
-                        {!! \App\Http\Controllers\Web\ItemsController::getLowestPrice($itemRec->id)!!}
-                    </span>
-                </div>
-                <div class="item-addetional-rate">
-                    {{ App\Http\Controllers\ReviewController::getRateStar(App\Http\Controllers\ReviewsRateCalculate::calc($itemRec->id,'overall_rating')) }}
-                    <span>{{count($itemRec->reviews()->where('confirm',1)->get())}} {{Vars::getVar('Reviews')}}</span>
-                </div>
-                <div class="item-addetional-img">
-                    <img src="{{asset('images/items/thumb/'.$itemRec->img)}}" class="img-abs-center" alt="{{$itemRec->name}}">
-                </div>
-                <h2>{{$itemRec->name}}</h2>
-                <span class="item-addetional-duration">
-                    <i class="fa fa-clock-o"></i> 
-                    <label>{{Vars::getVar('Duration')}}:</label> {{$itemRec->duration}} {{Vars::getVar('hours')}}
+    <div class="col-md-3">
+        <div class="item-addetional-holder">
+            <div class="item-addetional-price">
+                from
+                <span>
+                    {!! \App\Http\Controllers\Web\ItemsController::getLowestPrice($itemRec->id)!!}
                 </span>
             </div>
+            <div class="item-addetional-rate">
+                {{ App\Http\Controllers\ReviewController::getRateStar(App\Http\Controllers\ReviewsRateCalculate::calc($itemRec->id,'overall_rating')) }}
+                <span>{{count($itemRec->reviews()->where('confirm',1)->get())}} {{Vars::getVar('Reviews')}}</span>
+            </div>
+            <div class="item-addetional-img">
+                <img src="{{asset('images/items/thumb/'.$itemRec->img)}}" class="img-abs-center" alt="{{$itemRec->name}}">
+            </div>
+            <h2>{{$itemRec->name}}</h2>
+            <span class="item-addetional-duration">
+                <i class="fa fa-clock-o"></i> 
+                <label>{{Vars::getVar('Duration')}}:</label> {{$itemRec->duration}} {{Vars::getVar('hours')}}
+            </span>
         </div>
-    </a>
+    </div>
     @endforeach
 
 
@@ -408,17 +399,12 @@
 @endsection
 @section('_extra_css')
 <link rel="stylesheet" href="{{asset('css/datepicker/zebra_datepicker.min.css')}}">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.css" rel="stylesheet">
 @endsection
 @section('_extra_js')
 <script type="text/javascript" src="{{asset('js/datepicker/zebra_datepicker.min.js')}}"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
 <script type="text/javascript" src="js/min.js"></script>
 <script>
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox();
-});
+
 $('#tour_date').Zebra_DatePicker({
     direction: true,
     format: 'M d,Y',

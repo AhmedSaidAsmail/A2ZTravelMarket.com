@@ -86,7 +86,19 @@ $class = ($oder == 0) ? "price-active" : "price-not-active";
         </div>
         <div class="row price-add-cart">
             <div class="col-md-12 text-right">
-                <button class="btn btn-info">Add to Cart</button>
+                <form method="post" action="{{route('reservation.cart.add')}}">
+                    {{csrf_field()}} 
+                    <input type="hidden" name="item_id" value="{{$date->item->id}}" />
+                    <input type="hidden" name="price_id" value="{{$date->id}}" />
+                    <input type="hidden" name="price" value="{{ \App\Http\Controllers\Web\ItemsController::getTotalPriceAmount($request,$date)}}">
+                    <input type="hidden" name="date" value="{{$tourDate}}">
+                    <input type="hidden" name="st_no" value="{{$request->st_no}}">
+                    <input type="hidden" name="sec_no" value="{{$request->sec_no}}">
+                    <input type="hidden" name="third_no" value="{{$request->third_no}}">
+                    <input type="hidden" name="discount" value="{{$date->discount}}">
+                  <button class="btn btn-info">Add to Cart</button>  
+                </form>
+                
             </div>
         </div>
     </div>

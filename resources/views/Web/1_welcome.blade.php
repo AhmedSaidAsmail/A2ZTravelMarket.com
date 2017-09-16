@@ -89,7 +89,7 @@
                 <div class="col-md-3-img">
                     <a href="{{route('attraction.show',['id'=>$topAttraction->id])}}">
                         <img src="{{asset('images/attraction/thumb/'.$topAttraction->img)}}" class="img-abs-center" alt="">
-                        <div class="tour-label">{{$topAttraction->name}}</div>
+                        <div class="tour-label">{{ucfirst($topAttraction->name)}}</div>
                     </a>
                 </div>
             </div>

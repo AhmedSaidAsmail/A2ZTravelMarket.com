@@ -118,24 +118,14 @@ $(document).ready(function () {
     });
     // old
     $(window).scroll(function () {
-        var nav = $("#main-nav");
+        var nav = $(".main-header-holder");
         var height = $(window).scrollTop();
-        if (!$(".main-nav-responsive").is(":visible")) {
-            if (height > 150) {
-                if (nav.hasClass("main-nav-normal")) {
-                    nav.hide();
-                    nav.show();
-                    nav.removeClass("main-nav-normal");
-                    nav.addClass("main-nav-fixed bounceInLeft");
-                }
-            } else {
-                if (nav.hasClass("main-nav-fixed")) {
-                    nav.removeClass("main-nav-fixed");
-                    nav.removeClass("bounceInLeft");
-                    nav.addClass("main-nav-normal");
-                }
-            }
+        if (height > 450) {
+            nav.addClass('fixed-main-nav');
+        } else {
+           nav.removeClass('fixed-main-nav');
         }
+
 
     });
     $(".responsive-menu-icon").click(function () {

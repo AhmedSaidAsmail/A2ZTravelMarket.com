@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 html,body{
     width: 100%;
     margin: 0px;
@@ -47,24 +48,54 @@ ul{
     width: 100%;
     height: auto;
 }
+.main-header-holder{
+    /*    position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 10000;
+        background-color: rgba(255,255,255,.9);
+    */    border-bottom: 5px solid #fba525;
+    transition: ease all .5s;
+}
+.fixed-main-nav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10000;
+    background-color: rgba(255,255,255,.9);
+}
+.main-header-holder > .container{
+    position: relative;
+}
+.main-nav-logo{
+    width: 249px;
+    height: 62px;
+    background: url('../images/logo.png') no-repeat left top;
+    position: absolute;
+    left: 0px;
+    top: 5px;
+}
 .top-header{
     margin-top: 10px;
 }
 .top-header a{
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     font-size: 17px;
     color: #6baeef;
-    font-weight: 500;
+    font-weight: 400;
+
 }
 .top-header a i{
-    color: #2b2b2b;
+    color: #4e4e4f;
 }
 .top-header a:hover{
     text-decoration: none;
 }
 .main-nav{
-    background-color: #4e2242;
-    padding-top: 10px;
+    background-color: #fba525;
+    padding-top: 5px;
     text-align: center;
     margin-top: 5px;
 }
@@ -85,14 +116,7 @@ ul{
 .main-nav-holder{
     position: relative;
 }
-.main-nav-logo{
-    width: 249px;
-    height: 62px;
-    background: url('../images/logo.png') no-repeat left top;
-    position: absolute;
-    left: 0px;
-    top: -45px;
-}
+
 .under-slides{
     border-top: 4px solid #00aeef;
     border-bottom: 1px solid #e6e6e6;
@@ -156,10 +180,11 @@ span.under-slides-title{
     background-color: #FFF;
     bottom: 15px;
     left: 15px;
-    padding: 7px 15px;
-    font-weight: 600;
-    font-size: 17px;
-    color: #202020;
+    padding: 3px 15px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #252525;
+    font-family: 'Dosis', sans-serif;
 }
 .row-img-holder{
     margin-bottom: 25px;
@@ -342,13 +367,13 @@ span.under-slides-title{
     position: relative;
 }
 .item-tour-rating{
-    margin-top: 15px;
+    margin-top: 0px;
     margin-bottom: 15px;
     color: #a2a3a3;
 }
 .item-tour-rating i{
     color: #ffc203;
-    font-size: 18px;
+    font-size: 22px;
 }
 .item-tour-intro{
     display: block;
@@ -469,12 +494,14 @@ span.under-slides-title{
 #tour_from,#tour_to{
     background-color: #FFF;
     border-radius: 0px 5px 5px 0px;
-    border-color: #a6a6a7;
+    border-color: #383838;
 }
 .main-item-title{
-    margin:10px 0px;
+    margin:10px 0px 0px 0px;
     font-size: 30px;
     font-family: 'Asap', sans-serif;
+    font-weight: 600;
+    color: #4a4a49;
 }
 .main-item-img{
     position: relative;
@@ -1214,6 +1241,19 @@ ul.highlights{
     padding: 3px 10px;
     border-radius: 2px;
     font-size: 17px;
-     font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
-
+.show-more-photos{
+    position: absolute;
+    z-index: 2000;
+    right: 30px;
+    top: 20px;
+    background-color: rgba(0,0,0,.7);
+    display: inline-block;
+    color: #FFF;
+    padding: 5px 20px;
+}
+.show-more-photos:hover{
+    color: #FFF;
+    text-decoration: none;
+}

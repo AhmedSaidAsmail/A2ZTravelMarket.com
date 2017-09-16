@@ -1,24 +1,26 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        @yield('meta_tags')
-        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
+        <link rel="stylesheet" href="http://localhost/A2ZTravelMarketNew.com/public/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-        @yield('_extra_css')
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="http://localhost/A2ZTravelMarketNew.com/public/css/datepicker/zebra_datepicker.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://localhost/A2ZTravelMarketNew.com/public/css/style.css">
     </head>
     <body>
         <div class="row text-right main-header-holder">
             <div class="container">
-                <a href="{{route('home')}}"><div class="main-nav-logo"></div></a>
+                <a href="http://localhost/A2ZTravelMarketNew.com/public"><div class="main-nav-logo"></div></a>
                 <ul class="list-inline top-header black-almost">
                     <li><a href=""><i class="fa fa-heart"></i> Wishlist</a></li>
                     <li>
                         <a href=""><i class="fa fa-shopping-cart"></i> Cart
-                            {!! Session::has('cart')?"(".Session::get('cart')->totalQty.")":null !!}
+
                         </a></li>
                     <li><a href=""><i class="fa fa-question-circle"></i> Help</a></li>
                     <li><a href=""><i class="fa fa-user"></i> Login</a></li>
@@ -29,12 +31,29 @@
         </div>
 
         <!-- header -->
-        @yield('header-nav')
         <!-- end header -->
         <div class="row insider-holder">
             <div class="container">
-                <!-- content -->
-                @yield('content')
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-md-8">
+                        <h1>Hooray, you’ve successfully added 1 item to your cart.</h1>
+                        <h2>Only 2 more steps to go!</h2>
+                        <span>Once you add an activity to your cart, we will save your spot for 60 minutes.</span>
+                        <div class="row item-cart">
+                            <div class="col-md-2">
+                                <div class="item-card-img">
+                                    <img src="images/items/thumb/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+           
+
+
                 <!-- content -->
             </div>
         </div>
@@ -137,9 +156,27 @@
         </div>
         <div class="row text-center footer-rights">© 2017 A2ZTravelMarket.com All Rights Reserved</div>
 
-        <script type="text/javascript" src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
+        <script type="text/javascript" src="http://localhost/A2ZTravelMarketNew.com/public/js/jquery-2.2.3.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="{{asset('js/min.js')}}"></script>
-        @yield('_extra_js')
+        <script type="text/javascript" src="http://localhost/A2ZTravelMarketNew.com/public/js/min.js"></script>
+        <script type="text/javascript" src="http://localhost/A2ZTravelMarketNew.com/public/js/datepicker/zebra_datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
+        <script type="text/javascript" src="js/min.js"></script>
+        <script>
+            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+            $('#tour_date').Zebra_DatePicker({
+                direction: true,
+                format: 'M d,Y',
+                strict: false,
+                default_position: 'below',
+                onSelect: function () {
+                    var label = $(this).closest('.input-group').find('label');
+                    label.addClass('small');
+                }
+            });
+        </script>
     </body>
 </html>

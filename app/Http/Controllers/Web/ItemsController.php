@@ -42,7 +42,7 @@ class ItemsController extends Controller {
             'item' => $item,
             'dates' => $dates,
             'day' => $day,
-            'date' => $date,
+            'tourDate' => $date,
             'request' => $request
         ]);
     }
@@ -61,6 +61,15 @@ class ItemsController extends Controller {
             return '<span class="discount-price"><label>' . Vars::getVar('€') . $total . '</label>' . Vars::getVar('€') . $totalAfter . '</span>';
         }
         return '<span>' . Vars::getVar('€') . $total . '</span>';
+    }
+
+    public static function getTotalPriceAmount(Request $request, $price) {
+        $total = self::getTotalPriceWithoutDiscount($request, $price);
+        if ($price->discount > 0) {
+            $totalAfter = self::getTotalAfterDiscount($total, $price->discount);
+            return $totalAfter;
+        }
+        return $total;
     }
 
     public static function getTotalAfterDiscount($price, $discount) {
@@ -89,7 +98,7 @@ class ItemsController extends Controller {
 
     public static function getDiscountSign($id) {
         $lowPriceRow = self::getPricePlane($id);
-        if ($lowPriceRow->discount > 0) {
+        if (!is_null($lowPriceRow) && $lowPriceRow->discount > 0) {
             return '<div class="discount-value">Save up to ' . $lowPriceRow->discount . '%</div>';
         }
     }
@@ -110,7 +119,7 @@ class ItemsController extends Controller {
             }
             return Vars::getVar('€') . number_format($lowPriceRow->st_price, 2, '.', '');
         }
-        return Vars::getVar('€') ."0.00";
+        return Vars::getVar('€') . "0.00";
     }
 
 }
