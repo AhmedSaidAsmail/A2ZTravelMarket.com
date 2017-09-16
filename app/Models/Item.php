@@ -43,6 +43,9 @@ class Item extends Model {
     public function exploration() {
         return $this->hasOne(\App\Models\Exploration::class);
     }
+    public function highlights(){
+        return $this->hasMany(\App\Models\Highlight::class);
+    }
 
     public function inclusion() {
         return $this->hasMany(\App\Models\Inclusion::class);

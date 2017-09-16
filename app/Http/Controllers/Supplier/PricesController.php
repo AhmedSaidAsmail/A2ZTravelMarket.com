@@ -38,6 +38,13 @@ class PricesController extends Controller {
         return redirect()->back();
     }
 
+    public function updateDiscount(Request $request, $id) {
+        $data = Price::findOrFail($id);
+        $discount = $request->discount;
+        $data->update(['discount' => $discount]);
+        return redirect()->back();
+    }
+
     public function destroy($id) {
         $data = Price::findOrFail($id);
         $data->update(['deleted' => 1]);

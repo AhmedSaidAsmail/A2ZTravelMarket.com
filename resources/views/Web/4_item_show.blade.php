@@ -70,10 +70,9 @@
                         <div class="form-group">
                             <div class="input-group sp-eddition">
                                 <div class="input-group-addon">
-                                    <label>date</label>
                                     <i class="fa fa-calendar-o fa-lg"></i>
                                 </div>
-                                <input name="date" value="" type="text" class="form-control" id="tour_date" required>
+                                <input name="date" value="{{date('M d,Y')}}" type="text" class="form-control" id="tour_date" required>
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -141,242 +140,46 @@
         </div>
 
         <div id="all-plane-prices">
-            <div class="row price-plane-avaiable price-active">
-                <div class="col-md-12 first-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            English Tour: Up to 32 People
-                        </div>
-                        <div class="col-md-5 text-right price-plane-total">
-                            Total price
-                            <span>€162.00</span>
-                        </div>
-                        <div class="col-md-1 text-right">
-                            <span class="fa-stack" id="hide-plane">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-check fa-inverse fa-stack-1x"></i>
-                            </span>
-                            <span class="fa-stack" id="active-plane">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-caret-down fa-inverse fa-stack-1x"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            A maximum of 32 participants will be on this tour
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 second-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Starting time
-                            <span style="display: block;">7:55 AM</span>
-                        </div>
-                        <div class="col-md-6 price-all-details">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Price Breakdown
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Adults1 x €64.90
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €64.90
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Children1 x €59.20
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €59.20
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row price-add-cart">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-info">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <div class="row price-plane-avaiable price-not-active">
-                <div class="col-md-12 first-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            English Tour: Up to 32 People
-                        </div>
-                        <div class="col-md-5 text-right price-plane-total">
-                            Total price
-                            <span>€162.00</span>
-                        </div>
-                        <div class="col-md-1 text-right">
-                            <span class="fa-stack" id="hide-plane">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-check fa-inverse fa-stack-1x"></i>
-                            </span>
-                            <span class="fa-stack" id="active-plane">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-caret-down fa-inverse fa-stack-1x"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            A maximum of 32 participants will be on this tour
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 second-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Starting time
-                            <span style="display: block;">7:55 AM</span>
-                        </div>
-                        <div class="col-md-6 price-all-details">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Price Breakdown
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Adults1 x €64.90
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €64.90
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Children1 x €59.20
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €59.20
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row price-add-cart">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-info">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row price-plane-avaiable price-not-active">
-                <div class="col-md-12 first-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            English Tour: Up to 32 People
-                        </div>
-                        <div class="col-md-5 text-right price-plane-total">
-                            Total price
-                            <span>€162.00</span>
-                        </div>
-                        <div class="col-md-1 text-right">
-                            <span class="fa-stack" id="hide-plane">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-check fa-inverse fa-stack-1x"></i>
-                            </span>
-                            <span class="fa-stack" id="active-plane">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-caret-down fa-inverse fa-stack-1x"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            A maximum of 32 participants will be on this tour
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 second-row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Starting time
-                            <span style="display: block;">7:55 AM</span>
-                        </div>
-                        <div class="col-md-6 price-all-details">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Price Breakdown
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Adults1 x €64.90
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €64.90
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Children1 x €59.20
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    €59.20
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row price-add-cart">
-                        <div class="col-md-12 text-right">
-                            <form method="get" action="#" id="add-toCart">
-                                <button class="btn btn-info">Add to Cart</button>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row price-plane-avaiable price-not-active">
-                <div class="col-md-12 first-row">
-                    <div class="row" id="not-available">
-                        <div class="col-md-6">
-                            English Tour: Up to 32 People
-                            <span class="not-available-warning">Not available</span>
-                            <div class="next-date">
-                                Next available date: <a href="">Friday, September 29, 2017</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
         </div>
 
         <!-- loading section end -->
         <div class="row item-highlights">
             <div class="col-md-12">
+                @if(count($item->highlights)>0)
                 <h2>Highlights</h2>
                 <ul class="highlights">
-                    <li>Marvel at the famous Great Pyramids of Giza with your Egyptologist guide</li>
-                    <li>See the ancient Step Pyramid of Djoser at the Sakkara archeological site</li>
-                    <li>Visit Egypt's former capital of Memphis, once the cultural center of the ancient world</li>
+                    @foreach($item->highlights as $highlight)
+                    <li>{{$highlight->txt}}</li>
+                    @endforeach
                 </ul>
+                @endif
+                @if(isset($item->exploration->txt))
                 <h2>Full description</h2>
-                Great Pyramids & Sphinx (Giza Pyramid Complex ) , Saqqara Step Pyramids and Memphis open air Museum :
-                Start your day with an 08:00 AM pick-up at your hotel and travel with your guide to the
+                {!! $item->exploration->txt !!}
+                @endif
                 <h2>What’s included</h2>
                 <ul>
-                    <li><i class="fa fa-check item-included"></i> Pick-up and drop off at hotels in Cairo and Giza</li>
-                    <li><i class="fa fa-times item-not-included"></i> Site entrance fees</li>
+                    @if(count($item->inclusion)>0)
+                    @foreach($item->inclusion as $inclusion)
+                    <li><i class="fa fa-check item-included"></i> {{$inclusion->txt}}</li>
+                    @endforeach
+                    @endif
+                    @if(count($item->exclusion)>0)
+                    @foreach($item->exclusion as $exclusion)
+                    <li><i class="fa fa-times item-not-included"></i> {{$exclusion->txt}}</li>
+                    @endforeach
+
+                    @endif
                 </ul>
+                @if(count($item->additional)>0)
                 <h2>Know before you go</h2>
                 <ul>
-                    <li>Please bring sunglasses and a hat or head scarf and wear a light clothes.</li>
+                    @foreach($item->additional as $additional)
+                    <li>{{$additional->txt}}</li>
+                    @endforeach
                 </ul>
+                @endif
             </div>
         </div>
         <!-- reviews -->
@@ -548,8 +351,11 @@
     </div>
     <div class="col-md-4 right-side-tour-holder">
         <div class="text-right right-side-tour">
-            from
-            <span class="total-right">€49.92</span>
+            {!! \App\Http\Controllers\Web\itemsController::getDiscountSign($item->id) !!}
+            <span>from</span>
+            <span class="total-right">
+                {!! \App\Http\Controllers\Web\itemsController::getLowestPrice($item->id) !!}
+            </span>
             <span>per person</span>
             <button class="btn btn-info" id="go-to-book">Book now</button>
         </div>
@@ -561,106 +367,32 @@
 </div>
 <h2 class="item-addetional-header">You might also like...</h2>
 <div class="row item-addetional">
+    @foreach($recommended as $itemRec)
     <div class="col-md-3">
         <div class="item-addetional-holder">
             <div class="item-addetional-price">
                 from
-                <span>€162.00</span>
+                <span>
+                    {!! \App\Http\Controllers\Web\ItemsController::getLowestPrice($itemRec->id)!!}
+                </span>
             </div>
             <div class="item-addetional-rate">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <span>4 Reviews</span>
+                {{ App\Http\Controllers\ReviewController::getRateStar(App\Http\Controllers\ReviewsRateCalculate::calc($itemRec->id,'overall_rating')) }}
+                <span>{{count($itemRec->reviews()->where('confirm',1)->get())}} {{Vars::getVar('Reviews')}}</span>
             </div>
             <div class="item-addetional-img">
-                <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
+                <img src="{{asset('images/items/thumb/'.$itemRec->img)}}" class="img-abs-center" alt="{{$itemRec->name}}">
             </div>
-            <h2>Cairo: Full-Day Giza Pyramids, Saqqara & Dahshur + Lunch</h2>
+            <h2>{{$itemRec->name}}</h2>
             <span class="item-addetional-duration">
                 <i class="fa fa-clock-o"></i> 
-                <label>Duration:</label>
-                9 hours
+                <label>{{Vars::getVar('Duration')}}:</label> {{$itemRec->duration}} {{Vars::getVar('hours')}}
             </span>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="item-addetional-holder">
-            <div class="item-addetional-price">
-                from
-                <span>€162.00</span>
-            </div>
-            <div class="item-addetional-rate">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <span>4 Reviews</span>
-            </div>
-            <div class="item-addetional-img">
-                <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
-            </div>
-            <h2>Cairo: Full-Day Giza Pyramids, Saqqara & Dahshur + Lunch</h2>
-            <span class="item-addetional-duration">
-                <i class="fa fa-clock-o"></i> 
-                <label>Duration:</label>
-                9 hours
-            </span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="item-addetional-holder">
-            <div class="item-addetional-price">
-                from
-                <span>€162.00</span>
-            </div>
-            <div class="item-addetional-rate">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <span>4 Reviews</span>
-            </div>
-            <div class="item-addetional-img">
-                <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
-            </div>
-            <h2>Cairo: Full-Day Giza Pyramids, Saqqara & Dahshur + Lunch</h2>
-            <span class="item-addetional-duration">
-                <i class="fa fa-clock-o"></i> 
-                <label>Duration:</label>
-                9 hours
-            </span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="item-addetional-holder">
-            <div class="item-addetional-price">
-                from
-                <span>€162.00</span>
-            </div>
-            <div class="item-addetional-rate">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <span>4 Reviews</span>
-            </div>
-            <div class="item-addetional-img">
-                <img src="images/items/8f7c8536673ddc5bf5537a51f95d693a.jpg" class="img-abs-center" alt="">
-            </div>
-            <h2>Cairo: Full-Day Giza Pyramids, Saqqara & Dahshur + Lunch</h2>
-            <span class="item-addetional-duration">
-                <i class="fa fa-clock-o"></i> 
-                <label>Duration:</label>
-                9 hours
-            </span>
-        </div>
-    </div>
+    @endforeach
+
+
 </div>
 
 

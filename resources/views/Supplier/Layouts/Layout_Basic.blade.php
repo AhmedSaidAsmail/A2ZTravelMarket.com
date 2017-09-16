@@ -76,7 +76,7 @@
                             <a href="{{route('Reservation.index')}}"> <i class="fa fa-cart-arrow-down"></i> <span>Reservation</span>  </a>
                         </li>
                         <li class="treeview">
-                            <a href=""><i class="fa fa-comment"></i> Reviews</a>
+                            <a href=""><i class="fa fa-comment"></i> <span>Reviews</span></a>
                         </li>
                         <li class="treeview"> <a href="#"> <i class="fa fa-cog"></i> <span>Setting</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
                             <ul class="treeview-menu">

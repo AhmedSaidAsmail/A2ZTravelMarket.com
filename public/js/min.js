@@ -12,8 +12,8 @@ $(document).ready(function () {
         }
 
     });
-    $(".price-toggle").click(function () {
-        var parentDiv = $(this).closest('.select-travelers-hidden');
+    function togglePrice(element) {
+        var parentDiv = element.closest('.select-travelers-hidden');
         var it_div = parentDiv.closest('div[class^=col-md]');
         var prev_div = it_div.prev();
         var next_div = it_div.next();
@@ -25,7 +25,15 @@ $(document).ready(function () {
         prev_div.toggleClass('col-md-4 col-md-3');
         next_div.toggleClass('col-md-4 col-md-3');
 //        $('#tour_date').css('width',prev_div.width());
+    }
+    $(".price-toggle").click(function () {
+        togglePrice($(this));
 
+    });
+    $(document).click(function (a) {
+        if (!$(a.target).closest("div.select-travelers-hidden").length)
+            if ($("div.select-travelers-holder").is(":visible"))
+                togglePrice($(".price-toggle"));
     });
     $("i.fa-plus-sp").click(function () {
         var itsInput = $(this).closest('div').find('input');
@@ -55,12 +63,7 @@ $(document).ready(function () {
         }
 
     });
-    $("span#active-plane").click(function () {
-        var allDivs = $("#all-plane-prices").find('.price-plane-avaiable');
-        var Div = $(this).closest('.price-plane-avaiable');
-        allDivs.removeClass('price-active').addClass('price-not-active');
-        Div.removeClass('price-not-active').addClass('price-active');
-    });
+
     $("#go-to-book").click(function () {
         $('html, body').animate({
             scrollTop: $("#choose-plane").offset().top
@@ -93,6 +96,7 @@ $(document).ready(function () {
         event.preventDefault();
         var date = $(this).find("input[name=date]").val();
         var loadingDiv = $(".ftech-data-loading");
+        var resultDiv = $("#all-plane-prices");
         loadingDiv.show();
         if (!date.length) {
             alert('Date field is required');
@@ -105,6 +109,9 @@ $(document).ready(function () {
             data: $(this).serialize(),
             success: function (response) {
                 loadingDiv.fadeOut().delay(500);
+                resultDiv.html(response);
+                toggleClass();
+                anotherDate();
             }
 
         });
@@ -312,6 +319,25 @@ $(document).ready(function () {
 
     });
 });
+function toggleClass() {
+    $("span#active-plane").click(function () {
+        var allDivs = $("#all-plane-prices").find('.price-plane-avaiable');
+        var Div = $(this).closest('.price-plane-avaiable');
+        allDivs.removeClass('price-active').addClass('price-not-active');
+        Div.removeClass('price-not-active').addClass('price-active');
+    });
+}
+function anotherDate() {
+    $("a#another-date").click(function (event) {
+        event.preventDefault();
+        var date = $(this).attr('data-date');
+        var form = $("form#choose-plane");
+        var dateInput = form.find('input[name=date]');
+        dateInput.val(date);
+        form.trigger('submit');
+    });
+}
+// old function
 function maxValue(input) {
     var value = input.val();
     var max = input.attr('max');

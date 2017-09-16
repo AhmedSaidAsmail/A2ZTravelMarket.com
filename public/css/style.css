@@ -948,6 +948,7 @@ ul.highlights{
     padding: 20px 0px;
     margin-bottom: 15px;
     background-color: #FFF;
+    position: relative;
 }
 .price-active{
     border-color: #00aeef;
@@ -958,7 +959,18 @@ ul.highlights{
 .first-row{
     background-color: #FFF;
     padding:0px;
-
+}
+.item-tour-discount{
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    background-color: #ff3d00;
+    color: #FFF;
+    padding: 3px 10px;
+    z-index: 1000;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
 }
 .price-active .second-row{
     display: block;
@@ -1006,13 +1018,42 @@ ul.highlights{
     font-size: 12px;
     color: #9a9a9a;
 }
+.price-plane-total > label{
+    display: block;
+    font-weight: 100;
+}
 .price-plane-total span{
     display: block;
     color: #272727;
     font-size: 23px;
     line-height: 15px;
     font-family: 'Lato', sans-serif;
-
+}
+.price-plane-total span.discount-price{
+    color:#ff3d00 ;
+    position: relative;
+    display: inline-block;
+}
+.price-plane-total span.discount-price label{
+    position: absolute;
+    right: calc(100% + 10px);
+    font-weight: 400;
+    font-size: 14px;
+    color: #a7a6a6;
+    text-decoration: line-through;
+}
+#price-discount{
+    position: relative;
+    color:#ff3d00 ;
+    display: inline-block;
+}
+#price-discount label{
+    position: absolute;
+    right: calc(100% + 10px);
+    font-weight: 400;
+    font-size: 14px;
+    color: #a7a6a6;
+    text-decoration: line-through;
 }
 .second-row{
     margin-top: 15px;
@@ -1166,3 +1207,13 @@ ul.highlights{
     display: block;
     color: #9a9a9a;
 }
+.discount-value{
+    background: #fce0db;
+    color: #ff4515;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-size: 17px;
+     font-family: 'Lato', sans-serif;
+}
+

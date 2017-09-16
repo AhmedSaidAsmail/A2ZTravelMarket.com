@@ -21,6 +21,7 @@ class CreatePriceTable extends Migration {
             $table->integer('st_price');
             $table->integer('sec_price');
             $table->integer('third_price')->nullable()->default(null);
+            $table->integer('discount')->nullable()->default(0);
             $table->boolean('private')->nullable()->dafault(0);
             $table->string('language')->nullable();
             $table->integer('capacity')->nullable()->default(null);

@@ -150,23 +150,26 @@
                     <div class="box-body">
                         @if(! is_null($price_def))
                         <div class="row">
-                            <div class="col-md-2">
-                                <span class="h4">First Def:</span>
-                            </div>
                             <div class="col-md-1">
-                                {{$price_def->st_price_name}}
+                                <span class="h4">First:</span>
                             </div>
                             <div class="col-md-2">
-                                <span class="h4">First Def:</span>
+                                {{$price_def->st_price_name}} 
+                                <span style="display:block;">({{$price_def->st_price_def}})</span>
                             </div>
                             <div class="col-md-1">
+                                <span class="h4">Second:</span>
+                            </div>
+                            <div class="col-md-2">
                                 {{$price_def->sec_price_name}}
-                            </div>
-                            <div class="col-md-2">
-                                <span class="h4">First Def:</span>
+                                <span style="display:block;">({{$price_def->sec_price_def}})</span>
                             </div>
                             <div class="col-md-1">
+                                <span class="h4">Third:</span>
+                            </div>
+                            <div class="col-md-2">
                                 {{$price_def->third_price_name}}
+                                <span style="display:block;">({{$price_def->third_price_def}})</span>
                             </div>
                             <div class="col-md-3">
                                 <button class="btn btn-warning btn-block"><i class="fa fa-pencil-square"></i> Edit</button>
@@ -345,6 +348,7 @@
                                         <th>Capacity</th>
                                         <th>Days</th>
                                         <th>Starting@</th>
+                                        <td>Discount</td>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -376,6 +380,9 @@
                                         <td class="pricetable">
                                             {{$price->starting_time}}
                                         </td>
+                                        <td>
+                                            <input class="form-control" style="width:100px;" type="number" form="change_discount_{{$price->id}}" value="{{$price->discount}}" min="0" name="discount" required>
+                                        </td>
                                         <td class="text-right pricetable" style="min-width: 150px; padding-bottom: 5px; padding-top: 5px;">
                                             <?php
                                             if ($price->status) {
@@ -388,12 +395,17 @@
                                                 $class = "btn-success";
                                             }
                                             ?>
+                                            <button class="btn btn-success btn-sm" form="change_discount_{{$price->id}}">Update</button>
                                             <button class="btn {{$class}} btn-sm" id="do_change">{{$word}}</button>
                                             <a class="btn btn-danger btn-sm" id="delet_price"><i class="fa fa-trash"></i></a>
                                             <form method="post" action="{{route('Price.update',['id'=>$price->id])}}" id="change_status">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="_method" value="PUT">
                                                 <input type="hidden" name="status" value="{{$value}}">
+                                            </form>
+                                            <form method="post" action="{{route('Price.update.discount',['id'=>$price->id])}}" id="change_discount_{{$price->id}}">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="_method" value="Post">
                                             </form>
                                             <form action="{{route('Price.destroy',['id'=>$price->id])}}" method="post" id="price_destory">
                                                 {{csrf_field()}}
@@ -441,6 +453,7 @@
                                     <label>Add New Details To This Items</label>
                                     <select name="modelName" class="form-control" id="detailsNavigatore">
                                         <option value="">Select Details to Add</option>
+                                        <option value="Highlight">Highlights</option>
                                         <option value="inclusion">Inclusions</option>
                                         <option value="exclusion">Exclusions</option>
                                         <option value="additional">Know before you go</option>
@@ -529,6 +542,43 @@
                         <!-- end Additional Information-->
                     </div>
                     <div class="col-md-6">
+                                                <!-- Highlights -->
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Highlights Table</h3>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Highlights Text</th>
+                                        <th>Edit</th>
+                                        <th style="width: 40px">Delete</th>
+                                    </tr>
+                                    <?php $oredr = 1 ?>
+                                    @foreach($Item->highlights as $highlight)
+                                    <tr>
+                                        <td>{{$oredr}}</td>
+                                        <td>{{$highlight->txt}}</td>
+                                        <td>
+                                            <a href="{{route('Information.edit',['item'=>$Item->id,'Information'=>$highlight->id,'modelName'=>'exclusion'])}}" class="btn btn-xs btn-warning">
+                                                Edit</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('Information.destroy',[$Item->id,$highlight->id]) }}" method="post">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="modelName" value="exclusion">
+                                                <a class="deleteItem" href="#" title="{{$highlight->id}}"><i class="fa fa-trash"></i></a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <?php $oredr++ ?>
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                        <!-- end Highlights-->
                         <!-- Exclusion -->
                         <div class="box">
                             <div class="box-header">

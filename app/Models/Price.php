@@ -17,7 +17,8 @@ class Price extends Model {
         'language',
         'capacity',
         'week_day',
-        'starting_time'];
+        'starting_time',
+        'discount'];
 
     public function item() {
         return $this->belongsTo(\App\Models\Item::class);

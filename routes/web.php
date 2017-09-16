@@ -55,6 +55,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     // price section
     Route::resource('/Item/Price_Definitions', 'Supplier\PriceDefController', ['except' => ['index', 'destroy', 'show', 'edit']]);
     Route::resource('/Item/Price', 'Supplier\PricesController',['only'=>['store','update','destroy']]);
+    Route::post('/Item/Price/{id}',['uses'=>'Supplier\PricesController@updateDiscount'])->name('Price.update.discount');
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {
