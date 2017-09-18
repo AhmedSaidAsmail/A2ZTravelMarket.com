@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:200,400,700');
 @import url('https://fonts.googleapis.com/css?family=Dosis:400,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,600');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,400,500,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 html,body{
     width: 100%;
@@ -93,6 +93,28 @@ ul{
 .top-header a:hover{
     text-decoration: none;
 }
+.top-header .dropdown-menu{
+    top: calc(100% + 10px);
+    right: 0px;
+    left: -100%;
+    border-radius: 0px;
+    background-color: #2b2b2b;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.top-header .dropdown-menu li{
+    border-bottom: 1px solid #4e4e4f;
+
+}
+.top-header .dropdown-menu a{
+    color: #FFF;
+        padding-top: 7px;
+    padding-bottom: 7px;
+}
+.top-header .dropdown-menu a:hover{
+    background-color: #404040;
+    color: #FFF;
+}
 .main-nav{
     background-color: #fba525;
     padding-top: 5px;
@@ -163,6 +185,7 @@ span.under-slides-title{
     background-color: #f7f7f7;
     padding-top: 20px;
     padding-bottom: 20px;
+    min-height: 500px;
 }
 .col-img-holder{
     padding-left: 0px;
@@ -1256,4 +1279,188 @@ ul.highlights{
 .show-more-photos:hover{
     color: #FFF;
     text-decoration: none;
+}
+h1.cart-header{
+    margin: 0px 0px;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 500;
+    
+}
+h2.cart-header{
+    margin:15px 0px;
+    font-weight: 200;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+}
+span.cart-warn{
+    color: #9a9a9a;
+}
+.cart-item{
+    border: 1px solid #e6e6e6;
+    margin-top: 15px;
+
+}
+.cart-item-det{
+    position: relative;
+    background-color: #FFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.cart-item-remove{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.cart-item-remove a{
+    color: #b0b1a8;
+    font-size: 19px;
+}
+.cart-item-price{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 18px;
+}
+.item-card-img{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 80px;
+}
+.cart-item-det h2{
+    margin: 0px;
+    font-size: 18px;
+}
+.cart-item-det span{
+    display: block;
+    font-size: 15px;
+}
+.cart-item-buttom{
+    background-color: #eaf4e1;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 14px;
+    color: #708508;
+}
+.cart-all-total{
+    
+    border-top: 5px solid #00aeef;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #FFF;
+}
+.cart-all-total span{
+    font-style: italic;
+    font-size: 12px;
+}
+span.cart-header-total{
+    display: block;
+    font-size: 18px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.cart-all-total .btn{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cart-all-bottom{
+    text-align: center;
+}
+.cart-all-bottom a{
+    color: #00aeef;
+    text-decoration: underline;
+}
+.cart-all-bottom span{
+    display: block;
+    font-style: normal;
+}
+.login-area{
+    background-color: rgba(0,0,0,.3);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 20000;
+    display: none;
+}
+.login-box-2{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 26%;
+    background: #FFF;
+    padding:30px 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #000;
+}
+.login-box-2 .fa-times-circle{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #cccccc;
+    font-size: 20px;
+}
+.login-box-2 h2{
+    text-align: center;
+    font-size: 21px;
+}
+.login-header-span{
+    text-align: center;
+    font-size: 13px;
+    display: block;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    color: #272727;
+}
+.login-box-2 .btn{
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 10px;
+}
+.login-box-2 .btn i{
+    border-right: 0px;
+    font-size: 17px;
+    top: 8px;
+}
+.sign-up-section{
+    border-top: 1px solid #e6e6e6;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+span.login-or{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+    color: #989996;
+    font-weight: 500;
+}
+.login-box-2 .form-control{
+    background-color: #FFF;
+    height: 43px;
+}
+.my-alert{
+    background-color: #ffddd2;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ca3109;
+    margin-bottom: 15px;
 }

@@ -8,21 +8,35 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         @yield('_extra_css')
+        <link rel="stylesheet" href="{{asset('css/bootstrap-social.css')}}">
+        <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
     </head>
     <body>
+        @include('Web.Layouts.login_form')
         <div class="row text-right main-header-holder">
             <div class="container">
                 <a href="{{route('home')}}"><div class="main-nav-logo"></div></a>
                 <ul class="list-inline top-header black-almost">
                     <li><a href=""><i class="fa fa-heart"></i> Wishlist</a></li>
                     <li>
-                        <a href=""><i class="fa fa-shopping-cart"></i> Cart
+                        <a href="{{route('reservation.cart.show')}}"><i class="fa fa-shopping-cart"></i> Cart
                             {!! Session::has('cart')?"(".Session::get('cart')->totalQty.")":null !!}
                         </a></li>
                     <li><a href=""><i class="fa fa-question-circle"></i> Help</a></li>
-                    <li><a href=""><i class="fa fa-user"></i> Login</a></li>
+                    @if (Auth::guard('customer')->check())
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i> {{Auth::guard('customer')->user()->name}}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Bookings</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="{{Auth::guard('customer')->logout()}}">Logout</a></li>
+                        </ul>
+                    </li>
+                    @else
+                    <li><a href="#" id="login_now"><i class="fa fa-user"></i> Login</a></li>
                     <li><a href=""><i class="fa fa-user"></i> Sign up</a></li>
+                    @endif
+
                 </ul>
             </div>
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admin\VarsController as Vars;
 use App\Models\Item;
+use App\Wishlist;
 
 class ItemsController extends Controller {
 
@@ -15,8 +17,23 @@ class ItemsController extends Controller {
             'item' => $item,
             'tour' => $tour,
             'city' => $city,
-            'recommended' => $this->getRecommendedTours($item)
+            'recommended' => $this->getRecommendedTours($item),
+            'wishlist'=> $this->wishlistCheck($id)
         ]);
+    }
+
+    private function wishlistCheck($id) {
+        if (Session::has('wishlist')) {
+            $oldWishlist = Session::get('wishlist');
+            $wishlist = new Wishlist($oldWishlist);
+            $array = $wishlist->items;
+            foreach ($array as $item) {
+                if ($item['item_id'] == $id) {
+                    return TRUE;
+                }
+            }
+        }
+        return FALSE;
     }
 
     public function getRecommendedTours($item) {

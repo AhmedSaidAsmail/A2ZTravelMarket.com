@@ -5,6 +5,9 @@ Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/login/supplier', 'Auth_Supplier\LoginController@showLoginForm')->name('supplier.login');
 Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('supplier.login');
+// customer login
+//Route::get('/login/customer', 'Auth_Customer\LoginController@showLoginForm')->name('customer.login');
+Route::post('/login/customer', 'Auth_Customer\LoginController@login')->name('customer.login');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
 Route::get('/Attraction/{id}', ['uses' => 'Web\AttractionController@showAttractions'])->name('attraction.show');
@@ -13,26 +16,8 @@ Route::get('/Attraction/show/availability/{id}', ['uses' => 'Web\AttractionContr
 Route::get('/{city}/{tour}/{id}', ['uses' => 'Web\ItemsController@show'])->name('tour.show');
 Route::post('/tour/{id}',['uses' => 'Web\ItemsController@showPrices'])->name('tour.get.prices');
 Route::post('/reservation/add/cart', ['uses' => 'Web\ReservationController@addToCart'])->name('reservation.cart.add');
-//old
-Route::get('/allTours', ['uses' => 'Web\HomeController@allTours'])->name('allTours.show');
-Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');
-Route::get('Category/{city?}/{id}', ['uses' => 'Web\HomeController@citiesShow'])->name('cities.show');
-Route::post('/add-to-cart/{id}', ['uses' => 'Web\HomeController@addToCart'])->name('add.to.cart');
-Route::get('my-cart', ['uses' => 'Web\HomeController@cartShow'])->name('cart');
-route::get('/my-cart/remove/{id}', ['uses' => 'Web\HomeController@removeFromCart'])->name('remove.from.cart');
-Route::get('/my-cart/check-out', ['uses' => 'Web\HomeController@checkOut'])->name('Web.checkout');
-Route::post('/my-cart/fianlCheckOut', ['uses' => 'Web\HomeController@finalCheckOut'])->name('finalCheckOut');
-Route::get('/search-items/result', ['uses' => 'Web\HomeController@searchItems'])->name('Web.searchItems');
-Route::get('/search-transfer-dist', ['uses' => 'Web\HomeController@searchDist'])->name('searchDist');
-Route::get('/booking-done', ['uses' => 'Web\HomeController@bookingDone'])->name('bookingDone');
-Route::get('/getDays/{id}', ['uses' => 'Web\HomeController@getDays'])->name('getDays');
-Route::get('/hotDeals', ['uses' => 'Web\HomeController@hotDealsShow'])->name('hotDeals');
-Route::get('/transfer', ['uses' => 'Web\HomeController@transferShow'])->name('transfersShow');
-//transfer
-Route::post('/add-transfer-to-cart', ['uses' => 'Web\HomeController@addTransferToCart'])->name('add.transfer.to.cart');
-Route::get('transfer/all', ['uses' => 'Web\TransferController@transferAllShow'])->name('trnafsre.all');
-Route::get('transfer/{id}', ['uses' => 'Web\TransferController@transferOneShow'])->name('trnafsre.one');
-Route::post('transfer/get', ['uses' => 'Web\TransferController@transferGetOne'])->name('transfer.get');
+Route::get('/reservation/cart', ['uses' => 'Web\ReservationController@showCart'])->name('reservation.cart.show');
+Route::get('/reservation/cart/remove/{id}', ['uses' => 'Web\ReservationController@removeFromCart'])->name('reservation.cart.remove');
 // reviews 
 Route::get('/reveiws/write/{id}', ['uses' => 'ReviewController@store'])->name('review.store');
 Route::post('/reveiws/write', ['uses' => 'ReviewController@edit'])->name('review.edit');
