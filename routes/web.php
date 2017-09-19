@@ -8,6 +8,7 @@ Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('sup
 // customer login
 //Route::get('/login/customer', 'Auth_Customer\LoginController@showLoginForm')->name('customer.login');
 Route::post('/login/customer', 'Auth_Customer\LoginController@login')->name('customer.login');
+Route::get('/logout/customer', 'Auth_Customer\LoginController@logout')->name('customer.logout');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
 Route::get('/Attraction/{id}', ['uses' => 'Web\AttractionController@showAttractions'])->name('attraction.show');
@@ -18,6 +19,9 @@ Route::post('/tour/{id}',['uses' => 'Web\ItemsController@showPrices'])->name('to
 Route::post('/reservation/add/cart', ['uses' => 'Web\ReservationController@addToCart'])->name('reservation.cart.add');
 Route::get('/reservation/cart', ['uses' => 'Web\ReservationController@showCart'])->name('reservation.cart.show');
 Route::get('/reservation/cart/remove/{id}', ['uses' => 'Web\ReservationController@removeFromCart'])->name('reservation.cart.remove');
+Route::get('/wishlist',["uses"=>'Web\WishlistController@index'])->name('wishlist.index');
+Route::get('/wishlist/add',["uses"=>'Web\WishlistController@addToWishlist'])->name('wishlist.add');
+Route::get('/wishlist/remove',["uses"=>'Web\WishlistController@removeFromWishlist'])->name('wishlist.remove');
 // reviews 
 Route::get('/reveiws/write/{id}', ['uses' => 'ReviewController@store'])->name('review.store');
 Route::post('/reveiws/write', ['uses' => 'ReviewController@edit'])->name('review.edit');

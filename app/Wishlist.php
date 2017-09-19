@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Illuminate\Http\Request;
-
 class Wishlist {
 
     public $items = null;
     public $totalQty = 0;
-
 
     public function __construct($oldWishlist) {
         if (isset($oldWishlist)) {
@@ -18,14 +15,17 @@ class Wishlist {
     }
 
     public function add($item) {
-        $this->totalQty++;
-        $this->items[] = $item;
+
+//        if (!is_null($this->items) && !in_array($item, $this->items)) {
+            $this->totalQty++;
+            $this->items[] = $item;
     }
 
     public function remove($id) {
-        if (isset($this->items) && array_key_exists($id, $this->items)) {
+        if (isset($this->items) && in_array($id, $this->items)) {
+            $key = array_search($id, $this->items);
             $this->totalQty--;
-            unset($this->items[$id]);
+            unset($this->items[$key]);
         }
     }
 

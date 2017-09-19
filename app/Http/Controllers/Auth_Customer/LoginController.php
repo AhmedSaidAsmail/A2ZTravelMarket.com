@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Controllers\Web\WishlistController;
 class LoginController extends Controller {
     /*
       |--------------------------------------------------------------------------
@@ -47,10 +48,15 @@ use AuthenticatesUsers;
             'password' => 'required'
         ]);
         if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password,'confirm'=>1], $request->remember)) {
+            WishlistController::addPevWishlistAtLogin();
             return redirect()->back();
         }
 //        return redirect()->back()->withInput($request->only('email','remember'));
         return redirect()->back()->with('failure', ' oops there\'s something wrong with the response');
+    }
+    public function logout() {
+        Auth::guard('customer')->logout();
+        return redirect()->back();
     }
 
 

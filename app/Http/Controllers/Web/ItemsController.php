@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admin\VarsController as Vars;
+use App\Http\Controllers\Web\WishlistController;
 use App\Models\Item;
 use App\Wishlist;
+use Auth;
 
 class ItemsController extends Controller {
 
@@ -18,22 +20,16 @@ class ItemsController extends Controller {
             'tour' => $tour,
             'city' => $city,
             'recommended' => $this->getRecommendedTours($item),
-            'wishlist'=> $this->wishlistCheck($id)
+            'wishlist' => $this->wishlistCheck($id)
         ]);
     }
 
     private function wishlistCheck($id) {
-        if (Session::has('wishlist')) {
-            $oldWishlist = Session::get('wishlist');
-            $wishlist = new Wishlist($oldWishlist);
-            $array = $wishlist->items;
-            foreach ($array as $item) {
-                if ($item['item_id'] == $id) {
-                    return TRUE;
-                }
-            }
+        if (Auth::guard('customer')->check()) {
+            $customer_id = Auth::guard('customer')->user()->id;
+            return WishlistController::checkWishlistItemExcite($id, $customer_id);
         }
-        return FALSE;
+        return WishlistController::checkWishlist($id);
     }
 
     public function getRecommendedTours($item) {

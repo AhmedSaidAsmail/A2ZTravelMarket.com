@@ -131,6 +131,22 @@ $(document).ready(function () {
 
         });
     });
+//    $("#add_wishlist").click(function (event) {
+//        event.preventDefault();
+//        var item_id = $(this).attr('data-item');
+//        var link=$(this).attr('a');
+//        if (item_id.length) {
+//            $.ajax({
+//                type:"get",
+//                url:link,
+//                data:{item_id:item_id}
+//                
+//            });
+//            $(this).html('<i class="fa fa-heart"></i> Remove from Wishlist');
+//            $(this).removeAttr('data-item');
+//        }
+//
+//    });
     // old
     $(window).scroll(function () {
         var nav = $(".main-header-holder");

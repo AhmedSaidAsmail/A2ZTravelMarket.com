@@ -18,7 +18,20 @@
             <div class="container">
                 <a href="{{route('home')}}"><div class="main-nav-logo"></div></a>
                 <ul class="list-inline top-header black-almost">
-                    <li><a href=""><i class="fa fa-heart"></i> Wishlist</a></li>
+                    <li><a href="{{route('wishlist.index')}}"><i class="fa fa-heart"></i> Wishlist
+                            @if (Auth::guard('customer')->check())
+
+                            @if(\App\Http\Controllers\Web\WishlistController::customerWishlistCount()>0)
+                            ({{\App\Http\Controllers\Web\WishlistController::customerWishlistCount()}})
+                            <i class="fa fa-circle warning-icon"></i>
+                            @endif
+                            @else
+                            @if(Session::has('wishlist') && Session::get('wishlist')->totalQty >0)
+                            ({{Session::get('wishlist')->totalQty}})
+                            <i class="fa fa-circle warning-icon"></i>
+                            @endif
+                            @endif
+                        </a></li>
                     <li>
                         <a href="{{route('reservation.cart.show')}}"><i class="fa fa-shopping-cart"></i> Cart
                             {!! Session::has('cart')?"(".Session::get('cart')->totalQty.")":null !!}
@@ -29,7 +42,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">Bookings</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li><a href="{{Auth::guard('customer')->logout()}}">Logout</a></li>
+                            <li><a href="{{route('customer.logout')}}">Logout</a></li>
                         </ul>
                     </li>
                     @else

@@ -368,7 +368,19 @@
         </div>
         <ul>
             <li><a href=""><i class="fa fa-envelope"></i> Ask a question</a></li>
-            <li><a href=""><i class="fa fa-heart"></i> Add to wishlist</a></li>
+            <?php
+            if (Auth::guard('customer')->check()) {
+                $cutomer_id = Auth::guard('customer')->user()->id;
+            } else {
+                $cutomer_id = null;
+            }
+            ?>
+            @if($wishlist)
+            <li><a href="{{route('wishlist.remove')}}?item_id={{$item->id}}&customer_id={{$cutomer_id}}"><i class="fa fa-heart"></i> Remove from Wishlist</a></li>
+            @else
+            <li><a href="{{route('wishlist.add')}}?item_id={{$item->id}}&customer_id={{$cutomer_id}}"><i class="fa fa-heart"></i> Add to wishlist</a></li>
+            @endif
+
         </ul>
     </div>
 </div>
@@ -412,10 +424,10 @@
 @endsection
 @section('_extra_js')
 <script type="text/javascript" src="{{asset('js/datepicker/zebra_datepicker.min.js')}}"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
 <script type="text/javascript" src="js/min.js"></script>
 <script>
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+$(document).on('click', '[data-toggle="lightbox"]', function (event) {
     event.preventDefault();
     $(this).ekkoLightbox();
 });

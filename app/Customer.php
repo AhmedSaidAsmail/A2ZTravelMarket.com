@@ -25,5 +25,8 @@ class Customer extends User {
     public function reservations() {
         return $this->hasMany(\App\Models\Reservation::class);
     }
+    public function wishlists(){
+        return $this->hasMany(\App\Models\Wishlist::class);
+    }
 
 }
