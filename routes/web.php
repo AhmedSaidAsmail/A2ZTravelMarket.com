@@ -11,6 +11,7 @@ Route::post('/login/customer', 'Auth_Customer\LoginController@login')->name('cus
 Route::get('/logout/customer', 'Auth_Customer\LoginController@logout')->name('customer.logout');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
+Route::get('/City/{id}', ['uses' => 'Web\CityController@show'])->name('city.show');
 Route::get('/Attraction/{id}', ['uses' => 'Web\AttractionController@showAttractions'])->name('attraction.show');
 Route::get('/Attraction/show/all/{id}', ['uses' => 'Web\AttractionController@showAllAttractions'])->name('attraction.show.all');
 Route::get('/Attraction/show/availability/{id}', ['uses' => 'Web\AttractionController@showAvailability'])->name('attraction.show.available');

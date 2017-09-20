@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+//use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admin\VarsController as Vars;
 use App\Http\Controllers\Web\WishlistController;
 use App\Models\Item;
-use App\Wishlist;
+//use App\Wishlist;
 use Auth;
 
 class ItemsController extends Controller {
 
     public function show($city, $tour, $id) {
         $item = Item::find($id);
+        $item->increment('visits');
         return view('Web.4_item_show', [
             'item' => $item,
             'tour' => $tour,
@@ -125,6 +126,24 @@ class ItemsController extends Controller {
                 $priceAfterDiscount = number_format($lowestPrice - $discountValue, 2, '.', '');
                 return '
            <span id="price-discount">
+                <label>' . Vars::getVar('€') . $lowestPrice . '</label>
+                 ' . Vars::getVar('€') . $priceAfterDiscount . '
+            </span>
+';
+            }
+            return Vars::getVar('€') . number_format($lowPriceRow->st_price, 2, '.', '');
+        }
+        return Vars::getVar('€') . "0.00";
+    }
+        public static function getLowestPrice2($id) {
+        $lowPriceRow = self::getPricePlane($id);
+        if (!is_null($lowPriceRow)) {
+            $lowestPrice = number_format($lowPriceRow->st_price, 2, '.', '');
+            if ($lowPriceRow->discount > 0) {
+                $discountValue = $lowestPrice * $lowPriceRow->discount / 100;
+                $priceAfterDiscount = number_format($lowestPrice - $discountValue, 2, '.', '');
+                return '
+           <span class="price-after-desc">
                 <label>' . Vars::getVar('€') . $lowestPrice . '</label>
                  ' . Vars::getVar('€') . $priceAfterDiscount . '
             </span>

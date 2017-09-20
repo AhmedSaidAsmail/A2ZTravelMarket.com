@@ -30,9 +30,9 @@ class HomeController extends Controller {
 //    protected $web;
 //    protected $mob;
     public function welcome() {
-        $topAttractions = Attraction::where('status', 1)->orderBy('recommended')->limit(12)->get();
+        $topAttractions = Attraction::where('status', 1)->orderBy('recommended')->get();
         $moreAttraction = (count($topAttractions) > 9) ? TRUE : FALSE;
-        $topCitis = Sort::where('status', 1)->orderBy('recommended')->limit(12)->get();
+        $topCitis = Sort::where('status', 1)->orderBy('recommended')->get();
         $moreCity = (count($topCitis) > 9) ? TRUE : FALSE;
         return view('Web.1_welcome', [
             'topAttractions' => $topAttractions,
@@ -41,60 +41,6 @@ class HomeController extends Controller {
             'moreCity' => $moreCity
         ]);
     }
-
- 
-// old
-    protected function catgories() {
-        return Sort::where('status', 1)->get();
-    }
-
-    protected function get_dist_from() {
-        return Transfer::select('dist_from')->distinct()->get();
-    }
-
-    public function citiesShow($city, $id) {
-        $category = Sort::where('id', $id)->first();
-        $transfer = Transfer::all();
-        $dist_from = Transfer::select('dist_from')->distinct()->get();
-        return view('Web.citiesShow', [
-            'category' => $category,
-            'city' => $city,
-            'activeLink' => $id,
-            'transfers' => $transfer,
-            'dist_from' => $dist_from]);
-    }
-
-    public function addTransferToCart(Request $request) {
-        $price = Cart::getTransferPrice($request);
-        $transferDeatils = [
-            'price' => $price,
-            'arrival_date' => $request->arrival_date,
-            'departure_date' => $request->departure_date,
-            'dist_from' => $request->dist_from,
-            'dist_to' => $request->dist_to,
-            'transfer_type' => $request->transfer_type,
-            'transfer_times' => $request->transfer_times,
-            'pax' => $request->pax,
-        ];
-        $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->addTransfer($transferDeatils);
-        $request->session()->put('cart', $cart);
-        return redirect()->route('cart');
-    }
-
-    public function tourShow($city, $tour, $id) {
-        $item = Item::find($id);
-        $activeLink = $item->sort->id;
-        return view('Web.tourShow', [
-            'activeLink' => $activeLink,
-            'item' => $item]);
-    }
-
-//    public function allTours() {
-//        $Categories = Sort::where('status', 1)->get();
-//        return view('Web.allTours', ['Categories' => $Categories]);
-//    }
     public function topicsShow($topicName) {
         if (strtolower($topicName) == "home") {
             return redirect()->route('home');
@@ -116,92 +62,9 @@ class HomeController extends Controller {
         //$topicName;
     }
 
-    public function hotDealsShow() {
-        $items = Item::where('offer', 1)->get();
-        // transfer
-        $transfer = Transfer::all();
-        $dist_from = Transfer::select('dist_from')->distinct()->get();
-        // category
-        $category = Sort::where('recommended', 1)->first();
-        // all categories
-        $Categories = Sort::where('status', 1)->get();
-        return view('Web.hotDeals', [
-            'items' => $items,
-            'transfers' => $transfer,
-            'dist_from' => $dist_from,
-            'category' => $category,
-            'Categories' => $Categories
-        ]);
-    }
 
-    public function transferShow() {
-        // Transfer Topic
-        $transferTopic = Topic::where('name', 'transfer')->first();
-        // transfer
-        $transfer = Transfer::all();
-        $dist_from = Transfer::select('dist_from')->distinct()->get();
-        // category
-        $category = Sort::where('recommended', 1)->first();
-        // all categories
-        $Categories = Sort::where('status', 1)->get();
-        return view('Web.transferShow', [
-            'transfers' => $transfer,
-            'dist_from' => $dist_from,
-            'category' => $category,
-            'Categories' => $Categories,
-            'topic' => $transferTopic
-        ]);
-    }
 
-    public function addToCart($id, Request $request) {
-        $this->validate($request, [
-            'date' => 'required',
-            'st_no' => 'required|integer'
-        ]);
-        $item = Item::find($id);
-        $price = 0;
-        $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
-        if (isset($item->price)) {
-            $price = Cart::getPrice([
-                        'st_no' => $request->st_no,
-                        'st_price' => $item->price->st_price,
-                        'sec_no' => $request->sec_no,
-                        'sec_price' => $item->price->sec_price
-            ]);
-        }
-        $itemCart = [
-            'price' => $price,
-            'date' => $request->date,
-            'st_no' => (int) $request->st_no,
-            'st_price' => $item->price->st_price,
-            'sec_no' => (int) $request->sec_no,
-            'sec_price' => $item->price->sec_price
-        ];
-        $cart = new Cart($oldCart);
-        $cart->add($itemCart, $id);
-        $request->session()->put('cart', $cart);
-        return redirect()->route('cart');
-    }
 
-    public function removeFromCart($id, Request $request) {
-        $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->remove($id);
-        $request->session()->put('cart', $cart);
-        return redirect()->route('cart');
-    }
-
-    public function cartShow() {
-
-        $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        return view('Web.shoping-cart', [
-            'items' => $cart->items,
-            'total' => $cart->totalPrice,
-            'Categories' => $this->catgories(),
-            'dist_from' => $this->get_dist_from(),
-            'percent' => PaypalSettings::percentage()]);
-    }
 
     public function checkOut() {
         $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
@@ -229,16 +92,6 @@ class HomeController extends Controller {
                 ->orWhere('intro', 'like', '%' . $text . '%')
                 ->get();
         return view('Web.searchResult', ["items" => $items]);
-    }
-
-    public function searchDist(Request $request) {
-        $dist_from = $request->dist_from;
-        $dist_to = Transfer::select('dist_to')->distinct()->where('dist_from', '=', $dist_from)->get();
-        $result = null;
-        foreach ($dist_to as $dist_to) {
-            $result .= '<option value="' . $dist_to->dist_to . '">' . $dist_to->dist_to . '</option>';
-        }
-        return $result;
     }
 
     public function finalCheckOut(Request $request) {

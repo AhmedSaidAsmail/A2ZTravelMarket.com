@@ -107,6 +107,32 @@ $(document).ready(function () {
             $(this).find("span").html(count - showTo);
         }
     });
+    // top destention
+    var count_dest = $("div#top_dest").length;
+    $("div#top_dest:gt(11)").hide();
+    $("#top_dest_show").click(function () {
+        var datatStart = $(this).attr('data-start');
+        var showTo = parseFloat(datatStart) + 12;
+        $("div#top_dest:lt(" + showTo + ")").show();
+        $(this).attr('data-start', showTo);
+        if (count_dest <= showTo) {
+            $(this).hide();
+        }
+    });
+    // top destention end
+    // top Attraction
+    var count_attr = $("div#top_attr").length;
+    $("div#top_attr:gt(11)").hide();
+    $("#top_attr_show").click(function () {
+        var datatStart = $(this).attr('data-start');
+        var showTo = parseFloat(datatStart) + 12;
+        $("div#top_attr:lt(" + showTo + ")").show();
+        $(this).attr('data-start', showTo);
+        if (count_attr <= showTo) {
+            $(this).hide();
+        }
+    });
+    // top Attraction end
     $("form#choose-plane").submit(function (event) {
         event.preventDefault();
         var date = $(this).find("input[name=date]").val();

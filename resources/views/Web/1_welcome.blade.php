@@ -78,6 +78,31 @@
 </div>
 @endsection
 @section('content')
+<div id="top_destetion">
+    <h1>Top Destinations</h1>
+    <div id="top_attraction_container">
+        <!-- to append show more items -->
+        @foreach($topCitis->chunk(4) as $chunks)
+        <div class="row row-img-holder">
+            @foreach($chunks as $topCity)
+            <div class="col-md-3 col-img-holder" id="top_dest">
+                <div class="col-md-3-img">
+                    <a href="{{route('city.show',['id'=>$topCity->id])}}">
+                        <img src="{{asset('images/sorts/thumb/'.$topCity->img)}}" class="img-abs-center" alt="">
+                        <div class="tour-label">{{$topCity->name}}</div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @endforeach
+    </div>
+    @if($moreCity)
+    <div class="row text-center show-more">
+        <button class="btn btn-info" id="top_dest_show" data-start="12">Show more destinations</button>
+    </div>
+    @endif
+</div> 
 <div id="top_attraction">
     <h1>Top Attractions</h1>
     <div id="top_attraction_container">
@@ -85,7 +110,7 @@
         @foreach($topAttractions->chunk(4) as $chunks)
         <div class="row row-img-holder">
             @foreach($chunks as $topAttraction)
-            <div class="col-md-3 col-img-holder">
+            <div class="col-md-3 col-img-holder" id="top_attr">
                 <div class="col-md-3-img">
                     <a href="{{route('attraction.show',['id'=>$topAttraction->id])}}">
                         <img src="{{asset('images/attraction/thumb/'.$topAttraction->img)}}" class="img-abs-center" alt="">
@@ -99,34 +124,10 @@
     </div>
     @if($moreAttraction)
     <div class="row text-center show-more">
-        <button class="btn btn-info">Show more attractions</button>
+        <button class="btn btn-info" data-start="12" id="top_attr_show">Show more attractions</button>
     </div>
     @endif
 </div>  
-<div id="top_destetion">
-    <h1>Top Destinations</h1>
-    <div id="top_attraction_container">
-        <!-- to append show more items -->
-        @foreach($topCitis->chunk(4) as $chunks)
-        <div class="row row-img-holder">
-            @foreach($chunks as $topCity)
-            <div class="col-md-3 col-img-holder">
-                <div class="col-md-3-img">
-                    <a href="">
-                        <img src="{{asset('images/sorts/thumb/'.$topCity->img)}}" class="img-abs-center" alt="">
-                        <div class="tour-label">{{$topCity->name}}</div>
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endforeach
-    </div>
-    @if($moreCity)
-    <div class="row text-center show-more">
-        <button class="btn btn-info">Show more destinations</button>
-    </div>
-    @endif
-</div>  
+
 
 @endsection

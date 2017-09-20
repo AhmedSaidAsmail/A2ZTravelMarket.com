@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div class="col-md-8 item-tour-right">
-                    <div class="tour-price-from"><span>{{Vars::getVar('From')}}</span>{{Vars::getVar('€')}}
-                        {{\App\Http\Controllers\Web\AttractionController::getLowestPrice($item->id)}}</div>
+                    <div class="tour-price-from"><span>{{Vars::getVar('From')}}</span>
+                        {!! \App\Http\Controllers\Web\ItemsController::getLowestPrice2($item->id) !!}</div>
                     <div class="tour-duration">
                         <i class="fa fa-clock-o"></i> <label>{{Vars::getVar('Duration')}}:</label> {{$item->duration}} {{Vars::getVar('hours')}}
                     </div>

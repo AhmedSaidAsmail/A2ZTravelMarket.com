@@ -218,6 +218,9 @@ span.under-slides-title{
     font-family: 'Dosis', sans-serif;
 }
 .row-img-holder{
+    margin-bottom: 0px;
+}
+.row-img-holder > [class^=col-md]{
     margin-bottom: 25px;
 }
 .show-more button{
@@ -427,6 +430,22 @@ span.under-slides-title{
     font-size: 15px;
     font-weight: 400;
     line-height: 20px;
+}
+.tour-price-from span.price-after-desc{
+    font-size: 25px;
+    line-height: 10px;
+    font-family: 'Asap', sans-serif;
+    font-weight: 600;
+     color: #ff3d00;
+     position: relative;
+}
+.tour-price-from span.price-after-desc label{
+    position: absolute;
+    right: calc(100% + 10px);
+    font-weight: 400;
+    font-size: 14px;
+    color: #a7a6a6;
+    text-decoration: line-through;
 }
 .tour-duration{
     position: absolute;

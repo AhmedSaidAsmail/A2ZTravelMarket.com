@@ -52,7 +52,7 @@
             <div class="cart-item-buttom row">
                 <div class="col-md-12">
                     Book without regrets! <label>Cancel your activity for free any time up until 
-                        {{date('F d,Y',strtotime($item['date']." +".App\Models\Item::find($item['item'])->cancellation." day"))}}  
+                        {{date('F d,Y',strtotime($item['date']." -".App\Models\Item::find($item['item'])->cancellation." day"))}}  
                         {{date('h:i A',strtotime(\App\Models\Price::find($item['price_id'])->starting_time))}}</label>
                 </div>
             </div>
@@ -67,7 +67,7 @@
             <span>No additional fees.</span>
             <a class="btn btn-info btn-block">Checkout</a>
             <div class="cart-all-bottom">
-                <a href="">Create an account</a> or <a href="">log in</a>
+                <a href="">Create an account</a> or <a href="#" id="login_now">log in</a>
                 <span>for faster checkout.</span>
             </div>
         </div>
