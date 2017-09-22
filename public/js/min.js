@@ -1,9 +1,16 @@
 $(document).ready(function () {
+    $("input.email-autocompelete-off").focus(function () {
+        $(this).attr("readonly", false);
+    });
     $("a#login_now").click(function (event) {
         event.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
         var login_area = $(".login-area");
         var login_box = login_area.find(".login-box-2");
         login_box.removeClass('bounceOutUp');
+        login_area.css("height", $(document).height());
         login_area.show();
         login_box.addClass('bounceInDown');
     });

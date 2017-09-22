@@ -436,8 +436,8 @@ span.under-slides-title{
     line-height: 10px;
     font-family: 'Asap', sans-serif;
     font-weight: 600;
-     color: #ff3d00;
-     position: relative;
+    color: #ff3d00;
+    position: relative;
 }
 .tour-price-from span.price-after-desc label{
     position: absolute;
@@ -1495,7 +1495,7 @@ span.login-or{
 .wishlist-header{
     margin-top: 40px;
     margin-bottom: 0px;
-     font-family: 'Asap', sans-serif;
+    font-family: 'Asap', sans-serif;
     color: #989996;
 }
 .wishlist-span{
@@ -1515,5 +1515,151 @@ span.login-or{
     z-index: 2000;
 }
 .remove-wishlist i{
-        padding: 10px 14px;
+    padding: 10px 14px;
+}
+.register-contianer{
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;
+}
+.register-contianer span.fa-stack{
+    font-size: 30px;
+    color: #ff3d00;
+}
+.register-contianer h1{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+.register-contianer ul{
+    padding: 0px 0px 0px 20px;
+    font-size: 17px;
+    text-align: left;
+}
+.register-contianer ul li:before{
+    width: 10px;
+    height: 10px;
+    content: '';
+    border-radius: 100%;
+    display: inline-block;
+    background-color: #ff3d00;
+    margin-right: 10px;
+}
+.register-contianer .btn-social{
+    font-size: 19px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.register-contianer .btn-social i{
+    font-size: 14px;
+    border-right: 0px;
+}
+.register-contianer input.form-control{
+    font-size: 16px;
+    height: 40px;
+    content: '';
+}
+.btn-register{
+    font-size: 19px;
+
+}
+.email-autocompelete-off:read-only{
+    background-color: #FFF;
+}
+.nav-sp{
+    padding-left: 20%;
+    font-size: 19px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.nav-sp a{
+    color: #000;
+}
+.nav-sp li a:hover{
+    background: none;
+    border: 1px solid transparent;
+}
+.customer-setting{
+    background-color: #FFF;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.list-group-sp{
+    font-size: 19px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.list-group-sp li{
+    background-color: #f7f7f7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.list-group-sp a{
+    color: #000;
+}
+.list-group-sp a:hover{
+    text-decoration: none;
+}
+.list-group-sp a i{
+    font-size: 15px;
+}
+.list-group-sp .active{
+    background-color: #FFF;
+    border-color: #e6e6e6;
+}
+.list-group-sp .active:hover{
+    background: none;
+    border-color: #e6e6e6;
+}
+.sp-profile{
+
+}
+.sp-profile h1{
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    margin-top: 0px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.sp-profile form{
+    margin-right: 30%;
+}
+.sp-profile form .form-control{
+    height: 40px;
+}
+.sp-profile form .btn{
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.reset-password{
+    font-size: 12px;
+    display: block;
+    padding-top: 15px;
+}
+.reset-password:hover{
+    text-decoration: none;
+}
+.sp-reset{
+font-family: 'Lato', sans-serif;
+font-size: 14px;
+}
+.sp-reset h1{
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+}
+.sp-reset span{
+    display: block;
+    margin-bottom: 15px;
+}
+.sp-reset form{
+    width: 40%;
+}
+.sp-reset .form-control{
+    height: 40px;
+}
+.sp-reset .btn{
+    font-size: 22px;
 }

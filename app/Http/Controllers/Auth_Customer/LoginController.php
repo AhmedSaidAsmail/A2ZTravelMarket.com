@@ -47,7 +47,7 @@ use AuthenticatesUsers;
             'email' => 'required',
             'password' => 'required'
         ]);
-        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password,'confirm'=>1], $request->remember)) {
+        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             WishlistController::addPevWishlistAtLogin();
             return redirect()->back();
         }

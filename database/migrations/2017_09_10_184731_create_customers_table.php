@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration {
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('phone')->nullable();
+            $table->boolean('newsletter')->default(1)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

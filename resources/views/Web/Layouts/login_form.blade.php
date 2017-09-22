@@ -43,13 +43,13 @@ $class = null;
 
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="">Forgot your password?</a>
+                    <a href="{{route('customer.password.reset')}}" class="reset-password">Forgot your password?</a>
                 </div>
             </div>
             <button class="btn btn-info btn-block">Log in</button>
         </form>
         <div class="sign-up-section">
-            New here? <a href="">Sign up here!</a> 
+            New here? <a href="{{route('customer.register')}}">Sign up here!</a> 
         </div>
 
 

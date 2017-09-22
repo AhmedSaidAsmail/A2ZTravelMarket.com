@@ -21,9 +21,11 @@ class Sort extends Model {
     public function basicsort() {
         return $this->belongsTo(\App\Models\Basicsort::class);
     }
+
     public function attractions() {
         return $this->hasMany(\App\Models\Attraction::class);
     }
+
     public function items() {
         return $this->hasManyThrough(\App\Models\Item::class, \App\Models\Attraction::class);
     }

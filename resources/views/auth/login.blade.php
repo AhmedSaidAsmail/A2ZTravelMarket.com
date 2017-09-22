@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="#">I forgot my password</a><br>
+                <a href="{{route('customer.password.reset')}}">I forgot my password</a><br>
             </div>
         </div>
         <script src="{{asset('adminlte/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>

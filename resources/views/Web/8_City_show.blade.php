@@ -89,7 +89,7 @@
     @endforeach
 </div>
 <div class="row text-center city-see-all">
-    <button class="btn btn-info">See all tours & things to do in Cairo Pyramids</button>
+    <a href="{{route('city.show.all',['id'=>$city->id])}}" class="btn btn-info">See all tours & things to do in {{$city->name}}</a>
 </div>
 <h2 class="city-main-header">The {{count($attractions)}} best things to do in {{$city->name}}</h2>
 <div class="row">

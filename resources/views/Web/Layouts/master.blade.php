@@ -13,6 +13,13 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
     </head>
     <body>
+        
+        @if(session('expired'))
+        <div class="alert alert-warning alert-dismissible" style="border: none; border-radius: 0px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <label>Oops</label> your session has expired</h4>
+        </div>
+        @endif
         @include('Web.Layouts.login_form')
         <div class="row text-right main-header-holder">
             <div class="container">
@@ -41,13 +48,13 @@
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i> {{Auth::guard('customer')->user()->name}}</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Bookings</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="{{route('customer.profile')}}">Settings</a></li>
                             <li><a href="{{route('customer.logout')}}">Logout</a></li>
                         </ul>
                     </li>
                     @else
                     <li><a href="#" id="login_now"><i class="fa fa-user"></i> Login</a></li>
-                    <li><a href=""><i class="fa fa-user"></i> Sign up</a></li>
+                    <li><a href="{{route('customer.register')}}"><i class="fa fa-user"></i> Sign up</a></li>
                     @endif
 
                 </ul>

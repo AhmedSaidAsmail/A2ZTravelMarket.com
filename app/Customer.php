@@ -15,7 +15,8 @@ class Customer extends User {
         'city',
         'state',
         'country',
-        'phone'
+        'phone',
+        'newsletter'
     ];
 
     public function reveiws() {
