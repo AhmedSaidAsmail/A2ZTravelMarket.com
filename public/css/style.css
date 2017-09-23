@@ -1643,8 +1643,8 @@ span.login-or{
     text-decoration: none;
 }
 .sp-reset{
-font-family: 'Lato', sans-serif;
-font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
 }
 .sp-reset h1{
     font-size: 25px;
@@ -1662,4 +1662,89 @@ font-size: 14px;
 }
 .sp-reset .btn{
     font-size: 22px;
+}
+.checkout-form{
+
+}
+.checkout-form > form > section{
+    border-bottom:  1px solid #e6e6e6;
+    padding-bottom: 25px;
+}
+.input-group-sp{
+    margin-bottom: 10px;
+    color: #666666;
+}
+.checkout-form > form > section:last-child{
+    border-bottom:  0px;
+   
+}
+.checkout-form h1{
+    font-size: 22px;
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    color: #666666;
+}
+.checkout-form h1 .fa-stack{
+    font-size: 15px;
+    color: #ff3d00;
+}
+.checkout-form h1 span.fa-stack-1x{
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+}
+
+span.input-note{
+    display: block;
+    margin-top: 10px;
+    color: #9a9a9a;
+}
+.payment-method{
+    background-color: #FFF;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 16px;
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+}
+.order-summery{
+    background-color: #FFF;
+    padding: 15px 15px;
+    margin: 25px 0px;
+}
+.order-summery > h2{
+    margin: 0px 0px 0px 15px;
+    font-size: 16px;
+}
+.order-summery .cart-item{
+    border: 0px;
+    margin-top: 5px;
+
+}
+.total-summary{
+    background-color: #FFF;
+    padding: 15px 0px;
+    margin-top: 15px;
+    font-size: 19px;
+        font-family: 'Asap', sans-serif;
+    font-weight: 600;
+}
+.total-summary .btn{
+    font-size: 19px;
+    margin-top: 15px;
+}
+.checkout-form a{
+    color:#00aeef;
+}
+.success-reservation,.failure-reservation{
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+.success-reservation i{
+    font-size: 80px;
+    color: #70b159;
+}
+.failure-reservation i{
+     font-size: 80px;
+     color: #ed530f;
 }

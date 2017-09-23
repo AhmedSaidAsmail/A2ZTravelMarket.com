@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Web;
 
-use App\MyModels\Admin\Paypal_setting;
+use App\Models\Paypal_setting;
 
 class PaypalSettings {
 

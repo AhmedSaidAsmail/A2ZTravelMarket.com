@@ -65,9 +65,9 @@
         <div class="cart-all-total">
             <span class="cart-header-total">Total ({{$qty}} items):<label>{{Vars::getVar('€').$total}}</label></span>
             <span>No additional fees.</span>
-            <a class="btn btn-info btn-block">Checkout</a>
+            <a href="{{route('reservation.checkout')}}" class="btn btn-info btn-block">Checkout</a>
             <div class="cart-all-bottom">
-                <a href="">Create an account</a> or <a href="#" id="login_now">log in</a>
+                <a href="{{route('customer.register')}}">Create an account</a> or <a href="#" id="login_now">log in</a>
                 <span>for faster checkout.</span>
             </div>
         </div>

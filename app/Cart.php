@@ -2,19 +2,27 @@
 
 namespace App;
 
-use Illuminate\Http\Request;
-
 class Cart {
 
     public $items = null;
     public $totalQty = 0;
     public $totalPrice = 0;
+    public $name;
+    public $email;
+    public $country;
+    public $phone;
+    public $customer_id;
 
     public function __construct($oldCart) {
         if (isset($oldCart)) {
             $this->items = $oldCart->items;
             $this->totalQty = $oldCart->totalQty;
             $this->totalPrice = $oldCart->totalPrice;
+            $this->name = $oldCart->name;
+            $this->email = $oldCart->email;
+            $this->country = $oldCart->country;
+            $this->phone = $oldCart->phone;
+            $this->customer_id = $oldCart->customer_id;
         }
     }
 

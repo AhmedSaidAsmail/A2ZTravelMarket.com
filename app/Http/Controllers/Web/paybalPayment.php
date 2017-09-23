@@ -27,10 +27,9 @@ class paybalPayment {
     protected $transaction;
     protected $payment;
     protected $redirectUrls;
-    public function __construct($total, $link, $reservation_id) {
+    public function __construct($total, $link) {
         $this->total          = $total;
         $this->link           = $link;
-        $this->reservation_id = $reservation_id;
         $this->percentage     = PaypalSettings::percentage();
         $this->paypalUser     = PaypalSettings::getUser();
         $this->PaybalSecret   = PaypalSettings::getSecret();
@@ -49,7 +48,7 @@ class paybalPayment {
     }
     public function setConfig(ApiContext $api) {
         $api->setConfig([
-            'mode'                   => 'live',
+            'mode'                   => 'sandbox',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled'         => false,
             'log.LogFileName'        => '',
@@ -91,7 +90,7 @@ class paybalPayment {
     }
     //redirectUrls
     public function setRedirect() {
-        $this->redirectUrls->setReturnUrl($this->link . "?success=approval&reservation_id=" . $this->reservation_id)
+        $this->redirectUrls->setReturnUrl($this->link . "?success=approval")
                 ->setCancelUrl($this->link . "?success=false");
         $this->payment->setRedirectUrls($this->redirectUrls);
         return $this;

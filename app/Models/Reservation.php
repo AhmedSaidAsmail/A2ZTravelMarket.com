@@ -10,20 +10,14 @@ class Reservation extends Model {
         'customer_id',
         'name',
         'country',
-        'travel_agancy',
-        'email', 'hotel',
-        'mobile',
-        'arrival_date',
-        'departure_date',
+        'email',
+        'phone',
         'tours',
         'deposit',
         'paid',
         'total',
-        'arrival_flight_no',
-        'arrival_flight_time',
-        'departure_flight_no',
-        'departure_flight_time',
         'confirm',
+        'paymentId',
         'admin_deleted'];
 
     public function customer() {

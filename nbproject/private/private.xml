@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Web/14_customer_password_reset_success.blade.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Web/15_customer_password_reset_final.blade.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Web/12_customer_password.blade.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Web/paybalPayment.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Cart.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Web/ReservationController.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Web/HomeController.php</file>
             <file>file:/E:/Websites/A2ZTravelMarketNew.com/routes/web.php</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/public/css/style.css</file>
-            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Auth_Customer/ProfileController.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Web/PaypalSettings.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/resources/views/Web/16_reservation_cart_checkout.blade.php</file>
+            <file>file:/E:/Websites/A2ZTravelMarketNew.com/app/Models/Reservation.php</file>
         </group>
     </open-files>
 </project-private>
