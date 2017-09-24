@@ -191,13 +191,13 @@
         </div>
         <!-- reviews -->
         <div class="row reviews-summary-container">
-            <h2>Reviews <span>(1 Reviews)</span></h2>
+            <h2>Reviews <span>({{count($reviews)}} Reviews)</span></h2>
             <div class="row reviews-summary">
                 <div class="col-md-4">
                     <span class="reviews-summary-title">Overall rating</span>
                     <div class="overall-rating">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                        3 / 5
+                        {{ App\Http\Controllers\ReviewController::getRateStar(App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'overall_rating')) }}
+                        {{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'overall_rating')}}/ 5
                     </div>
                     <span class="reviews-summary-based">based on 1 reviews</span>
                 </div>
@@ -209,13 +209,13 @@
                         </div>
                         <div class="col-md-4">
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'service_rating')*20}}%">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            3/5
+                            {{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'service_rating')}}/5
                         </div>
                     </div>
                     <div class="row">
@@ -225,12 +225,12 @@
                         <div class="col-md-4">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'organization_rating')*20}}%">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            3/5
+                            {{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'organization_rating')}}/5
                         </div>
                     </div>
                     <div class="row">
@@ -240,12 +240,12 @@
                         <div class="col-md-4">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'value_rating')*20}}%">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            3/5
+                            {{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'value_rating')}}/5
                         </div>
                     </div>
                     <div class="row">
@@ -255,12 +255,12 @@
                         <div class="col-md-4">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'safety_rating')*20}}%">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            3/5
+                            {{App\Http\Controllers\ReviewsRateCalculate::calc($item->id,'safety_rating')}}/5
                         </div>
                     </div>
                 </div>
@@ -293,59 +293,31 @@
                     </select>
                 </div>
             </div>
-
+            @if(count($reviews)>0)
+            @foreach($reviews as $review)
             <div class="review-show">
-
                 <div class="row">
                     <div class="col-md-9">
-                        <h2>"The pyramids are great.i enjoyed it"</h2>
+                        <h2>“ {{$review->title}} ”</h2>
                         <div class="review-show-rate">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-
+                            {{ App\Http\Controllers\ReviewController::getRateStar($review->overall_rating) }}
                         </div>
                         <div class="review-show-msg">
-                            I recommend strongly this guide for all who prefer a friendly tour with a professional explanations of the Egyptian history, as we were lucky with our excellent guide Akram. Thank you!
+                            {{$review->review}}
                         </div>
                         <div class="review-show-owner">
-                            reviewed by <span>Ahmed – Egypt</span>
+                            reviewed by <span>{{$review->customer->name}} - {{$review->customer->country}}</span>
                         </div>
                     </div>
-                    <span class="review-show-date">September 3, 2017</span>
+                    <span class="review-show-date">{{date('F d, Y',strtotime($review->created_at))}}</span>
                     <div class="review-helpfull">
                         Was this helpful? <a href="#" class="btn btn-default">yes</a>
                     </div>
                 </div>
             </div>
-            <div class="review-show">
+            @endforeach
+            @endif
 
-                <div class="row">
-                    <div class="col-md-9">
-                        <h2>"The pyramids are great.i enjoyed it"</h2>
-                        <div class="review-show-rate">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-
-                        </div>
-                        <div class="review-show-msg">
-                            I recommend strongly this guide for all who prefer a friendly tour with a professional explanations of the Egyptian history, as we were lucky with our excellent guide Akram. Thank you!
-                        </div>
-                        <div class="review-show-owner">
-                            reviewed by <span>Ahmed – Egypt</span>
-                        </div>
-                    </div>
-                    <span class="review-show-date">September 3, 2017</span>
-                    <div class="review-helpfull">
-                        Was this helpful? <a href="#" class="btn btn-default">yes</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <!-- all reviews item end -->

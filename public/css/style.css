@@ -1676,7 +1676,7 @@ span.login-or{
 }
 .checkout-form > form > section:last-child{
     border-bottom:  0px;
-   
+
 }
 .checkout-form h1{
     font-size: 22px;
@@ -1725,7 +1725,7 @@ span.input-note{
     padding: 15px 0px;
     margin-top: 15px;
     font-size: 19px;
-        font-family: 'Asap', sans-serif;
+    font-family: 'Asap', sans-serif;
     font-weight: 600;
 }
 .total-summary .btn{
@@ -1745,6 +1745,165 @@ span.input-note{
     color: #70b159;
 }
 .failure-reservation i{
-     font-size: 80px;
-     color: #ed530f;
+    font-size: 80px;
+    color: #ed530f;
+}
+.booking-item{
+    background-color: #FFF;
+    border: 1px solid #e6e6e6;
+    padding: 15px 0px;
+    margin-top: 15px;
+}
+.booking-item span{
+
+}
+.booking-item form{
+    display: inline;
+}
+.booking-item .btn{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.rate-this-item{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1000;
+}
+/*Review Write*/
+.review-holder-all{
+    display: flex;
+}
+.review-write-container{
+    width: 80%;
+}
+.review-write-container label{
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    color: #1b1c1c;
+    font-weight: 600;
+}
+.review-write-container input,.review-write-container textArea{
+    border-top-width: 3px;
+}
+.review-write-container input{
+    height: 45px;
+}
+.review-write-container textArea{
+    min-height: 120px;
+}
+.review-write-container .btn{
+    background-color: #337ab7;
+    border: none;
+    font-size: 17px;
+}
+.review-write-header h2{
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    color: #1b1c1c;
+    font-weight: 600;
+}
+.review-write-img{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.review-write-help{
+        font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    color: #1b1c1c;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 10px;
+}
+.write-success{
+    font-size: 25px;
+}
+.write-success i{
+    color: #5cb85c;
+}
+.reviews-all{
+    width: 80%;
+    margin-top: 30px;
+}
+.review-sort-label{
+    display: block;
+
+}
+a.review-sort{
+    display: inline-block;
+    padding: 5px 10px;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    border-radius: 3px;
+
+}
+
+a.not-selected{
+    border: 1px solid #e6e6e6;
+    background-color: #FFF;
+    color: #666666;
+}
+a.not-selected:hover{
+    border-color: #00a680;
+    color: #00a680;
+}
+a.it-selected{
+    border: 1px solid #00a680;
+    background-color: #00a680;
+    color: #FFF;
+}
+a.it-selected:hover{
+    color: #FFF;
+}
+.rating-addetional{
+    display: inline-block;
+    padding-top: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    color: #1b1c1c;
+    font-weight: 600;
+}
+input#visit_date{
+    background-color: #FFF;
+}
+.review-refrences-holder{
+    background-color: #FFF;
+    padding-top: 30px;
+    border-left: 1px solid #e6e6e6;
+            font-family: 'Lato', sans-serif;
+}
+.review-refrences-holder h2{
+    margin: 0px;
+        font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    color: #1b1c1c;
+    font-weight: 600;
+}
+.review-refrences-item{
+    margin-top: 20px;
+}
+.review-refrences-name{
+    display: block;
+    font-size: 12px;
+}
+.review-refrences-title i{
+    color: #337ab7;
+}
+.review-refrences-title span{
+    font-weight: 600;
+    font-size: 16px;
+}
+.review-refrences-text{
+    font-size: 12px;
+    margin-top: 10px;
+}
+.review-success{
+    font-size: 18px;
+            font-family: 'Lato', sans-serif;
 }

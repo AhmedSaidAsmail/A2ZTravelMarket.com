@@ -13,11 +13,19 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
     </head>
     <body>
-        
+
         @if(session('expired'))
         <div class="alert alert-warning alert-dismissible" style="border: none; border-radius: 0px;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <label>Oops</label> your session has expired</h4>
+        </div>
+        @endif
+        @if(session('reviewSuccess'))
+        <div class="alert alert-success alert-dismissible" style="border: none; border-radius: 0px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <span class="review-success">
+                <i class="fa fa-check"></i>
+                <label>Thanks</label> for your review. it has been submitted to the <label>A2zTravelMarket</label> for approval</span>
         </div>
         @endif
         @include('Web.Layouts.login_form')
@@ -47,9 +55,9 @@
                     @if (Auth::guard('customer')->check())
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i> {{Auth::guard('customer')->user()->name}}</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Bookings</a></li>
+                            <li><a href="{{route('customer.bookings')}}">Bookings</a></li>
                             <li><a href="{{route('customer.profile')}}">Settings</a></li>
-                            <li><a href="{{route('customer.logout')}}">Logout</a></li>
+                            <li><a href="{{route('customer.logout') }}">Logout</a></li>
                         </ul>
                     </li>
                     @else

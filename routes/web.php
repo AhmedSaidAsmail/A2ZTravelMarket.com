@@ -20,7 +20,8 @@ Route::post('/profile/password/reset', 'Auth_Customer\ProfileController@sendRese
 Route::get('/profile/password/reset/success', 'Auth_Customer\ProfileController@resetSuccess')->name('customer.password.reset.success');
 Route::get('/profile/password/reset/email/{email}/{token}/{session_time}', 'Auth_Customer\ProfileController@resetPasswordBack')->name('customer.password.reset.back');
 Route::put('/profile/password/reset/final', 'Auth_Customer\ProfileController@resetPasswordFinal')->name('customer.password.reset.final');
-
+Route::get('/profile/my-bookings', 'Auth_Customer\ProfileController@bookings')->name('customer.bookings');
+Route::get('/profile/my-bookings/items/{reservation_id}', 'Auth_Customer\ProfileController@bookingsItems')->name('customer.bookings.items');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
 Route::get('/City/{id}', ['uses' => 'Web\CityController@show'])->name('city.show');
@@ -43,7 +44,7 @@ Route::get('/reservation/cart/final/', ['uses' => 'Web\ReservationController@fin
 Route::get('/reservation/cart/final/success/{paymentId?}', ['uses' => 'Web\ReservationController@proceedSuccess'])->name('reservation.final.success');
 Route::get('/reservation/cart/final/false', ['uses' => 'Web\ReservationController@proceedFalse'])->name('reservation.final.false');
 // reviews 
-Route::get('/reveiws/write/{id}', ['uses' => 'ReviewController@store'])->name('review.store');
+Route::post('/reveiws/write/{id}', ['uses' => 'ReviewController@store'])->name('review.store');
 Route::post('/reveiws/write', ['uses' => 'ReviewController@edit'])->name('review.edit');
 Route::get('/reveiws/showall', ['uses' => 'ReviewController@showAll'])->name('review.all');
 

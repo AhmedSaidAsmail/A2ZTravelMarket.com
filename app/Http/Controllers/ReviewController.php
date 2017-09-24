@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\MyModels\Admin\Review;
-use App\MyModels\Admin\Item;
+use App\Models\Review;
+use App\Models\Item;
 
 class ReviewController extends Controller {
 
@@ -14,22 +14,29 @@ class ReviewController extends Controller {
         return view('Admin.AllReviews', ['reviews' => $reviews]);
     }
 
-    public function store($item_id) {
+    public function store(Request $request, $item_id) {
         $item = Item::find($item_id);
-        return view('Web.writeReview', ['item' => $item]);
+        $lastReviews=$item->reviews()->where('confirm',1)->orderBy('created_at','DESC')->limit(3)->get();
+        if ($item->remember_token == $request->item_token) {
+            return view('Web.20_review_write', ['item' => $item,'lastReviews'=>$lastReviews]);
+        }
+        throw new \Exception('Opps, something went wrong');
     }
-    public function edit(Request $request){
+
+    public function edit(Request $request) {
         $this->validate($request, [
-            'item_id'=>'integer|required',
-            'overall_rating'=>'integer|required'
+            'item_id' => 'integer|required',
+            'overall_rating' => 'integer|required',
+            'customer_id'=>'integer|required'
         ]);
-        $review=$request->all();
+        $review = $request->all();
         Review::create($review);
-        return redirect()->route('review.all')->with('success','Your_Review_has_been_Submited');
+        return redirect()->route('home')->with('reviewSuccess', 'Your_Review_has_been_Submited');
     }
-    public function showAll(){
-        $reviews= Review::where('confirm',1)->get();
-        return view('Web.allReviews',['reviews'=>$reviews]);
+
+    public function showAll() {
+        $reviews = Review::where('confirm', 1)->get();
+        return view('Web.allReviews', ['reviews' => $reviews]);
     }
 
     public static function getRateStar($rate) {

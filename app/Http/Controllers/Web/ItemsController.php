@@ -16,12 +16,14 @@ class ItemsController extends Controller {
     public function show($city, $tour, $id) {
         $item = Item::find($id);
         $item->increment('visits');
+        $reviews=$item->reviews()->where('confirm',1)->get();
         return view('Web.4_item_show', [
             'item' => $item,
             'tour' => $tour,
             'city' => $city,
             'recommended' => $this->getRecommendedTours($item),
-            'wishlist' => $this->wishlistCheck($id)
+            'wishlist' => $this->wishlistCheck($id),
+            'reviews'=>$reviews
         ]);
     }
 
