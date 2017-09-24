@@ -5,6 +5,8 @@ Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/login/supplier', 'Auth_Supplier\LoginController@showLoginForm')->name('supplier.login');
 Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('supplier.login');
+Route::post('/register/supplier', 'Auth_Supplier\RegisterController@register')->name('supplier.register');
+Route::get('/logout/supplier', 'Auth_Supplier\LoginController@logout')->name('supplier.logout');
 // customer login
 //Route::get('/login/customer', 'Auth_Customer\LoginController@showLoginForm')->name('customer.login');
 Route::post('/login/customer', 'Auth_Customer\LoginController@login')->name('customer.login');
@@ -50,6 +52,8 @@ Route::get('/reveiws/showall', ['uses' => 'ReviewController@showAll'])->name('re
 
 
 // Supllier sector 
+Route::get('supplier/welcome/home',['uses'=>'SupplierWeb\MainController@index'])->name('supplierWeb.index');
+Route::get('/register/supplier', 'SupplierWeb\MainController@showRegisterForm')->name('supplier.reigister');
 Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function() {
     Route::get('', function() {
         return view('Supplier.Welcome');

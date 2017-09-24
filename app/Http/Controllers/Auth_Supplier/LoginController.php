@@ -6,19 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
-class LoginController extends Controller {
-    /*
-      |--------------------------------------------------------------------------
-      | Login Controller
-      |--------------------------------------------------------------------------
-      |
-      | This controller handles authenticating users for the application and
-      | redirecting them to your home screen. The controller uses a trait
-      | to conveniently provide its functionality to your applications.
-      |
-     */
 
-use AuthenticatesUsers;
+class LoginController extends Controller {
+
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -37,7 +28,9 @@ use AuthenticatesUsers;
     }
 
     public function showLoginForm() {
-
+        if (Auth::guard('supplier')->check()) {
+            return redirect()->route('spplier.welcome');
+        }
         return view('auth_supplier.login');
     }
 
@@ -46,11 +39,15 @@ use AuthenticatesUsers;
             'email' => 'required',
             'password' => 'required'
         ]);
-        if (Auth::guard('supplier')->attempt(['email' => $request->email, 'password' => $request->password,'confirm'=>1], $request->remember)) {
+        if (Auth::guard('supplier')->attempt(['email' => $request->email, 'password' => $request->password, 'confirm' => 1], $request->remember)) {
             return redirect()->intended(route('spplier.welcome'));
         }
-        return redirect()->back()->withInput($request->only('email','remember'));
+        return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
+    public function logout() {
+        Auth::guard('supplier')->logout();
+        return redirect()->route('supplier.login');
+    }
 
 }

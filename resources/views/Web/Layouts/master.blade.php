@@ -90,7 +90,7 @@
 
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <ul>
-                            <li><a href="about+us">About us </a></li>
+                            <li><a href="{{route('supplierWeb.index')}}">Supplier </a></li>
                             <li><a href="Contact+us">Contact us </a></li>
                             <li><a href="Low+Price+Guarantee">Low Price Guarantee </a></li>
                         </ul>

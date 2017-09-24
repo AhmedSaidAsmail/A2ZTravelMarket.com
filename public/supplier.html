@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Supplier Administration</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="css/bootstrap-social.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div class="login-area" >
+            <div class="login-box-2 animated ">
+                <!-- bounceInDown bounceOutUp -->
+                <i class="fa fa-times-circle" id="close-login"></i>
+                <h2>Log in to A2ZTravel</h2>
+                <span class="login-header-span">
+                    Log in to add things to your wishlist and access your bookings from any device.
+                </span>
+                <a class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Log in with Facebook</a>
+                <a class="btn btn-block btn-social btn-default"><i class="fa fa-google"></i>Log in with Google</a>
+                <span class="login-or">or</span>
+                <form method="post" action="http://localhost/A2ZTravelMarketNew.com/public/login/customer">
+                    <input type="hidden" name="_token" value="EUaJhbglye8O84176NNulAZDLz3TYIFQtHbcL1gL">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" value="" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" value="" placeholder="Password">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox" name="remember"> Remember Me
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="http://localhost/A2ZTravelMarketNew.com/public/profile/password/reset" class="reset-password">Forgot your password?</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-info btn-block">Log in</button>
+                </form>
+                <div class="sign-up-section">
+                    New here? <a href="http://localhost/A2ZTravelMarketNew.com/public/register/customer">Sign up here!</a> 
+                </div>
+
+
+            </div>
+        </div>        
+        <div class="row text-right main-header-holder">
+            <div class="container">
+                <a href="http://localhost/A2ZTravelMarketNew.com/public"><div class="main-nav-logo"></div></a>
+                <span class="heder-labels">Supplier Administration</span>
+                <ul class="list-inline top-header black-almost">
+                    <li><a href="http://localhost/A2ZTravelMarketNew.com/public/wishlist"><i class="fa fa-bars"></i> Overview
+                        </a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> Login</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> Register</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row supplier-body">
+            <div class="container">
+                <div class="row supplier-body-holder">
+                    <div class="col-md-6 supplier-body-bg">
+
+                    </div>
+                    <div class="col-md-6">
+                        <span class="supplier-title-intro">
+                            <label>Online Booking Platform</label>
+                            for <label>Tours, Attractions,</label>
+                            and <label>Activities</label>
+                        </span>
+                        <span class="supplier-intro-help">
+                            A2ZTravelMarket markets your tours, attraction tickets, and travel experiences to millions of customers worldwide.
+                        </span>
+
+                        <a href="" class="btn btn-success btn-lg">Register for free</a>
+                        <span class="or">or</span>
+                        <a href="">Login</a>
+                        <span class="take-less">it takes less than 5 minutes</span>
+
+                    </div>
+                </div>
+                <div class="row supplier-intro-body">
+                    <div class="row">
+                        <div class="col-md-6 supplier-body-title">
+                            <span>
+                                <i class="fa fa-users"></i>
+                                We increase your bookings
+                            </span>
+                            Sign up for free and reach new customers from around the world. We promote your products through our website and our distribution partners, bringing you more bookings
+                        </div>
+                        <div class="col-md-6 supplier-body-title">
+                            <span>
+                                <i class="fa fa-bullseye"></i>
+                                We connect you to the world of online travel
+                            </span>
+                            By partnering with GetYourGuide, your brand gets instant visibility on the web's leading travel websites and travel agencies, meaning increased revenue and worldwide exposure. 
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-6 supplier-body-title">
+                            <span>
+                                <i class="fa fa-upload"></i>
+                                We promote your brand
+                            </span>
+                            We display your company brand prominently on our website so customers know exactly what they are booking. Benefit from this free marketing for your brand.
+                        </div>
+                        <div class="col-md-6 supplier-body-title">
+                            <span>
+                                <i class="fa fa-hand-peace-o"></i>
+                                We make it easy
+                            </span>
+                            A personal account manager and help from our multilingual customer service team is just the beginning. You'll also get free product optimization and translation, powerful analytics tools, and easy payment services.
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <!-- footer -->
+        <div class="row footer">
+            <div class="container" style="position: relative;">
+                <div class="footer-show-toggle"><i class="fa fa-arrow-circle-down"></i> Show more</div>
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="about+us">About us </a></li>
+                            <li><a href="Contact+us">Contact us </a></li>
+                            <li><a href="Low+Price+Guarantee">Low Price Guarantee </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="News+Letter">News Letter </a></li>
+                            <li><a href="FAQ">FAQ </a></li>
+                            <li><a href="Site+Map">Site Map </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <ul>
+                            <li><a href="Data+Protection">Data Protection </a></li>
+                            <li><a href="Terms+%26+Conditions">Terms &amp; Conditions </a></li>
+                            <li><a href="Privacy">Privacy </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <span class="glyphicon glyphicon-envelope" style="margin-right: 10px; font-size: 20px;"></span>
+                            Newsletter: Get the best travel deals delivered to your inbox!
+                        </div>
+                        <div class="row">
+                            <form>
+                                <div class="col-md-10 col-sm-10 col-xs-10" style="padding-left: 0px; padding-right: 0px;">
+                                    <input type="text" value="" class="form-control" placeholder="Your mail">
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 5px;">
+                                    <button class="btn btn-success" style="padding: 5px;"><i class="fa fa-check" style="font-size: 20px;"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row footer-social-links">
+                            <div class="col-md-12 col-sm-8 col-xs-8">
+                                <a href="#"> <i class="fa fa-facebook"></i></a>
+                                <a href="#"> <i class="fa fa-twitter"></i></a>
+                                <a href="#"> <i class="fa fa-google-plus"></i></a>
+                                <a href="#"> <i class="fa fa-pinterest-p"></i></a>
+                                <a href="#"> <i class="fa fa-feed"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row footer-toggle toggle-off">
+            <div class="container footer-final-links">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top 10 Countries</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Rome</a></li>
+                            <li><a href="">Paris</a></li>
+                            <li><a href="">London</a></li>
+                            <li><a href="">Cairo</a></li>
+                            <li><a href="">Sharm El Sheikh</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Top Destinations</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="refrence-title">Must-See Attractions</h1>
+                        <ul class="refrence-list">
+                            <li><a href="">Egypt</a></li>
+                            <li><a href="">England</a></li>
+                            <li><a href="">Jordan</a></li>
+                            <li><a href="">Malaysia</a></li>
+                            <li><a href="">United States</a></li>
+                            <li><a href="">New York</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center footer-rights">© 2017 A2ZTravelMarket.com All Rights Reserved</div>
+
+        <script type="text/javascript" src="http://localhost/A2ZTravelMarketNew.com/public/js/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://localhost/A2ZTravelMarketNew.com/public/js/min.js"></script>
+    </body>
+</html>
