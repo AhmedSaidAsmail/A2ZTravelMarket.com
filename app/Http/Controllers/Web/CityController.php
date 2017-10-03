@@ -32,6 +32,9 @@ class CityController extends Controller {
         $city = Sort::find($id);
         $dateTo = strtotime($request->to);
         $dateFrom = strtotime($request->from);
+        if (empty($request->to) || empty($request->from)) {
+            return $this->showAll($id);
+        }
         $days = ($dateTo - $dateFrom) / (60 * 60 * 24);
         if ($days >= 7) {
             return $this->showAll($id);

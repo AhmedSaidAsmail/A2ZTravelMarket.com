@@ -1,9 +1,60 @@
 @extends('Web.Layouts.master')
 @section('meta_tags')
-
+<?php $meta = App\MyModels\Admin\Topic::where('name', 'Home')->first() ?>
+@if(!is_null($meta))
+<meta name="keywords" content="{{ $meta->keywords }}" />
+<meta name="description" content="{{ $meta->description }}" />
+<title>{{ $meta->title }}</title>
+@endif
 @endsection
 @section('header-nav')
-<div class="row">
+<div class="row" style="position: relative;">
+    <div class="quick-search">
+        <form method="get" action="#" id="search_form_dest">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="sp-eddition-2">
+                            <label>Where are you going?</label>
+                            <input type="text" name="search" class="form-control" data-get="{{route('home.search')}}" id="attraction_search" autocomplete="off">
+                            <input type="text" name="search-done" value="" style="display: none;" id="search_done" required>
+                            <ul class="search-results">
+
+                            </ul>
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group sp-eddition">
+                            <div class="input-group-addon">
+                                <label>from</label>
+                                <i class="fa fa-calendar-o fa-lg"></i>
+                            </div>
+                            <input name="from" type="text" class="form-control" id="tour_from">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group sp-eddition">
+                            <div class="input-group-addon">
+                                <label>to</label>
+                                <i class="fa fa-calendar-o fa-lg"></i>
+                            </div>
+                            <input name="to" type="text" class="form-control" id="tour_to">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-info btn-block"><i class="fa fa-search"></i> Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
@@ -130,4 +181,32 @@
 </div>  
 
 
+@endsection
+@section('_extra_css')
+<link rel="stylesheet" href="{{asset('css/datepicker/zebra_datepicker.min.css')}}">
+@endsection
+@section('_extra_js')
+<script type="text/javascript" src="{{asset('js/datepicker/zebra_datepicker.min.js')}}"></script>
+<script>
+$('#tour_from').Zebra_DatePicker({
+    direction: true,
+    format: 'Y-m-d',
+    default_position: 'below',
+    pair: $('#tour_to'),
+    onSelect: function () {
+        var label = $(this).closest('.input-group').find('label');
+        label.addClass('small');
+        $('#tour_to').trigger('click');
+    }
+});
+$('#tour_to').Zebra_DatePicker({
+    direction: true,
+    format: 'Y-m-d',
+    default_position: 'below',
+    onSelect: function () {
+        var label = $(this).closest('.input-group').find('label');
+        label.addClass('small');
+    }
+});
+</script>
 @endsection

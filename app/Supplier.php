@@ -27,5 +27,8 @@ class Supplier extends User {
     public function items(){
         return $this->hasMany(\App\Models\Item::class);
     }
+    public function reviews(){
+        return $this->hasManyThrough(\App\Models\Review::class, \App\Models\Item::class);
+    }
 
 }

@@ -542,6 +542,41 @@ span.under-slides-title{
     box-shadow: none;
     height: 40px;
 }
+.sp-eddition-2{
+    position: relative;
+}
+.sp-eddition-2 label{
+    position: absolute;
+    z-index: 100;
+    top: calc(50% - 10px);
+    left: 15px;
+    color: #a6a6a7;
+    font-weight: lighter;
+    transition: all ease .2s;
+}
+.sp-eddition-2 label.small{
+    font-size: 10px;
+    top: 5px;
+}
+ul.search-results{
+    position: absolute;
+    top: calc(100%);
+    background-color: #FFF;
+    border: 1px solid #e6e6e6;
+    width: 100%;
+    padding: 0px;
+    display: none;
+}
+ul.search-results li{
+    border-top: 1px solid #e6e6e6;
+
+    padding: 10px 15px;
+    font-size: 14px;
+    font-family: 'Lato',sans-serif;
+}
+ul.search-results li a{
+    color: #373737;
+}
 #tour_from,#tour_to{
     background-color: #FFF;
     border-radius: 0px 5px 5px 0px;
@@ -2050,15 +2085,15 @@ span.or{
     margin: 0px;
 }
 .section-label-arrow{
-    
+
     position: absolute;
     right: calc(100% + 0px);
     top: 40px;
 
 }
 .section-label-arrow .sp-1x{
-        color: #ecede8;
-/*    color: #000;*/
+    color: #ecede8;
+    /*    color: #000;*/
     font-size: 25px;
     position: absolute;
     right: -1px;
@@ -2071,4 +2106,45 @@ span.or{
     position: absolute;
     right: 0px;
     bottom: 0px;
+}
+/** quick search **/
+.quick-search{
+    position: absolute;
+    width: 50%;
+    /*    background-color: rgba(255,255,255,.8);*/
+    background-color:#d3d3d4;
+    z-index: 1000;
+    padding: 10px 15px;
+    bottom: 40px;
+    left: 120px;
+    border-radius: 5px;
+
+    /*    border-bottom: 5px solid #00aeef;
+        border-left: 5px solid #00aeef;
+        border-top: 5px solid #FFF;
+        border-right: 5px solid #FFF;*/
+    /*    border-radius: 0px 5px 0px 0px;*/
+}
+.quick-search [class^=col-md]{
+    padding-left: 0px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+}
+.quick-search [class^=col-md]:last-child{
+    padding-right: 0px;
+}
+.quick-search .form-group{
+    margin-bottom: 0px;
+}
+.quick-search .form-control{
+    height: 42px;
+    border-radius: 5px;
+    border-color: #a6a6a7;
+    border-width: 1px;
+}
+.quick-search .btn{
+    height: 42px;
+}
+.quick-search #tour_from,.quick-search #tour_to{
+    border-color: #a6a6a7;
 }

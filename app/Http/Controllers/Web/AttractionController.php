@@ -36,6 +36,9 @@ class AttractionController extends Controller {
         $attraction = Attraction::find($id);
         $dateTo = strtotime($request->to);
         $dateFrom = strtotime($request->from);
+        if(empty($request->to) || empty($request->from)){
+            return $this->showAllAttractions($id);
+        }
         $days = ($dateTo - $dateFrom) / (60 * 60 * 24);
         if ($days >= 7) {
             return $this->showAllAttractions($id);

@@ -35,13 +35,17 @@ class HomeController extends Controller {
             'topic' => $topicFetch,]);
     }
 
-    public function searchItems(Request $request) {
+    public function search(Request $request) {
         $text = $request->text;
-        $items = Item::where('name', 'like', '%' . $text . '%')
+        $attractions = Attraction::where('name', 'like', '%' . $text . '%')
                 ->orWhere('title', 'like', '%' . $text . '%')
-                ->orWhere('intro', 'like', '%' . $text . '%')
+                ->limit(10)
                 ->get();
-        return view('Web.searchResult', ["items" => $items]);
+        $cities = Sort::where('name', 'like', '%' . $text . '%')
+                ->orWhere('title', 'like', '%' . $text . '%')
+                ->limit(10)
+                ->get();
+        return view('Web.21_searchResult', ['attractions' => $attractions,'cities'=>$cities]);
     }
 
     public function getDays($id) {

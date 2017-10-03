@@ -26,6 +26,7 @@ Route::get('/profile/my-bookings', 'Auth_Customer\ProfileController@bookings')->
 Route::get('/profile/my-bookings/items/{reservation_id}', 'Auth_Customer\ProfileController@bookingsItems')->name('customer.bookings.items');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
+Route::get('/quickSearch/attractions',['uses'=>'Web\HomeController@search'])->name('home.search');
 Route::get('/City/{id}', ['uses' => 'Web\CityController@show'])->name('city.show');
 Route::get('/City/show/all/{id}', ['uses' => 'Web\CityController@showAll'])->name('city.show.all');
 Route::get('/City/show/availability/{id}', ['uses' => 'Web\CityController@showAvailability'])->name('city.show.available');
@@ -71,6 +72,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     Route::resource('/Item/Price_Definitions', 'Supplier\PriceDefController', ['except' => ['index', 'destroy', 'show', 'edit']]);
     Route::resource('/Item/Price', 'Supplier\PricesController', ['only' => ['store', 'update', 'destroy']]);
     Route::post('/Item/Price/{id}', ['uses' => 'Supplier\PricesController@updateDiscount'])->name('Price.update.discount');
+    Route::resource('/reviews_supplier', 'Supplier\ReviewsController', ['only' => ['index','show']]);
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {

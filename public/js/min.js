@@ -1,4 +1,25 @@
 $(document).ready(function () {
+    $("#attraction_search").keyup(function () {
+        var itValue = $(this).val();
+        var label = $(this).closest('.sp-eddition-2').find('label');
+        var ulResults = $("ul.search-results");
+        var link = $(this).attr('data-get');
+        if (itValue.length) {
+            label.addClass('small');
+            ulResults.show();
+            $.ajax({
+                type: "get",
+                url: link,
+                data: {text: itValue},
+                success: function (response) {
+                    ulResults.html(response);
+                }
+            });
+        } else {
+            label.removeClass('small');
+            ulResults.hide();
+        }
+    });
     $("input.email-autocompelete-off").focus(function () {
         $(this).attr("readonly", false);
     });
@@ -166,12 +187,23 @@ $(document).ready(function () {
     });
     $("a.review-sort").click(function (event) {
         event.preventDefault();
-        var allLinks=$(".review-sort");
-        var itValue=$(this).attr('data-key');
-        var itInput=$(this).closest('.row').find('input[name=visit_sort]');
+        var allLinks = $(".review-sort");
+        var itValue = $(this).attr('data-key');
+        var itInput = $(this).closest('.row').find('input[name=visit_sort]');
         allLinks.removeClass('it-selected');
         $(this).addClass('it-selected');
-        itInput.attr('value',itValue);
+        itInput.attr('value', itValue);
+    });
+    $(window).scroll(function () {
+        var nav = $(".main-header-holder");
+        var height = $(window).scrollTop();
+        if (height > 450) {
+            nav.addClass('fixed-main-nav');
+        } else {
+            nav.removeClass('fixed-main-nav');
+        }
+
+
     });
 });
 function toggleClass() {
