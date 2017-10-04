@@ -26,5 +26,8 @@ class Price extends Model {
     public function tours(){
         return $this->hasMany(\App\Models\Tour::class);
     }
+    public function itTours(){
+        return $this->hasMany(\App\Models\Tour::class);
+    }
 
 }

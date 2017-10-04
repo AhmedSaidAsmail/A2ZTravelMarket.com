@@ -25,7 +25,7 @@ class Tour extends Model {
     public function item(){
         return $this->belongsTo(\App\Models\Item::class);
     }
-    public function price(){
+    public function itprice(){
         return $this->belongsTo(\App\Models\Price::class);
     }
 

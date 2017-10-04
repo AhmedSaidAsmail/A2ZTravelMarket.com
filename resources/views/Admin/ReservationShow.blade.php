@@ -59,6 +59,13 @@
                             <div class="col-md-2">Created at</div>
                             <div class="col-md-4">{{$reservation->created_at}}</div>
                         </div>
+                        <div class="row" style="border-top: 1px solid #E6E6E6; border-bottom: 1px solid #E6E6E6; margin:20px 0px; padding: 15px 0px;">
+                            <div class="col-md-2">Payment Id</div>
+                            <div class="col-md-4">{{$reservation->paymentId}}</div>
+                            <div class="col-md-2">
+                                <button class="btn btn-default"><i class="fa fa-bolt"></i> Confirm</button>
+                            </div>
+                        </div>
                         <div class="row" style="margin-top: 30px;">
                             <div class="col-md-12">
                                 <a href="" class="btn btn-info btn-block"><i class="fa fa-mail-forward"></i>Send Email</a>
@@ -69,6 +76,7 @@
 
                 @if(count($reservation->ResTours)>0)
                 @foreach($reservation->ResTours as $tour)
+                <?php $itPrice = \App\Models\Price::find($tour->price_id); ?>
                 <div class="box">
                     <div class="box-body">
                         <div class="row">
@@ -77,22 +85,49 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">Price:</div>
-                            <div class="col-md-2">{{$tour->price}}</div>
-                            <div class="col-md-2">Date:</div>
-                            <div class="col-md-2">{{$tour->date}}</div>
+                            <div class="col-md-2"><label>Price:</label></div>
+                            <div class="col-md-4">{{$tour->price}}</div>
+                            <div class="col-md-2"><label>Date:</label></div>
+                            <div class="col-md-4">{{$tour->date}}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">{{$tour->st_name}}</div>
-                            <div class="col-md-2">{{$tour->st_no}}</div>
-                            <div class="col-md-2">Price</div>
-                            <div class="col-md-2">{{$tour->st_price}}</div>
+                            <div class="col-md-2"><label>Tour Name:</label></div>
+                            <div class="col-md-4">{{$tour->item->name}}</div>
+                            <div class="col-md-2"><label>Supplier:</label></div>
+                            <div class="col-md-4">{{$tour->item->supplier->company}}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">{{$tour->sec_name}}</div>
-                            <div class="col-md-2">{{$tour->sec_no}}</div>
+                            <div class="col-md-2"><label>Title:</label></div>
+                            <div class="col-md-4">
+                                {!! (!is_null($itPrice->language))?ucfirst($itPrice->language)." Tour":null !!}
+                                {!! (!is_null($itPrice->capacity))?": Up to".$itPrice->capacity." People":null !!}
+                                {!! (($itPrice->private))?" - Private":null !!}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">{{$tour->item->price_definition->st_price_name}}</div>
+                            <div class="col-md-4">{{$tour->st_no}}</div>
                             <div class="col-md-2">Price</div>
-                            <div class="col-md-2">{{$tour->sec_price}}</div>
+                            <div class="col-md-2">
+                                {{$itPrice->st_price* $tour->st_no}}
+                                ( {{$itPrice->st_price }} x {{$tour->st_no}} )</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">{{$tour->item->price_definition->sec_price_name}}</div>
+                            <div class="col-md-4">{{$tour->sec_no}}</div>
+                            <div class="col-md-2">Price</div>
+                            <div class="col-md-2">
+                                {{$itPrice->sec_price* $tour->sec_no}}
+                                ( {{$itPrice->sec_price }} x {{$tour->sec_no}} )</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">{{$tour->item->price_definition->third_price_name}}</div>
+                            <div class="col-md-4">{{$tour->third_no}}</div>
+                            <div class="col-md-2">Price</div>
+                            <div class="col-md-2">
+                                {{$itPrice->third_price* $tour->third_no}}
+                                ( {{$itPrice->third_price }} x {{$tour->third_no}} )</div>
                         </div>
                     </div>
                 </div>
