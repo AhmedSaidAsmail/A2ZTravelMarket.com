@@ -30,54 +30,16 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-2">Name:</div>
-                            <div class="col-md-4">{{$reservation->f_name}} {{$reservation->sur_name}}  </div>
+                            <div class="col-md-4">{{$reservation->name}} </div>
                             <div class="col-md-2">Email:</div>
                             <div class="col-md-4">{{$reservation->email}}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">Hotel:</div>
-                            <div class="col-md-4">{{$reservation->hotel}}</div>
                             <div class="col-md-2">Mobile:</div>
-                            <div class="col-md-4">{{$reservation->mobile}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Date:</div>
-                            <div class="col-md-10">{{$reservation->date}}</div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                Arrival Flight No:
-                            </div>
-                            <div class="col-md-4">
-                                {{$reservation->arrival_flight_no}}
-                            </div>
-                            <div class="col-md-2">
-                                Arrival Flight Time:
-                            </div>
-                            <div class="col-md-4">
-                                {{$reservation->arrival_flight_time}}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                Departure Flight No:
-                            </div>
-                            <div class="col-md-4">
-                                {{$reservation->departure_flight_no}}
-                            </div>
-                            <div class="col-md-2">
-                                Departure Flight Time:
-                            </div>
-                            <div class="col-md-4">
-                                {{$reservation->departure_flight_time}}
-                            </div>
-                        </div>
-                        <div class="row">
+                            <div class="col-md-4">{{$reservation->phone}}</div>
                             <div class="col-md-2">Tours:</div>
                             <div class="col-md-4">{{$reservation->tours}}</div>
-                            <div class="col-md-2">Transfers:</div>
-                            <div class="col-md-4">{{$reservation->transfers}}</div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-2">Total:</div>
@@ -105,8 +67,8 @@
                     </div>
                 </div>
 
-                @if(count($reservation->selfTours)>0)
-                @foreach($reservation->selfTours as $tour)
+                @if(count($reservation->ResTours)>0)
+                @foreach($reservation->ResTours as $tour)
                 <div class="box">
                     <div class="box-body">
                         <div class="row">
@@ -136,45 +98,6 @@
                 </div>
                 @endforeach
                 @endif
-                @if(count($reservation->selfTransfers)>0)
-                @foreach($reservation->selfTransfers as $transfer)
-                <div class="box">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>{{$transfer->title}}</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Price:</div>
-                            <div class="col-md-2">{{$transfer->price}}</div>
-                            <div class="col-md-2">Arrival Date:</div>
-                            <div class="col-md-2">{{$transfer->arrival_date}}</div>
-                            <div class="col-md-2">Departure Date:</div>
-                            <div class="col-md-2">{{$transfer->departure_date}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">From</div>
-                            <div class="col-md-2">{{$transfer->dist_from}}</div>
-                            <div class="col-md-2">To</div>
-                            <div class="col-md-2">{{$transfer->dist_to}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Transfer Type</div>
-                            <div class="col-md-2">{{$transfer->transfer_type}}</div>
-                            <div class="col-md-2">Transfers Times</div>
-                            <div class="col-md-2">{{$transfer->transfer_times}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Adult</div>
-                            <div class="col-md-2">{{$transfer->adult}}</div>
-                            <div class="col-md-2">Child</div>
-                            <div class="col-md-2">{{$transfer->child}}</div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @endif
             </div>
         </div>
     </section>
@@ -185,7 +108,7 @@
 <script src="{{asset('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 <script>
-$(function() {
+$(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
         "paging": true,

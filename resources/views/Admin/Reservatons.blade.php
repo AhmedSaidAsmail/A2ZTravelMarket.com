@@ -36,7 +36,7 @@
                                     <th>Email</th>
                                     <th>Date</th>
                                     <th>Tours</th>
-                                    <th>Transfers</th>
+                                   
                                     <th>Total</th>
                                     <th>Deposit</th>
                                     <th>Paid</th>
@@ -47,11 +47,11 @@
 
                                 @foreach($reservations as $reservation)
                                 <tr>
-                                    <td>{{$reservation->f_name}}</td>
+                                    <td>{{$reservation->name}}</td>
                                     <td>{{$reservation->email}}</td>
                                     <td>{{$reservation->created_at}}</td>
                                     <td>{{$reservation->tours}}</td>
-                                    <td>{{$reservation->transfers}}</td>
+                                    
                                     <td>{{$reservation->total}}</td>
                                     <td>{{$reservation->deposit}}</td>
                                     <td> {!! ($reservation->paid)? '<i class="fa fa-circle text-green"></i>':'<i class="fa fa-circle text-gray"></i>' !!} </td>
@@ -72,7 +72,7 @@
                                     <th>Email</th>
                                     <th>Date</th>
                                     <th>Tours</th>
-                                    <th>Transfers</th>
+                                   
                                     <th>Total</th>
                                     <th>Deposit</th>
                                     <th>Paid</th>

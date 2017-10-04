@@ -20,7 +20,7 @@ class Tour extends Model {
         'confirm'];
 
     public function reservation() {
-        return $this->belongsTo(App\MyModels\Admin\Reservation::class);
+        return $this->belongsTo(App\Models\Reservation::class);
     }
     public function item(){
         return $this->belongsTo(\App\Models\Item::class);

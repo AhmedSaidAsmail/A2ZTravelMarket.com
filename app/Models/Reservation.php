@@ -24,7 +24,7 @@ class Reservation extends Model {
         return $this->belongsTo(\App\Customer::class);
     }
 
-    public function tours() {
+    public function ResTours() {
         return $this->hasMany(\App\Models\Tour::class);
     }
 
