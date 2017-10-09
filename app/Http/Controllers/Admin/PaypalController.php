@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\MyModels\Admin\Paypal_setting;
+use App\Models\Paypal_setting;
 
 class PaypalController extends Controller {
 

@@ -39,7 +39,7 @@
             </header>
             <aside class="main-sidebar" >
                 <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
+                <section class="sidebar" style="min-height: 800px;">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image"> <img src="{{asset('images/admin/administrator.png')}}" class="img-circle" alt="User Image"> </div>
@@ -63,7 +63,9 @@
 
                         </li>
                         <li class="treeview{{(isset($activeMaincategory))?' active':''}}"> 
-                            <a href="#"> <i class="fa fa-globe"></i> <span>Countries</span> <span class="pull-right-container">
+                            <a href="#"> <i class="fa fa-globe"></i> <span>Countries</span> 
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-left"></i>
                                     <span class="label label-primary pull-right">{{App\Models\Basicsort::count()}}</span> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('MainCategory.index')}}"><i class="fa fa-circle-o"></i> Countries Manager</a></li>
@@ -71,33 +73,50 @@
                         </li>
                         <li class="treeview{{(isset($activeCategory))?' active':''}}"> 
                             <a href=""> <i class="fa fa-th"></i> <span>Cities & Attractions</span>
-                                <span class="pull-right-container"> <small class="label pull-right bg-green">{{App\Models\Sort::count()}}</small> </span> </a>
+                                <span class="pull-right-container"> 
+                                    <i class="fa fa-angle-left pull-left"></i> 
+                                    <small class="label pull-right bg-green">{{App\Models\Sort::count()}}</small> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('Category.index')}}"><i class="fa fa-circle-o"></i> Cities Manager</a></li>
                                 <li><a href="{{route('Attraction.index')}}"><i class="fa fa-circle-o"></i> Attractions Manager</a></li>
                             </ul>
                         </li>
                         <li class="treeview{{(isset($activeItems))?' active':''}}"> <a href="#"> <i class="fa fa-pie-chart"></i> <span>Items</span>
-                                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-left"></i> 
+                                    <span class="label label-warning pull-right">{{App\Models\Item::count()}}</span> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('Items.index')}}"><i class="fa fa-circle-o"></i> Items Manager</a></li>
                             </ul>
                         </li>
                         <li class="treeview"> <a href="#"> <i class="fa fa-laptop">
-                                </i> <span>Topics</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                                </i> <span>Topics</span> 
+                                <span class="pull-right-container"> 
+                                    <i class="fa fa-angle-left pull-left"></i> 
+                                    <span class="label label-default pull-right">{{App\Models\Topic::count()}}</span>
+                                </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('Topics.index') }}"><i class="fa fa-circle-o"></i> Topics Manger</a></li>
                             </ul>
                         </li>
                         <li class="treeview"> 
+                            <a href="{{route('suppliers.index')}}"> <i class="fa fa-user-md"></i> <span>suppliers</span>
+                                <span class="pull-right-container">
+                                    <span class="label label-danger pull-right">{{App\Supplier::count()}}</span> </span> </a>
+                        </li>
+                        <li class="treeview"> 
+                            <a href="{{route('customers.index')}}"> <i class="fa fa-users"></i> <span>Customers</span>  <span class="pull-right-container">
+                                    <span class="label label-default pull-right">{{App\Customer::count()}}</span> </span> </a>
+                        </li>
+                        <li class="treeview"> 
                             <a href="{{route('Reservation.index')}}"> <i class="fa fa-cart-arrow-down"></i> <span>Reservation</span>  </a>
                         </li>
                         <li class="treeview">
-                            <a href="{{route('reviews.index')}}"><i class="fa fa-comment"></i> Reviews</a>
+                            <a href="{{route('reviews.index')}}"><i class="fa fa-comment"></i> <span>Reviews</span></a>
                         </li>
                         <li class="treeview"> <a href="#"> <i class="fa fa-cog"></i> <span>Setting</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
                             <ul class="treeview-menu">
-                                <li><a href=""><i class="fa fa-circle-o"></i> Admin Profile</a></li>
+                                <li><a href="{{route('admin.change.profile')}}"><i class="fa fa-circle-o"></i> Admin Profile</a></li>
                                 <li><a href="{{ route('Paypal.index') }}"><i class="fa fa-circle-o"></i>PayPal Settings</a></li>
                                 <li><a href="{{ route('vars.index') }}"><i class="fa fa-circle-o"></i>Languages</a></li>
 

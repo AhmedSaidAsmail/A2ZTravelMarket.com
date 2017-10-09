@@ -26,7 +26,7 @@ Route::get('/profile/my-bookings', 'Auth_Customer\ProfileController@bookings')->
 Route::get('/profile/my-bookings/items/{reservation_id}', 'Auth_Customer\ProfileController@bookingsItems')->name('customer.bookings.items');
 //Auth end
 Route::get('/', ['uses' => 'Web\HomeController@welcome'])->name('home');
-Route::get('/quickSearch/attractions',['uses'=>'Web\HomeController@search'])->name('home.search');
+Route::get('/quickSearch/attractions', ['uses' => 'Web\HomeController@search'])->name('home.search');
 Route::get('/City/{id}', ['uses' => 'Web\CityController@show'])->name('city.show');
 Route::get('/City/show/all/{id}', ['uses' => 'Web\CityController@showAll'])->name('city.show.all');
 Route::get('/City/show/availability/{id}', ['uses' => 'Web\CityController@showAvailability'])->name('city.show.available');
@@ -53,7 +53,7 @@ Route::get('/reveiws/showall', ['uses' => 'ReviewController@showAll'])->name('re
 
 
 // Supllier sector 
-Route::get('supplier/welcome/home',['uses'=>'SupplierWeb\MainController@index'])->name('supplierWeb.index');
+Route::get('supplier/welcome/home', ['uses' => 'SupplierWeb\MainController@index'])->name('supplierWeb.index');
 Route::get('/register/supplier', 'SupplierWeb\MainController@showRegisterForm')->name('supplier.reigister');
 Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function() {
     Route::get('', function() {
@@ -72,7 +72,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     Route::resource('/Item/Price_Definitions', 'Supplier\PriceDefController', ['except' => ['index', 'destroy', 'show', 'edit']]);
     Route::resource('/Item/Price', 'Supplier\PricesController', ['only' => ['store', 'update', 'destroy']]);
     Route::post('/Item/Price/{id}', ['uses' => 'Supplier\PricesController@updateDiscount'])->name('Price.update.discount');
-    Route::resource('/reviews_supplier', 'Supplier\ReviewsController', ['only' => ['index','show']]);
+    Route::resource('/reviews_supplier', 'Supplier\ReviewsController', ['only' => ['index', 'show']]);
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('', function() {
@@ -98,8 +98,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::resource('/Topics/{TopicId}/Gallery', 'Admin\GalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);
     Route::resource('/Articles', 'Admin\ArticlesController');
     Route::resource('/vars', 'Admin\VarsController');
-    Route::resource('/Paypal', 'Admin\PaypalController');
+    
     Route::resource('/Reservation', 'Admin\ReservationController');
+    Route::resource('/suppliers','Admin\SuppliersController');
+    Route::resource('/customers','Admin\CustomersControllers');
+    Route::get('/Profile/changeDetails',['uses'=>'Admin\ProfileController@showProfileForm'])->name('admin.change.profile');
+    Route::put('/Profile/changeDetails',['uses'=>'Admin\ProfileController@changeDetails'])->name('admin.change.profile');
+    Route::resource('/Paypal', 'Admin\PaypalController');
     // Reviews
 //    Route::get('/Review/Show/All', ['uses' => 'ReviewController@index'])->name('review.index');
 });

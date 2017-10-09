@@ -8,10 +8,10 @@
 <div class="content-wrapper">
     <!-- Directory&Header -->
     <section class="content-header">
-        <h1> Reviews {{(isset($item)?$item->name:null)}}<small>All Reviews</small> </h1>
+        <h1> Customers <small>All Customers</small> </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> C-Panel </a></li>
-            <li><a href="#">All {{(isset($item)?$item->name:null)}}Reviews</a></li>
+            <li><a href="#">All Customers</a></li>
         </ol>
     </section>
     <!-- end Directory&Header -->
@@ -23,49 +23,51 @@
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">All {{(isset($item)?$item->name:null)}} Reviews Data With Full Features</h3>
+                        <h3 class="box-title">All Customers Data With Full Features</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Tour</th>
-                                    <th>Title</th>
-                                    <th>visit_date</th>
-                                    <th>Overall Rating</th>
-                                    <th>Confirm</th>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                    <th>Reservations</th>
                                     <th>#Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach($reviews as $review)
+                                @foreach($customers as $customer)
                                 <tr>
-                                    <td>{{$review->item->name}}</td>
-                                    <td>{{$review->title}}</td>
-                                    <td>{{$review->visit_date}}</td>
-                                    <td>{{$review->overall_rating}}</td>
-                                    <td> {!! ($review->confirm)? '<i class="fa fa-circle text-green"></i>':'<i class="fa fa-circle text-gray"></i>' !!} </td>
+                                    <td>{{$customer->email}}</td>
+                                    <td>{{$customer->name}}</td>
+                                    <td>{{$customer->city}}</td>
+                                    <td>{{$customer->country}}</td>
+                                    <td> {!! ($customer->confirm)? '<i class="fa fa-circle text-green"></i>':'<i class="fa fa-circle text-gray"></i>' !!} </td>
+                                    <td>{{count($customer->reservations)}}</td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default">Action</button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
                                             <div class="dropdown-menu list-group" >
-                                                <form method="post" action="{{route('reviews.update',['id'=>$review->id])}}">
+                                                <a href="{{route('customers.show',['id'=>$customer->id])}}" class="list-group-item">Preview</a>
+                                                <form method="post" action="{{route('customers.update',['id'=>$customer->id])}}" id="confirm{{$customer->id}}">
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                     <input type="hidden" name="_method" value="PUT">
-                                                    <a href="#" class="list-group-item" id="chnage-review">Change</a>
-                                                </form>
-
-                                                <a href="{{route('reviews.show',['id'=>$review->id])}}" class="list-group-item">Preview</a>
-                                                <form action="{{route('reviews.destroy',['id'=>$review->id])}}" method="post">
-                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <a href="#" class="deleteItem list-group-item" title="Review No:{{$review->id}}">Delete</a>
+                                                    @if(!$customer->confirm)
+                                                    <a href="#" class="list-group-item confirm-supplier" data-form="confirm{{$customer->id}}">Confirm</a>
+                                                    @else
+                                                    <input type="hidden" name="cancel_confirm" data-form="confirm{{$customer->id}}">
+                                                    <a href="#" class="list-group-item confirm-supplier" data-form="confirm{{$customer->id}}">Unconfirmed</a>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </div>
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -73,11 +75,12 @@
 
                             <tfoot>
                                 <tr>
-                                    <th>Tour</th>
-                                    <th>Title</th>
-                                    <th>visit_date</th>
-                                    <th>Overall Rating</th>
-                                    <th>Confirm</th>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                    <th>Reservations</th>
                                     <th>#Action</th>
                                 </tr>
                             </tfoot>
@@ -104,9 +107,10 @@ $(function () {
 });
 </script>
 <script>
-    $("a#chnage-review").click(function (event) {
+    $("a.confirm-supplier").click(function (event) {
         event.preventDefault();
-        var it_form = $(this).closest("form");
+        var formValue = $(this).attr('data-form');
+        var it_form = $("form#" + formValue);
         it_form.submit();
     });
 </script>
