@@ -65,7 +65,7 @@
                         <li class="treeview{{(isset($activeMaincategory))?' active':''}}"> 
                             <a href="#"> <i class="fa fa-globe"></i> <span>Countries</span> 
                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-left"></i>
+
                                     <span class="label label-primary pull-right">{{App\Models\Basicsort::count()}}</span> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('MainCategory.index')}}"><i class="fa fa-circle-o"></i> Countries Manager</a></li>
@@ -74,7 +74,7 @@
                         <li class="treeview{{(isset($activeCategory))?' active':''}}"> 
                             <a href=""> <i class="fa fa-th"></i> <span>Cities & Attractions</span>
                                 <span class="pull-right-container"> 
-                                    <i class="fa fa-angle-left pull-left"></i> 
+
                                     <small class="label pull-right bg-green">{{App\Models\Sort::count()}}</small> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('Category.index')}}"><i class="fa fa-circle-o"></i> Cities Manager</a></li>
@@ -83,7 +83,7 @@
                         </li>
                         <li class="treeview{{(isset($activeItems))?' active':''}}"> <a href="#"> <i class="fa fa-pie-chart"></i> <span>Items</span>
                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-left"></i> 
+
                                     <span class="label label-warning pull-right">{{App\Models\Item::count()}}</span> </span> </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('Items.index')}}"><i class="fa fa-circle-o"></i> Items Manager</a></li>
@@ -92,7 +92,7 @@
                         <li class="treeview"> <a href="#"> <i class="fa fa-laptop">
                                 </i> <span>Topics</span> 
                                 <span class="pull-right-container"> 
-                                    <i class="fa fa-angle-left pull-left"></i> 
+
                                     <span class="label label-default pull-right">{{App\Models\Topic::count()}}</span>
                                 </span> </a>
                             <ul class="treeview-menu">
@@ -114,7 +114,7 @@
                         <li class="treeview">
                             <a href="{{route('reviews.index')}}"><i class="fa fa-comment"></i> <span>Reviews</span></a>
                         </li>
-                        <li class="treeview"> <a href="#"> <i class="fa fa-cog"></i> <span>Setting</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                        <li class="treeview"> <a href="#"> <i class="fa fa-cog"></i> <span>Setting</span>  </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{route('admin.change.profile')}}"><i class="fa fa-circle-o"></i> Admin Profile</a></li>
                                 <li><a href="{{ route('Paypal.index') }}"><i class="fa fa-circle-o"></i>PayPal Settings</a></li>

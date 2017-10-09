@@ -75,9 +75,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
     Route::resource('/reviews_supplier', 'Supplier\ReviewsController', ['only' => ['index', 'show']]);
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
-    Route::get('', function() {
-        return view('Admin.Welcome');
-    })->name('welcome');
+    Route::get('',['uses'=>'HomeController@index'])->name('welcome');
     route::get('/Error505', function() {
         return view('Admin.Error500');
     })->name('Error505');
