@@ -103,7 +103,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="text-center">
-                                    <strong>Sales: 1 Jan, 2014 - </strong>
+                                    <strong>Sales: {{date('d M, Y',$past_date)}} - {{date('d M, Y',$current_date)}}</strong>
                                 </p>
 
                                 <div class="chart">
@@ -121,46 +121,7 @@
                         <!-- /.row -->
                     </div>
                     <!-- ./box-body -->
-                    <div class="box-footer">
-                        <div class="row">
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                                    <h5 class="description-header">$35,210.43</h5>
-                                    <span class="description-text">TOTAL REVENUE</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                                    <h5 class="description-header">$10,390.90</h5>
-                                    <span class="description-text">TOTAL COST</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                                    <h5 class="description-header">$24,813.53</h5>
-                                    <span class="description-text">TOTAL PROFIT</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block">
-                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                                    <h5 class="description-header">1200</h5>
-                                    <span class="description-text">GOAL COMPLETIONS</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </div>
+
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
@@ -173,4 +134,46 @@
 @section('Extra_Js')
 <script src="{{asset('adminlte/plugins/chartjs/Chart.min.js')}}"></script>
 <script src="{{asset('adminlte/dist/js/pages/dashboard2.js')}}"></script>
+<script>
+var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
+// This will get the first returned node in the jQuery collection.
+var salesChart = new Chart(salesChartCanvas);
+var salesChartData = {
+labels: [
+        @foreach($months as $month)
+        "{{date('F',$month)}}",
+        @endforeach
+        ],
+        datasets: [
+        {
+        label: "New Users",
+                fillColor: "rgb(210, 214, 222)",
+                strokeColor: "rgb(0, 0, 0)",
+                pointColor: "rgb(210, 214, 222)",
+                pointStrokeColor: "#c1c7d1",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgb(220,220,220)",
+                data: [
+                        @foreach($users as $user)
+                {{$user}},
+                        @endforeach
+                ]
+        },
+        {
+        label: "Reservations",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [
+                        @foreach($reseravtions as $reservation)
+                {{$reservation}},
+                        @endforeach
+                ]
+        }
+        ]
+        };
+</script>
 @endsection
