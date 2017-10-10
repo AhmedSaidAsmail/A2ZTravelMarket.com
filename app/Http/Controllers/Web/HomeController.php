@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Attraction;
 use App\Models\Sort;
 use App\Models\Item;
-// old
-use App\MyModels\Admin\Topic;
+use App\Models\Topic;
 
 class HomeController extends Controller {
 
@@ -31,7 +30,7 @@ class HomeController extends Controller {
         }
         $topic = urldecode($topicName);
         $topicFetch = Topic::where('name', $topic)->first();
-        return view('Web.topicsShow', [
+        return view('Web.22_topicsShow', [
             'topic' => $topicFetch,]);
     }
 

@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/routes/web.php</file>
-            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/app/Supplier.php</file>
-            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/resources/views/Admin/10_supplier_view.blade.php</file>
-            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/resources/views/Admin/6_Items.blade.php</file>
-            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/resources/views/Admin/11_Supplier_preview.blade.php</file>
+            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/HomeController.php</file>
+            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/app/Models/Reservation.php</file>
+            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Controller.php</file>
+            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/resources/views/Admin/Welcome.blade.php</file>
             <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/resources/views/Admin/Layouts/Layout_Basic.blade.php</file>
-            <file>file:/D:/Work/Websites/A2ZTravelMarketNew.com/app/Http/Controllers/Admin/SuppliersController.php</file>
         </group>
     </open-files>
 </project-private>

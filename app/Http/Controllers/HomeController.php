@@ -25,6 +25,9 @@ class HomeController extends Controller {
             'users'=> $this->users
         ]);
     }
+    public function getError(){
+        return view('Admin.Error500');
+    }
 
     private function setMonths($start_date, $end_date) {
         $this->months[] = $end_date;

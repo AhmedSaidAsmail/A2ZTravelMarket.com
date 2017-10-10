@@ -3,8 +3,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\MyModels\Admin\Topic;
-use App\MyModels\Admin\Topics_text;
+use App\Models\Topic;
+use App\Models\Topics_text;
 
 class TopicsController extends Controller {
 

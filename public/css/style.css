@@ -2148,3 +2148,11 @@ span.or{
 .quick-search #tour_from,.quick-search #tour_to{
     border-color: #a6a6a7;
 }
+.topic-text{
+    font-family: 'Asap',sans-serif;
+    color: #494848;
+}
+.topic-title{
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;
+}

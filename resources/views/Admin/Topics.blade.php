@@ -68,14 +68,14 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Name:</label>
-                                            <input class="form-control" name="name" placeholder="Main category Name" required>
+                                            <label>Topic Name:</label>
+                                            <input class="form-control" name="name" placeholder="Eg: Contact_us" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Item Title:</label>
-                                            <input class="form-control" name="title" placeholder="Main category Title" required>
+                                            <label>Topic Title:</label>
+                                            <input class="form-control" name="title" placeholder="Eg: Contact us" required>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -121,18 +121,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Side Bar</label>
-                                            <select class="form-control" name="sidebar">
-                                                <option value="0">Select</option>
-                                                <option value="1">True</option>
-                                                <option value="0">False</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -145,12 +133,6 @@
                                         <div class="form-group">
                                             <label>Footer Link Name:</label>
                                             <input class="form-control" name="footer_link" >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>side Bar Link Name:</label>
-                                            <input class="form-control" name="sidebar_link">
                                         </div>
                                     </div>
                                 </div>

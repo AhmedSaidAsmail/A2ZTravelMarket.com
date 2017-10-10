@@ -1,6 +1,6 @@
 @extends('Web.Layouts.master')
 @section('meta_tags')
-<?php $meta = App\MyModels\Admin\Topic::where('name', 'Home')->first() ?>
+<?php $meta = App\Models\Topic::where('name', 'Home')->first() ?>
 @if(!is_null($meta))
 <meta name="keywords" content="{{ $meta->keywords }}" />
 <meta name="description" content="{{ $meta->description }}" />

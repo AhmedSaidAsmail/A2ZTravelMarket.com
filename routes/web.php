@@ -8,7 +8,6 @@ Route::post('/login/supplier', 'Auth_Supplier\LoginController@login')->name('sup
 Route::post('/register/supplier', 'Auth_Supplier\RegisterController@register')->name('supplier.register');
 Route::get('/logout/supplier', 'Auth_Supplier\LoginController@logout')->name('supplier.logout');
 // customer login
-//Route::get('/login/customer', 'Auth_Customer\LoginController@showLoginForm')->name('customer.login');
 Route::post('/login/customer', 'Auth_Customer\LoginController@login')->name('customer.login');
 Route::get('/logout/customer', 'Auth_Customer\LoginController@logout')->name('customer.logout');
 Route::get('/register/customer', 'Auth_Customer\RegisterController@showRegistrationForm')->name('customer.register');
@@ -35,9 +34,12 @@ Route::get('/Attraction/show/all/{id}', ['uses' => 'Web\AttractionController@sho
 Route::get('/Attraction/show/availability/{id}', ['uses' => 'Web\AttractionController@showAvailability'])->name('attraction.show.available');
 Route::get('showTour/{city}/{tour}/{id}', ['uses' => 'Web\ItemsController@show'])->name('tour.show');
 Route::post('/tour/{id}', ['uses' => 'Web\ItemsController@showPrices'])->name('tour.get.prices');
+Route::get('/topics/{topicsName}', ['uses' => 'Web\HomeController@topicsShow'])->name('topics.show');
+// Wish List
 Route::get('/wishlist', ["uses" => 'Web\WishlistController@index'])->name('wishlist.index');
 Route::get('/wishlist/add', ["uses" => 'Web\WishlistController@addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist/remove', ["uses" => 'Web\WishlistController@removeFromWishlist'])->name('wishlist.remove');
+// Reservations
 Route::post('/reservation/add/cart', ['uses' => 'Web\ReservationController@addToCart'])->name('reservation.cart.add');
 Route::get('/reservation/cart', ['uses' => 'Web\ReservationController@showCart'])->name('reservation.cart.show');
 Route::get('/reservation/cart/remove/{id}', ['uses' => 'Web\ReservationController@removeFromCart'])->name('reservation.cart.remove');
@@ -76,9 +78,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => 'auth:supplier'], function
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('',['uses'=>'HomeController@index'])->name('welcome');
-    route::get('/Error505', function() {
-        return view('Admin.Error500');
-    })->name('Error505');
+    route::get('/Error505',['uses'=>'HomeController@getError'])->name('Error505');
     //Main Category
     Route::resource('/MainCategory', 'Admin\MainCategoriesController');
     // Category
@@ -89,8 +89,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::resource('/Items', 'Admin\ItemsController');
     Route::get('/reviews/all/{item_id?}', 'Admin\ReviewsController@index')->name('reviews.index');
     Route::resource('/reviews', 'Admin\ReviewsController', ['only' => ['show', 'update', 'destroy']]);
-    // Item Details
-//    Route::resource('/Item/{itemID}/Detail', 'Admin\DetailsController');
     //topics
     Route::resource('/Topics', 'Admin\TopicsController');
     Route::resource('/Topics/{TopicId}/Gallery', 'Admin\GalleryController', ['except' => ['show', 'edit', 'update', 'destroy']]);

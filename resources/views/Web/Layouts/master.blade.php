@@ -51,7 +51,15 @@
                         <a href="{{route('reservation.cart.show')}}"><i class="fa fa-shopping-cart"></i> Cart
                             {!! Session::has('cart')?"(".Session::get('cart')->totalQty.")":null !!}
                         </a></li>
-                    <li><a href=""><i class="fa fa-question-circle"></i> Help</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-question-circle"></i> Help</a>
+                        <ul class="dropdown-menu">
+                            @foreach( App\Models\Topic::where('top',1)->orderBy('arrangement','asc')->get() as $top)
+                            <li><a href="{{ route('topics.show',['topicsName'=>urlencode($top->name)]) }}">
+                                    {{ $top->top_link }} </a></li>
+                            @endforeach
+                        </ul>
+                    </li>
                     @if (Auth::guard('customer')->check())
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i> {{Auth::guard('customer')->user()->name}}</a>
                         <ul class="dropdown-menu">
@@ -88,27 +96,19 @@
                 <div class="footer-show-toggle"><i class="fa fa-arrow-circle-down"></i> Show more</div>
                 <div class="row">
 
+                    @foreach( App\Models\Topic::where('footer',1)->orderBy('arrangement','desc')->limit(9)->get()->chunk(3) as $footerChunk)
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <ul>
-                            <li><a href="{{route('supplierWeb.index')}}">Supplier </a></li>
-                            <li><a href="Contact+us">Contact us </a></li>
-                            <li><a href="Low+Price+Guarantee">Low Price Guarantee </a></li>
+                            @foreach($footerChunk as $footer)
+                            @if($footer->name=="supplier")
+                            <li><a href="{{route('supplierWeb.index')}}">{{ $footer->footer_link }} </a></li>
+                            @else
+                            <li><a href="{{ route('topics.show',['topicsName'=>urlencode($footer->name)]) }}">{{ $footer->footer_link }} </a></li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <ul>
-                            <li><a href="News+Letter">News Letter </a></li>
-                            <li><a href="FAQ">FAQ </a></li>
-                            <li><a href="Site+Map">Site Map </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <ul>
-                            <li><a href="Data+Protection">Data Protection </a></li>
-                            <li><a href="Terms+%26+Conditions">Terms &amp; Conditions </a></li>
-                            <li><a href="Privacy">Privacy </a></li>
-                        </ul>
-                    </div>
+                    @endforeach
                     <div class="col-md-3">
                         <div class="row">
                             <span class="glyphicon glyphicon-envelope" style="margin-right: 10px; font-size: 20px;"></span>

@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\MyModels\Admin\Topics_text;
+use App\Models\Topics_text;
 
 class ArticlesController extends Controller {
 

@@ -5,7 +5,6 @@
 <meta name="description" content="{{ $topic->description }}">
 @endsection
 @section('header-nav')
-@include('Web.nav-menu')
 @endsection
 @section('content')
 
@@ -13,24 +12,15 @@
 
 <div class="row intital-pages" style="margin-bottom: 30px;">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <ul class="list-inline directory">
-                        <li><a href="">{{ Vars::getVar("Home") }}<span class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></span></a></li>
-                        <li><a href="">{{Vars::getVar('Articles')}} <span class="glyphicon glyphicon-chevron-right"></span></a>
-                        <li><a href="">{{$topic->name}}</a>
-                    </ul>
-                    <h1>{{$topic->title}}</h1>
-                </div>
+        <div class="row topic-text">
+            <div class="col-md-12">
+                <h2 class="topic-title">{{$topic->title}}</h2>
                 @if($topic->Topics_text)
                 {!! $topic->Topics_text->txt !!}
                 @endif
 
             </div>
-            <div class="col-md-4">
-                @include('Web.Layouts.rightSide')
-            </div>
+
 
         </div>
     </div>
